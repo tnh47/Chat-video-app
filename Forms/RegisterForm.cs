@@ -38,7 +38,7 @@ namespace Chat_video_app.Forms
             var data = GetWriteData();
             DocumentReference docRef = db.Collection("UserData").Document(data.Username);
             docRef.SetAsync(data);
-            MessageBox.Show("Success");
+            MessageBox.Show("Success"); 
         }
         private UserData GetWriteData()
         {
