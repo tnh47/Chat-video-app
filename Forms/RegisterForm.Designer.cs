@@ -98,8 +98,10 @@
             this.ConfirmPasswordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.ConfirmPasswordBox.Location = new System.Drawing.Point(355, 236);
             this.ConfirmPasswordBox.Name = "ConfirmPasswordBox";
+            this.ConfirmPasswordBox.PasswordChar = '*';
             this.ConfirmPasswordBox.Size = new System.Drawing.Size(247, 30);
             this.ConfirmPasswordBox.TabIndex = 7;
+            this.ConfirmPasswordBox.UseSystemPasswordChar = true;
             // 
             // label4
             // 
