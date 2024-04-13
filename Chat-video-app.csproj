@@ -278,11 +278,35 @@
     <None Include="protos\google\type\postal_address.proto" />
     <None Include="protos\google\type\quaternion.proto" />
     <None Include="protos\google\type\timeofday.proto" />
+    <None Include="VideoChatProControl\VideoChatReceiver.lic" />
+    <None Include="VideoChatProControl\VideoChatSender.lic" />
+    <None Include="VideoChatProControl\VideoChatServer.lic" />
+    <None Include="VideoChatProControl\VirtualScreenCaptureFilter.ax" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="VideoChatProControl\avcodec-54.dll" />
+    <Content Include="VideoChatProControl\avcodec-56.dll" />
+    <Content Include="VideoChatProControl\avformat-56.dll" />
+    <Content Include="VideoChatProControl\avutil-51.dll" />
+    <Content Include="VideoChatProControl\avutil-54.dll" />
+    <Content Include="VideoChatProControl\gdiplus.dll" />
+    <Content Include="VideoChatProControl\MFC100.dll" />
+    <Content Include="VideoChatProControl\msvcp100.dll" />
+    <Content Include="VideoChatProControl\msvcr100.dll" />
+    <Content Include="VideoChatProControl\swresample-1.dll" />
+    <Content Include="VideoChatProControl\swscale-2.dll" />
+    <Content Include="VideoChatProControl\swscale-3.dll" />
+    <Content Include="VideoChatProControl\VideoChatReceiver.ocx" />
+    <Content Include="VideoChatProControl\VideoChatSender.ocx" />
+    <Content Include="VideoChatProControl\VideoChatServer.ocx" />
+    <Content Include="VideoChatProControl\viscomaudioint.dll" />
+    <Content Include="VideoChatProControl\viscomchatbanner.dll" />
+    <Content Include="VideoChatProControl\viscomscreen2mp4encoder.dll" />
+    <Content Include="VideoChatProControl\viscomtran.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Google.Api.CommonProtos.2.15.0\build\Google.Api.CommonProtos.targets" Condition="Exists('packages\Google.Api.CommonProtos.2.15.0\build\Google.Api.CommonProtos.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

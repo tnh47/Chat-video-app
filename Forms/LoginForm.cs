@@ -19,15 +19,6 @@ namespace Chat_video_app.Forms
         {
             InitializeComponent();
         }
-
-        private void BackToRegisterBtn_Click(object sender, EventArgs e)
-        {
-            Hide();
-            RegisterForm form = new RegisterForm();
-            form.ShowDialog();
-            Close();
-        }
-
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             string username = UsernameBox.Text.Trim();
@@ -50,6 +41,26 @@ namespace Chat_video_app.Forms
             else
             {
                 MessageBox.Show("Login Failed");
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Hide();
+            RegisterForm form = new RegisterForm();
+            form.ShowDialog();
+            Close();
+        }
+
+        private void checkBoxShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowPass.Checked)
+            {
+                PasswordBox.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                PasswordBox.UseSystemPasswordChar = true;
             }
         }
     }
