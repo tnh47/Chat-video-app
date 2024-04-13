@@ -18,15 +18,6 @@ namespace Chat_video_app.Forms
         {
             InitializeComponent();
         }
-
-        private void BackToLoginBtn_Click(object sender, EventArgs e)
-        {
-            Hide();
-            LoginForm form = new LoginForm();
-            form.ShowDialog();
-            Close();
-        }
-
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
             var db = FirestoreHelper.Database;
@@ -66,6 +57,28 @@ namespace Chat_video_app.Forms
                 return true;
             }
             return false;
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Hide();
+            LoginForm form = new LoginForm();
+            form.ShowDialog();
+            Close();
+        }
+
+        private void checkBoxShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowPass.Checked) 
+            {
+                PasswordBox.UseSystemPasswordChar = false;
+                ConfirmPasswordBox.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                PasswordBox.UseSystemPasswordChar = true;
+                ConfirmPasswordBox.UseSystemPasswordChar = true;
+            }
         }
     }
 }
