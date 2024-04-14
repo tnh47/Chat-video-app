@@ -195,8 +195,35 @@
     <Compile Include="Forms\Ui_Setting.Designer.cs">
       <DependentUpon>Ui_Setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\videocall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\videocall.Designer.cs">
+      <DependentUpon>videocall.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RJPicture.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RJPicture1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RJPicture2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RScontrol\RJTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RScontrol\RJTextBox.Designer.cs">
+      <DependentUpon>RJTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RScontrol\RJTextBox1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RScontrol\RJTextBox1.Designer.cs">
+      <DependentUpon>RJTextBox1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Lobby.resx">
       <DependentUpon>Lobby.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +245,9 @@
     <EmbeddedResource Include="Forms\Set_Del_room.resx">
       <DependentUpon>Set_Del_room.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\videocall.resx">
+      <DependentUpon>videocall.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -228,6 +258,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RScontrol\RJTextBox.resx">
+      <DependentUpon>RJTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RScontrol\RJTextBox1.resx">
+      <DependentUpon>RJTextBox1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -311,6 +347,17 @@
     <None Include="Resources\back3.png" />
     <None Include="Resources\background.jpg" />
     <None Include="Resources\camera.png" />
+    <None Include="Resources\pngtree-avatar-of-a-man-wearing-sunglasses-image_2569096.jpg" />
+    <None Include="Resources\FaceTime icon.jpg" />
+    <None Include="Resources\kisspng-computer-icons-home-screen-download-ipad-share-5ab9dfc87ba034.6441480915221308885064.jpg" />
+    <None Include="Resources\eec071442e9a1b8e017c5a7c1853b880.jpg" />
+    <None Include="Resources\simple-list-menu-icon-white-260nw-1249309105.jpg" />
+    <None Include="Resources\dcc5b02f3828bd2263a503fe659909de.jpg" />
+    <None Include="Resources\Screenshot 2024-04-14 023013.png" />
+    <None Include="Resources\share-black-icon-on-white-background-vector-42218617.jpg" />
+    <None Include="Resources\Share Sharing White Icon Transparent Background.jpg" />
+    <None Include="Resources\z5345666837184_f19472c13e1054758bc6db662d9f10a8.jpg" />
+    <None Include="Resources\z5345666829963_5ffc1593155cd700b5565b5087567dde.jpg" />
     <Content Include="VideoChatProControl - Copy\avcodec-54.dll" />
     <Content Include="VideoChatProControl - Copy\avcodec-56.dll" />
     <Content Include="VideoChatProControl - Copy\avformat-56.dll" />
