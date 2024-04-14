@@ -37,7 +37,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.rjTextBox1 = new Chat_video_app.RScontrols.RJTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -46,7 +45,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.rjTextBox2 = new Chat_video_app.RScontrols.RJTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -55,40 +53,10 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.rjPicture7 = new Chat_video_app.RJPicture();
-            this.rjPicture12 = new Chat_video_app.RJPicture1();
-            this.rjPicture6 = new Chat_video_app.RJPicture();
-            this.rjPicture5 = new Chat_video_app.RJPicture();
-            this.rjPicture24 = new Chat_video_app.RJPicture2();
-            this.rjPicture23 = new Chat_video_app.RJPicture2();
-            this.rjPicture22 = new Chat_video_app.RJPicture2();
-            this.rjPicture21 = new Chat_video_app.RJPicture2();
-            this.rjPicture11 = new Chat_video_app.RJPicture1();
-            this.rjPicture4 = new Chat_video_app.RJPicture();
-            this.rjPicture3 = new Chat_video_app.RJPicture();
-            this.rjPicture2 = new Chat_video_app.RJPicture();
-            this.rjPicture1 = new Chat_video_app.RJPicture();
-            this.rjPicture14 = new Chat_video_app.RJPicture1();
-            this.rjPicture13 = new Chat_video_app.RJPicture1();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture13)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -98,15 +66,10 @@
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.rjPicture4);
-            this.panel1.Controls.Add(this.rjPicture3);
-            this.panel1.Controls.Add(this.rjPicture2);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.rjPicture1);
-            this.panel1.Controls.Add(this.rjTextBox1);
             this.panel1.Location = new System.Drawing.Point(1, 77);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(305, 599);
@@ -188,28 +151,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "ngockhoadeptrai (You)";
             // 
-            // rjTextBox1
-            // 
-            this.rjTextBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this.rjTextBox1.BorderColor = System.Drawing.SystemColors.Menu;
-            this.rjTextBox1.BorderFocusColor = System.Drawing.SystemColors.Menu;
-            this.rjTextBox1.BorderRadius = 8;
-            this.rjTextBox1.BorderSize = 2;
-            this.rjTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox1.Location = new System.Drawing.Point(33, 22);
-            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox1.Multiline = false;
-            this.rjTextBox1.Name = "rjTextBox1";
-            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox1.PasswordChar = false;
-            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox1.PlaceholderText = "Search for people";
-            this.rjTextBox1.Size = new System.Drawing.Size(237, 35);
-            this.rjTextBox1.TabIndex = 0;
-            this.rjTextBox1.Texts = "";
-            this.rjTextBox1.UnderlinedStyle = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
@@ -232,12 +173,9 @@
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label16);
-            this.panel2.Controls.Add(this.rjPicture14);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.rjPicture13);
-            this.panel2.Controls.Add(this.rjTextBox2);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label11);
@@ -305,28 +243,6 @@
             this.label13.Size = new System.Drawing.Size(81, 16);
             this.label13.TabIndex = 5;
             this.label13.Text = "huukhanh to ";
-            // 
-            // rjTextBox2
-            // 
-            this.rjTextBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.rjTextBox2.BorderColor = System.Drawing.Color.White;
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.White;
-            this.rjTextBox2.BorderRadius = 0;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox2.Location = new System.Drawing.Point(8, 389);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox2.Multiline = false;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.Silver;
-            this.rjTextBox2.PlaceholderText = "Type messages here...";
-            this.rjTextBox2.Size = new System.Drawing.Size(282, 31);
-            this.rjTextBox2.TabIndex = 3;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = false;
             // 
             // comboBox1
             // 
@@ -409,285 +325,12 @@
             this.label1.Text = "Chat";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // rjPicture7
-            // 
-            this.rjPicture7.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture7.BorderColor = System.Drawing.Color.White;
-            this.rjPicture7.BorderColor2 = System.Drawing.Color.White;
-            this.rjPicture7.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture7.BorderSize = 2;
-            this.rjPicture7.GradientAngle = 50F;
-            this.rjPicture7.Image = global::Chat_video_app.Properties.Resources.Screenshot_2024_04_14_023013;
-            this.rjPicture7.Location = new System.Drawing.Point(386, 470);
-            this.rjPicture7.Name = "rjPicture7";
-            this.rjPicture7.Size = new System.Drawing.Size(38, 38);
-            this.rjPicture7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture7.TabIndex = 12;
-            this.rjPicture7.TabStop = false;
-            // 
-            // rjPicture12
-            // 
-            this.rjPicture12.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture12.BorderColor = System.Drawing.Color.White;
-            this.rjPicture12.BorderColor2 = System.Drawing.Color.White;
-            this.rjPicture12.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture12.BorderRadius = 10;
-            this.rjPicture12.BorderSize = 2;
-            this.rjPicture12.GradientAngle = 50F;
-            this.rjPicture12.Image = global::Chat_video_app.Properties.Resources.sharescreen_icon_2;
-            this.rjPicture12.Location = new System.Drawing.Point(332, 470);
-            this.rjPicture12.Name = "rjPicture12";
-            this.rjPicture12.Size = new System.Drawing.Size(38, 38);
-            this.rjPicture12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture12.TabIndex = 11;
-            this.rjPicture12.TabStop = false;
-            // 
-            // rjPicture6
-            // 
-            this.rjPicture6.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture6.BorderColor = System.Drawing.Color.White;
-            this.rjPicture6.BorderColor2 = System.Drawing.Color.White;
-            this.rjPicture6.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture6.BorderSize = 2;
-            this.rjPicture6.GradientAngle = 50F;
-            this.rjPicture6.Image = global::Chat_video_app.Properties.Resources.Mic_Icon;
-            this.rjPicture6.Location = new System.Drawing.Point(207, 470);
-            this.rjPicture6.Name = "rjPicture6";
-            this.rjPicture6.Size = new System.Drawing.Size(38, 38);
-            this.rjPicture6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture6.TabIndex = 10;
-            this.rjPicture6.TabStop = false;
-            // 
-            // rjPicture5
-            // 
-            this.rjPicture5.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture5.BorderColor = System.Drawing.Color.White;
-            this.rjPicture5.BorderColor2 = System.Drawing.Color.White;
-            this.rjPicture5.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture5.BorderSize = 2;
-            this.rjPicture5.GradientAngle = 50F;
-            this.rjPicture5.Image = global::Chat_video_app.Properties.Resources.FaceTime_icon;
-            this.rjPicture5.Location = new System.Drawing.Point(269, 470);
-            this.rjPicture5.Name = "rjPicture5";
-            this.rjPicture5.Size = new System.Drawing.Size(38, 38);
-            this.rjPicture5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture5.TabIndex = 9;
-            this.rjPicture5.TabStop = false;
-            // 
-            // rjPicture24
-            // 
-            this.rjPicture24.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture24.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjPicture24.BorderColor2 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjPicture24.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture24.BorderRadius = 10;
-            this.rjPicture24.BorderSize = 2;
-            this.rjPicture24.DisplayColor = System.Drawing.Color.White;
-            this.rjPicture24.DisplayFont = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjPicture24.DisplayText = "You";
-            this.rjPicture24.GradientAngle = 50F;
-            this.rjPicture24.Image = global::Chat_video_app.Properties.Resources.z5345666829963_5ffc1593155cd700b5565b5087567dde;
-            this.rjPicture24.Location = new System.Drawing.Point(56, 350);
-            this.rjPicture24.Name = "rjPicture24";
-            this.rjPicture24.Size = new System.Drawing.Size(132, 108);
-            this.rjPicture24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture24.TabIndex = 8;
-            this.rjPicture24.TabStop = false;
-            this.rjPicture24.TextLocation = new System.Drawing.Point(35, 92);
-            // 
-            // rjPicture23
-            // 
-            this.rjPicture23.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture23.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjPicture23.BorderColor2 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjPicture23.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture23.BorderRadius = 10;
-            this.rjPicture23.BorderSize = 2;
-            this.rjPicture23.DisplayColor = System.Drawing.Color.White;
-            this.rjPicture23.DisplayFont = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjPicture23.DisplayText = "huukhanh";
-            this.rjPicture23.GradientAngle = 50F;
-            this.rjPicture23.Image = global::Chat_video_app.Properties.Resources.avatar_1;
-            this.rjPicture23.Location = new System.Drawing.Point(470, 346);
-            this.rjPicture23.Name = "rjPicture23";
-            this.rjPicture23.Size = new System.Drawing.Size(132, 108);
-            this.rjPicture23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture23.TabIndex = 7;
-            this.rjPicture23.TabStop = false;
-            this.rjPicture23.TextLocation = new System.Drawing.Point(35, 92);
-            // 
-            // rjPicture22
-            // 
-            this.rjPicture22.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture22.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjPicture22.BorderColor2 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjPicture22.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture22.BorderRadius = 10;
-            this.rjPicture22.BorderSize = 2;
-            this.rjPicture22.DisplayColor = System.Drawing.Color.White;
-            this.rjPicture22.DisplayFont = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjPicture22.DisplayText = "tiennhat";
-            this.rjPicture22.GradientAngle = 50F;
-            this.rjPicture22.Image = global::Chat_video_app.Properties.Resources.avatar_1;
-            this.rjPicture22.Location = new System.Drawing.Point(332, 346);
-            this.rjPicture22.Name = "rjPicture22";
-            this.rjPicture22.Size = new System.Drawing.Size(132, 108);
-            this.rjPicture22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture22.TabIndex = 6;
-            this.rjPicture22.TabStop = false;
-            this.rjPicture22.TextLocation = new System.Drawing.Point(35, 92);
-            // 
-            // rjPicture21
-            // 
-            this.rjPicture21.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture21.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjPicture21.BorderColor2 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjPicture21.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture21.BorderRadius = 10;
-            this.rjPicture21.BorderSize = 2;
-            this.rjPicture21.DisplayColor = System.Drawing.Color.White;
-            this.rjPicture21.DisplayFont = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjPicture21.DisplayText = "vanphuc";
-            this.rjPicture21.GradientAngle = 50F;
-            this.rjPicture21.Image = global::Chat_video_app.Properties.Resources.z5345666837184_f19472c13e1054758bc6db662d9f10a8;
-            this.rjPicture21.Location = new System.Drawing.Point(194, 346);
-            this.rjPicture21.Name = "rjPicture21";
-            this.rjPicture21.Size = new System.Drawing.Size(132, 108);
-            this.rjPicture21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture21.TabIndex = 5;
-            this.rjPicture21.TabStop = false;
-            this.rjPicture21.TextLocation = new System.Drawing.Point(35, 92);
-            // 
-            // rjPicture11
-            // 
-            this.rjPicture11.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture11.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjPicture11.BorderColor2 = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjPicture11.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture11.BorderRadius = 10;
-            this.rjPicture11.BorderSize = 2;
-            this.rjPicture11.GradientAngle = 50F;
-            this.rjPicture11.Image = global::Chat_video_app.Properties.Resources.z5345666829963_5ffc1593155cd700b5565b5087567dde;
-            this.rjPicture11.Location = new System.Drawing.Point(56, 23);
-            this.rjPicture11.Name = "rjPicture11";
-            this.rjPicture11.Size = new System.Drawing.Size(546, 317);
-            this.rjPicture11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture11.TabIndex = 4;
-            this.rjPicture11.TabStop = false;
-            // 
-            // rjPicture4
-            // 
-            this.rjPicture4.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture4.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjPicture4.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjPicture4.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture4.BorderSize = 2;
-            this.rjPicture4.GradientAngle = 50F;
-            this.rjPicture4.Image = global::Chat_video_app.Properties.Resources.z5345666837184_f19472c13e1054758bc6db662d9f10a8;
-            this.rjPicture4.Location = new System.Drawing.Point(17, 273);
-            this.rjPicture4.Name = "rjPicture4";
-            this.rjPicture4.Size = new System.Drawing.Size(37, 37);
-            this.rjPicture4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture4.TabIndex = 8;
-            this.rjPicture4.TabStop = false;
-            // 
-            // rjPicture3
-            // 
-            this.rjPicture3.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture3.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjPicture3.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjPicture3.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture3.BorderSize = 2;
-            this.rjPicture3.GradientAngle = 50F;
-            this.rjPicture3.Image = global::Chat_video_app.Properties.Resources.avatar_1;
-            this.rjPicture3.Location = new System.Drawing.Point(17, 209);
-            this.rjPicture3.Name = "rjPicture3";
-            this.rjPicture3.Size = new System.Drawing.Size(37, 37);
-            this.rjPicture3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture3.TabIndex = 7;
-            this.rjPicture3.TabStop = false;
-            // 
-            // rjPicture2
-            // 
-            this.rjPicture2.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture2.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjPicture2.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjPicture2.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture2.BorderSize = 2;
-            this.rjPicture2.GradientAngle = 50F;
-            this.rjPicture2.Image = global::Chat_video_app.Properties.Resources.avatar_1;
-            this.rjPicture2.Location = new System.Drawing.Point(17, 149);
-            this.rjPicture2.Name = "rjPicture2";
-            this.rjPicture2.Size = new System.Drawing.Size(37, 37);
-            this.rjPicture2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture2.TabIndex = 6;
-            this.rjPicture2.TabStop = false;
-            // 
-            // rjPicture1
-            // 
-            this.rjPicture1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture1.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjPicture1.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjPicture1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture1.BorderSize = 2;
-            this.rjPicture1.GradientAngle = 50F;
-            this.rjPicture1.Image = global::Chat_video_app.Properties.Resources.z5345666829963_5ffc1593155cd700b5565b5087567dde;
-            this.rjPicture1.Location = new System.Drawing.Point(17, 91);
-            this.rjPicture1.Name = "rjPicture1";
-            this.rjPicture1.Size = new System.Drawing.Size(37, 37);
-            this.rjPicture1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture1.TabIndex = 1;
-            this.rjPicture1.TabStop = false;
-            // 
-            // rjPicture14
-            // 
-            this.rjPicture14.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture14.BorderColor = System.Drawing.Color.White;
-            this.rjPicture14.BorderColor2 = System.Drawing.Color.White;
-            this.rjPicture14.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture14.BorderRadius = 10;
-            this.rjPicture14.BorderSize = 2;
-            this.rjPicture14.GradientAngle = 50F;
-            this.rjPicture14.Image = global::Chat_video_app.Properties.Resources.avatar_1;
-            this.rjPicture14.Location = new System.Drawing.Point(245, 107);
-            this.rjPicture14.Name = "rjPicture14";
-            this.rjPicture14.Size = new System.Drawing.Size(40, 40);
-            this.rjPicture14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture14.TabIndex = 9;
-            this.rjPicture14.TabStop = false;
-            // 
-            // rjPicture13
-            // 
-            this.rjPicture13.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPicture13.BorderColor = System.Drawing.Color.White;
-            this.rjPicture13.BorderColor2 = System.Drawing.Color.White;
-            this.rjPicture13.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPicture13.BorderRadius = 10;
-            this.rjPicture13.BorderSize = 2;
-            this.rjPicture13.GradientAngle = 50F;
-            this.rjPicture13.Image = global::Chat_video_app.Properties.Resources.avatar_1;
-            this.rjPicture13.Location = new System.Drawing.Point(31, 29);
-            this.rjPicture13.Name = "rjPicture13";
-            this.rjPicture13.Size = new System.Drawing.Size(40, 40);
-            this.rjPicture13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPicture13.TabIndex = 4;
-            this.rjPicture13.TabStop = false;
-            // 
             // videocall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(955, 520);
-            this.Controls.Add(this.rjPicture7);
-            this.Controls.Add(this.rjPicture12);
-            this.Controls.Add(this.rjPicture6);
-            this.Controls.Add(this.rjPicture5);
-            this.Controls.Add(this.rjPicture24);
-            this.Controls.Add(this.rjPicture23);
-            this.Controls.Add(this.rjPicture22);
-            this.Controls.Add(this.rjPicture21);
-            this.Controls.Add(this.rjPicture11);
+            this.ClientSize = new System.Drawing.Size(954, 511);
             this.Controls.Add(this.groupBox1);
             this.Name = "videocall";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -699,21 +342,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPicture13)).EndInit();
             this.ResumeLayout(false);
 
         }

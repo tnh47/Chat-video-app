@@ -75,7 +75,7 @@
       <HintPath>packages\Grpc.Core.2.46.6\lib\net45\Grpc.Core.dll</HintPath>
     </Reference>
     <Reference Include="Grpc.Core.Api, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
-      <HintPath>packages\Grpc.Core.Api.2.60.0\lib\net462\Grpc.Core.Api.dll</HintPath>
+      <HintPath>packages\Grpc.Core.Api.2.62.0\lib\net462\Grpc.Core.Api.dll</HintPath>
     </Reference>
     <Reference Include="Grpc.Net.Client, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
       <HintPath>packages\Grpc.Net.Client.2.60.0\lib\net462\Grpc.Net.Client.dll</HintPath>
@@ -188,12 +188,6 @@
     </Compile>
     <Compile Include="Forms\Set_Del_room.Designer.cs">
       <DependentUpon>Set_Del_room.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Ui_Setting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Ui_Setting.Designer.cs">
-      <DependentUpon>Ui_Setting.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\videocall.cs">
       <SubType>Form</SubType>
@@ -330,10 +324,6 @@
     <None Include="protos\google\type\postal_address.proto" />
     <None Include="protos\google\type\quaternion.proto" />
     <None Include="protos\google\type\timeofday.proto" />
-    <None Include="VideoChatProControl - Copy\VideoChatReceiver.lic" />
-    <None Include="VideoChatProControl - Copy\VideoChatSender.lic" />
-    <None Include="VideoChatProControl - Copy\VideoChatServer.lic" />
-    <None Include="VideoChatProControl - Copy\VirtualScreenCaptureFilter.ax" />
     <None Include="VideoChatProControl\VideoChatReceiver.lic" />
     <None Include="VideoChatProControl\VideoChatSender.lic" />
     <None Include="VideoChatProControl\VideoChatServer.lic" />
@@ -343,40 +333,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\avatar.png" />
-    <None Include="Resources\back3.png" />
-    <None Include="Resources\background.jpg" />
-    <None Include="Resources\camera.png" />
-    <None Include="Resources\pngtree-avatar-of-a-man-wearing-sunglasses-image_2569096.jpg" />
-    <None Include="Resources\FaceTime icon.jpg" />
-    <None Include="Resources\kisspng-computer-icons-home-screen-download-ipad-share-5ab9dfc87ba034.6441480915221308885064.jpg" />
-    <None Include="Resources\eec071442e9a1b8e017c5a7c1853b880.jpg" />
-    <None Include="Resources\simple-list-menu-icon-white-260nw-1249309105.jpg" />
-    <None Include="Resources\dcc5b02f3828bd2263a503fe659909de.jpg" />
-    <None Include="Resources\Screenshot 2024-04-14 023013.png" />
-    <None Include="Resources\share-black-icon-on-white-background-vector-42218617.jpg" />
-    <None Include="Resources\Share Sharing White Icon Transparent Background.jpg" />
-    <None Include="Resources\z5345666837184_f19472c13e1054758bc6db662d9f10a8.jpg" />
-    <None Include="Resources\z5345666829963_5ffc1593155cd700b5565b5087567dde.jpg" />
-    <Content Include="VideoChatProControl - Copy\avcodec-54.dll" />
-    <Content Include="VideoChatProControl - Copy\avcodec-56.dll" />
-    <Content Include="VideoChatProControl - Copy\avformat-56.dll" />
-    <Content Include="VideoChatProControl - Copy\avutil-51.dll" />
-    <Content Include="VideoChatProControl - Copy\avutil-54.dll" />
-    <Content Include="VideoChatProControl - Copy\gdiplus.dll" />
-    <Content Include="VideoChatProControl - Copy\MFC100.dll" />
-    <Content Include="VideoChatProControl - Copy\msvcp100.dll" />
-    <Content Include="VideoChatProControl - Copy\msvcr100.dll" />
-    <Content Include="VideoChatProControl - Copy\swresample-1.dll" />
-    <Content Include="VideoChatProControl - Copy\swscale-2.dll" />
-    <Content Include="VideoChatProControl - Copy\swscale-3.dll" />
-    <Content Include="VideoChatProControl - Copy\VideoChatReceiver.ocx" />
-    <Content Include="VideoChatProControl - Copy\VideoChatSender.ocx" />
-    <Content Include="VideoChatProControl - Copy\VideoChatServer.ocx" />
-    <Content Include="VideoChatProControl - Copy\viscomaudioint.dll" />
-    <Content Include="VideoChatProControl - Copy\viscomchatbanner.dll" />
-    <Content Include="VideoChatProControl - Copy\viscomscreen2mp4encoder.dll" />
-    <Content Include="VideoChatProControl - Copy\viscomtran.dll" />
     <Content Include="VideoChatProControl\avcodec-54.dll" />
     <Content Include="VideoChatProControl\avcodec-56.dll" />
     <Content Include="VideoChatProControl\avformat-56.dll" />
@@ -396,6 +352,9 @@
     <Content Include="VideoChatProControl\viscomchatbanner.dll" />
     <Content Include="VideoChatProControl\viscomscreen2mp4encoder.dll" />
     <Content Include="VideoChatProControl\viscomtran.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Google.Api.CommonProtos.2.15.0\build\Google.Api.CommonProtos.targets" Condition="Exists('packages\Google.Api.CommonProtos.2.15.0\build\Google.Api.CommonProtos.targets')" />

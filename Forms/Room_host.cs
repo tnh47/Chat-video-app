@@ -16,6 +16,5 @@ namespace Chat_video_app.Forms
         {
             InitializeComponent();
         }
-
     }
 }
