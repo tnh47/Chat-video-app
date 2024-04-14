@@ -189,6 +189,12 @@
     <Compile Include="Forms\Set_Del_room.Designer.cs">
       <DependentUpon>Set_Del_room.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Ui_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ui_Setting.Designer.cs">
+      <DependentUpon>Ui_Setting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Lobby.resx">
@@ -220,6 +226,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -300,6 +307,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\avatar.png" />
+    <None Include="Resources\back3.png" />
+    <None Include="Resources\background.jpg" />
+    <None Include="Resources\camera.png" />
     <Content Include="VideoChatProControl - Copy\avcodec-54.dll" />
     <Content Include="VideoChatProControl - Copy\avcodec-56.dll" />
     <Content Include="VideoChatProControl - Copy\avformat-56.dll" />
