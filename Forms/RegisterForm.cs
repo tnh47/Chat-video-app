@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,27 @@ namespace Chat_video_app.Forms
         {
             InitializeComponent();
         }
+        public static string GenerateUniqueUserId(string username, string email)
+        {
+            // Kết hợp thông tin của người dùng để tạo chuỗi ngẫu nhiên
+            string combinedInfo = username + email + DateTime.Now.ToString();
+
+            // Sử dụng hàm băm SHA256 để tạo chuỗi băm từ thông tin kết hợp
+            byte[] bytes = Encoding.UTF8.GetBytes(combinedInfo);
+            byte[] hash;
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                hash = sha256.ComputeHash(bytes);
+            }
+
+            // Chuyển đổi chuỗi băm thành một số nguyên
+            int userId = BitConverter.ToInt32(hash, 0);
+
+            // Đảm bảo số nguyên không âm bằng cách sử dụng giá trị tuyệt đối
+            userId = Math.Abs(userId);
+
+            return userId.ToString();
+        }
         private async void RegisterBtn_Click(object sender, EventArgs e)
         {
             var db = FirestoreHelper.Database;
@@ -27,33 +49,26 @@ namespace Chat_video_app.Forms
                 MessageBox.Show("User Already Exist");
                 return;
             }
-            var data = await GetWriteData();
+            var data = GetWriteData();
             DocumentReference docRef = db.Collection("UserData").Document(data.Username);
             await docRef.SetAsync(data);
             MessageBox.Show("Success");
             
         }
-        private async Task<UserData> GetWriteData()
+        private UserData GetWriteData()
         {
             string username = UsernameBox.Text.Trim();
             string email = EmailBox.Text.Trim();
             string password = Security.Encrypt(PasswordBox.Text.Trim());
             string confirmPassword = ConfirmPasswordBox.Text.Trim();
-            int id = await GetUsersCount();
+            string id = GenerateUniqueUserId(username, email); 
             return new UserData()
             {
-                Id = id + 1,
+                Id = id,
                 Username = username,
                 Email = email,
                 Password = password,
-                Room_crt = 0
             };
-        }
-        private async Task<int> GetUsersCount()
-        {
-            var db = FirestoreHelper.Database;
-            QuerySnapshot snapshot = await db.Collection("UserData").GetSnapshotAsync();
-            return snapshot.Count();
         }
         private bool CheckIfUserAlreadyExist()
         {

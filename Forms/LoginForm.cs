@@ -33,7 +33,7 @@ namespace Chat_video_app.Forms
                 {
                     MessageBox.Show("Login Success");
                     Hide();
-                    Lobby form = new Lobby();
+                    Lobby form = new Lobby(username);
                     form.ShowDialog();
                     Close();
                 }

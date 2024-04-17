@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 
 namespace Chat_video_app.Classes
 {
+    [FirestoreData]
     internal class RoomData
     {
         [FirestoreProperty]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [FirestoreProperty]
         public bool Type { get; set; }
+        [FirestoreProperty]
+        public string Name { get; set; }
+        [FirestoreProperty]
+        public string[] Mem { get; set; }
     }
 }

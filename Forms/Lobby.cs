@@ -15,11 +15,24 @@ namespace Chat_video_app.Forms
 {
     public partial class Lobby : Form
     {
-        public Lobby()
+        public Lobby(string username)
         {
             InitializeComponent();
+            CheckRoom(username);
         }
-
+        private void CheckRoom(string username)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(username);
+            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            foreach(string h in data.Host)
+            {
+                DocumentReference docRef2 = db.Collection("RoomData").Document(h);
+                RoomData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+                string nameroom= data2.Name;
+                listView1.Items.Add(nameroom);
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             Hide();
@@ -34,12 +47,6 @@ namespace Chat_video_app.Forms
             LoginForm form = new LoginForm();
             form.ShowDialog();
             Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string id = textBox1.Text.Trim();
- 
         }
     }
 }

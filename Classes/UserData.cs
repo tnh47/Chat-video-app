@@ -11,7 +11,7 @@ namespace Chat_video_app.Classes
     internal class UserData
     {
         [FirestoreProperty]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [FirestoreProperty]
         public string Username { get; set; }
         [FirestoreProperty]
@@ -19,6 +19,8 @@ namespace Chat_video_app.Classes
         [FirestoreProperty]
         public string Password { get; set; }
         [FirestoreProperty]
-        public int Room_crt { get; set; }
+        public string[] Host { get; set; }
+        [FirestoreProperty]
+        public string[] Mem { get; set; }
     }
 }
