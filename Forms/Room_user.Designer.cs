@@ -54,6 +54,7 @@
             this.identifier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dc = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -205,7 +206,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(39, 91);
+            this.button1.Location = new System.Drawing.Point(39, 73);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 35);
@@ -342,10 +343,22 @@
             this.dc.UseColumnTextForButtonValue = true;
             this.dc.Width = 80;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(35, 134);
+            this.label1.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 20);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "Chat:";
+            // 
             // Room_user
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1358, 559);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.clientsDataGridView);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
@@ -399,5 +412,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn identifier;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewButtonColumn dc;
+        private System.Windows.Forms.Label label1;
     }
 }

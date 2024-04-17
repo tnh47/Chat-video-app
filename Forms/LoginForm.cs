@@ -32,6 +32,10 @@ namespace Chat_video_app.Forms
                 if(password == Security.Decrypt(data.Password))
                 {
                     MessageBox.Show("Login Success");
+                    Hide();
+                    Lobby form = new Lobby();
+                    form.ShowDialog();
+                    Close();
                 }
                 else
                 {

@@ -143,6 +143,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Chat_his.cs" />
     <Compile Include="Classes\FirestoreHelper.cs" />
     <Compile Include="Classes\RoomData.cs" />
     <Compile Include="Classes\Security.cs" />
@@ -189,14 +190,13 @@
     <Compile Include="Forms\Set_Del_room.Designer.cs">
       <DependentUpon>Set_Del_room.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\videocall.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\videocall.Designer.cs">
-      <DependentUpon>videocall.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RJPicture.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -239,19 +239,11 @@
     <EmbeddedResource Include="Forms\Set_Del_room.resx">
       <DependentUpon>Set_Del_room.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\videocall.resx">
-      <DependentUpon>videocall.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="RScontrol\RJTextBox.resx">
       <DependentUpon>RJTextBox.cs</DependentUpon>
     </EmbeddedResource>

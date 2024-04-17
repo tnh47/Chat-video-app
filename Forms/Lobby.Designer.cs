@@ -34,8 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Go";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -87,6 +88,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "Quản lý tài khoản\r\n";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
@@ -98,16 +100,6 @@
             this.panel1.Size = new System.Drawing.Size(332, 238);
             this.panel1.TabIndex = 10;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(501, 83);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(485, 242);
-            this.panel2.TabIndex = 11;
-            // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,6 +109,17 @@
             this.button3.TabIndex = 10;
             this.button3.Text = "Log out";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Location = new System.Drawing.Point(501, 83);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(485, 242);
+            this.panel2.TabIndex = 11;
             // 
             // Lobby
             // 

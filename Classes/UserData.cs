@@ -19,6 +19,6 @@ namespace Chat_video_app.Classes
         [FirestoreProperty]
         public string Password { get; set; }
         [FirestoreProperty]
-        public string Room_crt { get; set; }
+        public int Room_crt { get; set; }
     }
 }
