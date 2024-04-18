@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Google.Protobuf.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,6 @@ namespace Chat_video_app.Classes
         public string Id { get; set; }
         [FirestoreProperty]
         public bool Type { get; set; }
-        [FirestoreProperty]
-        public string Name { get; set; }
         [FirestoreProperty]
         public string[] Mem { get; set; }
     }

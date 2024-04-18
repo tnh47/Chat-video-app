@@ -15,9 +15,11 @@ namespace Chat_video_app.Forms
 {
     public partial class Lobby : Form
     {
+        string username;
         public Lobby(string username)
         {
             InitializeComponent();
+            this.username = username;
             CheckRoom(username);
         }
         private void CheckRoom(string username)
@@ -25,12 +27,9 @@ namespace Chat_video_app.Forms
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-            foreach(string h in data.Host)
+            foreach(string h in data.Mem)
             {
-                DocumentReference docRef2 = db.Collection("RoomData").Document(h);
-                RoomData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-                string nameroom= data2.Name;
-                listView1.Items.Add(nameroom);
+                listView1.Items.Add(h);
             }
         }
         private void button2_Click(object sender, EventArgs e)
@@ -47,6 +46,100 @@ namespace Chat_video_app.Forms
             LoginForm form = new LoginForm();
             form.ShowDialog();
             Close();
+        }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            string id = textBox3.Text.Trim();
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            if (data!=null)
+            {
+                MessageBox.Show("Room đã tồn tại.Vui lòng chọn ID khác");
+            }
+            else{
+                    var infor = GetWriteData(id,username);
+                    AddData(id, username);
+                    DocumentReference docRef2 = db.Collection("RoomData").Document(infor.Id);
+                    await docRef2.SetAsync(infor);
+                    MessageBox.Show("Success");
+                    Hide();
+                    Room_host form = new Room_host(infor.Id);
+                    form.ShowDialog();
+                    Close();
+                }
+            }
+        private RoomData GetWriteData(string id, string username)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(username);
+            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            string[] mem = new string[] { data.Id };
+            return new RoomData()
+            {
+                Id = id,
+                Mem = mem
+            };
+        }
+        private void AddData(string id,string username)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(username);
+            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            List<string> updatedMemList = new List<string>();
+
+            if (data.Mem != null)
+            {
+                updatedMemList.AddRange(data.Mem);
+            }
+            updatedMemList.Add(id);
+
+            data.Mem = updatedMemList.ToArray();
+
+            var updateTask = docRef.UpdateAsync(nameof(UserData.Mem), data.Mem);
+            updateTask.Wait(); // Chờ cho tác vụ cập nhật hoàn thành
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bool accept = false;
+            string id = textBox3.Text.Trim();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                if (item.Text == id)
+                {
+                    accept = true;
+                    MessageBox.Show("Success");
+                    
+                    if (Check_host(id))
+                    {
+                        Hide();
+                        Room_host form = new Room_host(id);
+                        form.ShowDialog();
+                        Close();
+                    }
+                    else
+                    {
+                        Hide();
+                        Room_user form = new Room_user(id);
+                        form.ShowDialog();
+                        Close();
+                    }
+                }
+            }
+            if(!accept)MessageBox.Show("Bạn chưa vào phòng này hoặc ko tồn tại");
+        }
+        private bool Check_host(string id)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(username);
+            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            foreach (string i in data.Host)
+            {
+                if (i == id) return true;
+            }
+            return false;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Chat_video_app.Forms
 {
     public partial class Room_host : Form
     {
-        public Room_host()
+        public Room_host(string id)
         {
             InitializeComponent();
         }
