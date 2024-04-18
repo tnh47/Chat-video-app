@@ -16,6 +16,8 @@ namespace Chat_video_app.Classes
         [FirestoreProperty]
         public bool Type { get; set; }
         [FirestoreProperty]
+        public string Host{ get; set; }
+        [FirestoreProperty]
         public string[] Mem { get; set; }
     }
 }

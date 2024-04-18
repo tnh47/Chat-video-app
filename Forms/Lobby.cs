@@ -21,6 +21,7 @@ namespace Chat_video_app.Forms
             InitializeComponent();
             this.username = username;
             CheckRoom(username);
+            label2.Text = username;
         }
         private void CheckRoom(string username)
         {
@@ -65,7 +66,7 @@ namespace Chat_video_app.Forms
                     await docRef2.SetAsync(infor);
                     MessageBox.Show("Success");
                     Hide();
-                    Room_host form = new Room_host(infor.Id);
+                    Room_host form = new Room_host(username,infor.Id);
                     form.ShowDialog();
                     Close();
                 }
@@ -75,11 +76,15 @@ namespace Chat_video_app.Forms
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-            string[] mem = new string[] { data.Id };
+            data.Mem = data.Mem ?? new string[0]; // Đảm bảo rằng mảng đã được khởi tạo
+
+            List<string> mem= data.Mem.ToList();
+            mem.Add(id);
             return new RoomData()
             {
                 Id = id,
-                Mem = mem
+                Mem = mem.ToArray(),
+                Host = data.Id
             };
         }
         private void AddData(string id,string username)
@@ -115,14 +120,14 @@ namespace Chat_video_app.Forms
                     if (Check_host(id))
                     {
                         Hide();
-                        Room_host form = new Room_host(id);
+                        Room_host form = new Room_host(username,id);
                         form.ShowDialog();
                         Close();
                     }
                     else
                     {
                         Hide();
-                        Room_user form = new Room_user(id);
+                        Room_user form = new Room_user(username,id);
                         form.ShowDialog();
                         Close();
                     }

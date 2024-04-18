@@ -23,5 +23,7 @@ namespace Chat_video_app.Classes
         public string[] Host { get; set; }
         [FirestoreProperty]
         public string[] Mem { get; set; }
+        [FirestoreProperty]
+        public string[] Is_invited { get; set; }
     }
 }

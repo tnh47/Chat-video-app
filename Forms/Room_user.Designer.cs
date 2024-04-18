@@ -36,26 +36,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.connectButton = new System.Windows.Forms.Button();
             this.portLabel = new System.Windows.Forms.Label();
-            this.localaddrLabel = new System.Windows.Forms.Label();
             this.portTextBox = new System.Windows.Forms.TextBox();
             this.logTextBox = new System.Windows.Forms.TextBox();
             this.sendLabel = new System.Windows.Forms.Label();
             this.sendTextBox = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
-            this.keyLabel = new System.Windows.Forms.Label();
-            this.keyTextBox = new System.Windows.Forms.TextBox();
-            this.addrTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.clientsDataGridView = new System.Windows.Forms.DataGridView();
             this.identifier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dc = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,31 +67,21 @@
             // 
             this.portLabel.AutoSize = true;
             this.portLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.portLabel.Location = new System.Drawing.Point(606, 25);
+            this.portLabel.Location = new System.Drawing.Point(555, 24);
             this.portLabel.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
             this.portLabel.Name = "portLabel";
-            this.portLabel.Size = new System.Drawing.Size(45, 20);
+            this.portLabel.Size = new System.Drawing.Size(80, 20);
             this.portLabel.TabIndex = 27;
-            this.portLabel.Text = "Port:";
-            // 
-            // localaddrLabel
-            // 
-            this.localaddrLabel.AutoSize = true;
-            this.localaddrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.localaddrLabel.Location = new System.Drawing.Point(349, 28);
-            this.localaddrLabel.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
-            this.localaddrLabel.Name = "localaddrLabel";
-            this.localaddrLabel.Size = new System.Drawing.Size(76, 20);
-            this.localaddrLabel.TabIndex = 26;
-            this.localaddrLabel.Text = "Address:";
+            this.portLabel.Text = "ID Room:";
             // 
             // portTextBox
             // 
             this.portTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.portTextBox.Location = new System.Drawing.Point(659, 22);
+            this.portTextBox.Location = new System.Drawing.Point(643, 21);
             this.portTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.portTextBox.MaxLength = 10;
             this.portTextBox.Name = "portTextBox";
+            this.portTextBox.ReadOnly = true;
             this.portTextBox.Size = new System.Drawing.Size(132, 27);
             this.portTextBox.TabIndex = 25;
             this.portTextBox.TabStop = false;
@@ -146,7 +128,7 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(349, 72);
+            this.usernameLabel.Location = new System.Drawing.Point(301, 24);
             this.usernameLabel.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(91, 20);
@@ -156,52 +138,16 @@
             // usernameTextBox
             // 
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.Location = new System.Drawing.Point(453, 69);
+            this.usernameTextBox.Location = new System.Drawing.Point(405, 21);
             this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.usernameTextBox.MaxLength = 50;
             this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.ReadOnly = true;
             this.usernameTextBox.Size = new System.Drawing.Size(132, 27);
             this.usernameTextBox.TabIndex = 35;
             this.usernameTextBox.TabStop = false;
             this.usernameTextBox.Text = "Client";
             this.usernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // keyLabel
-            // 
-            this.keyLabel.AutoSize = true;
-            this.keyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.keyLabel.Location = new System.Drawing.Point(609, 73);
-            this.keyLabel.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
-            this.keyLabel.Name = "keyLabel";
-            this.keyLabel.Size = new System.Drawing.Size(42, 20);
-            this.keyLabel.TabIndex = 38;
-            this.keyLabel.Text = "Key:";
-            // 
-            // keyTextBox
-            // 
-            this.keyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.keyTextBox.Location = new System.Drawing.Point(659, 69);
-            this.keyTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.keyTextBox.MaxLength = 200;
-            this.keyTextBox.Name = "keyTextBox";
-            this.keyTextBox.Size = new System.Drawing.Size(132, 27);
-            this.keyTextBox.TabIndex = 37;
-            this.keyTextBox.TabStop = false;
-            this.keyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // addrTextBox
-            // 
-            this.addrTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addrTextBox.Location = new System.Drawing.Point(453, 21);
-            this.addrTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.addrTextBox.MaxLength = 200;
-            this.addrTextBox.Name = "addrTextBox";
-            this.addrTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.addrTextBox.Size = new System.Drawing.Size(132, 27);
-            this.addrTextBox.TabIndex = 39;
-            this.addrTextBox.TabStop = false;
-            this.addrTextBox.Text = "127.0.0.1";
-            this.addrTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button1
             // 
@@ -214,35 +160,6 @@
             this.button1.TabStop = false;
             this.button1.Text = "Disconnect";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1115, 515);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 35);
-            this.button2.TabIndex = 43;
-            this.button2.Text = "Mic";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(991, 515);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 35);
-            this.button3.TabIndex = 42;
-            this.button3.Text = "Cam";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Location = new System.Drawing.Point(879, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(447, 489);
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
             // 
             // clientsDataGridView
             // 
@@ -357,16 +274,10 @@
             // Room_user
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1358, 559);
+            this.ClientSize = new System.Drawing.Size(861, 559);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.clientsDataGridView);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.addrTextBox);
-            this.Controls.Add(this.keyLabel);
-            this.Controls.Add(this.keyTextBox);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.sendLabel);
@@ -374,7 +285,6 @@
             this.Controls.Add(this.logTextBox);
             this.Controls.Add(this.connectButton);
             this.Controls.Add(this.portLabel);
-            this.Controls.Add(this.localaddrLabel);
             this.Controls.Add(this.portTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -383,7 +293,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -394,20 +303,13 @@
 
         private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.Label portLabel;
-        private System.Windows.Forms.Label localaddrLabel;
         private System.Windows.Forms.TextBox portTextBox;
         private System.Windows.Forms.TextBox logTextBox;
         private System.Windows.Forms.Label sendLabel;
         private System.Windows.Forms.TextBox sendTextBox;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.TextBox usernameTextBox;
-        private System.Windows.Forms.Label keyLabel;
-        private System.Windows.Forms.TextBox keyTextBox;
-        private System.Windows.Forms.TextBox addrTextBox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView clientsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn identifier;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
