@@ -139,7 +139,7 @@
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(22, 41);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 41);
+            this.button1.Size = new System.Drawing.Size(208, 41);
             this.button1.TabIndex = 5;
             this.button1.Text = "Change Username";
             this.button1.UseVisualStyleBackColor = false;
@@ -163,7 +163,7 @@
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button3.Location = new System.Drawing.Point(131, 98);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 41);
+            this.button3.Size = new System.Drawing.Size(223, 41);
             this.button3.TabIndex = 7;
             this.button3.Text = "Change Password";
             this.button3.UseVisualStyleBackColor = false;

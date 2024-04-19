@@ -22,5 +22,18 @@ namespace Chat_video_app.Forms
             this.id = id;
             this.username = username;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Lobby form = new Lobby(username);
+            form.ShowDialog();
+            Close();
+        }
     }
 }

@@ -68,5 +68,13 @@ namespace Chat_video_app.Forms
             }
             return true;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Lobby form = new Lobby(username);
+            form.ShowDialog();
+            Close();
+        }
     }
 }
