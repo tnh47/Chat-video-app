@@ -67,5 +67,13 @@ namespace Chat_video_app.Forms
                 PasswordBox.UseSystemPasswordChar = true;
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            ForgotPass form = new ForgotPass();
+            form.ShowDialog();
+            Close();
+        }
     }
 }

@@ -141,6 +141,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TrueConfVideoSDKLibrary, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TrueConf.VideoSDK.1.0.4\lib\netstandard2.0\TrueConfVideoSDKLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Chat_his.cs" />
@@ -148,6 +151,12 @@
     <Compile Include="Classes\RoomData.cs" />
     <Compile Include="Classes\Security.cs" />
     <Compile Include="Classes\UserData.cs" />
+    <Compile Include="Forms\ForgotPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ForgotPass.Designer.cs">
+      <DependentUpon>ForgotPass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Lobby.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +174,12 @@
     </Compile>
     <Compile Include="Forms\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ResetPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ResetPass.Designer.cs">
+      <DependentUpon>ResetPass.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Room_host.cs">
       <SubType>Form</SubType>
@@ -218,6 +233,9 @@
     <Compile Include="RScontrol\RJTextBox1.Designer.cs">
       <DependentUpon>RJTextBox1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\ForgotPass.resx">
+      <DependentUpon>ForgotPass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Lobby.resx">
       <DependentUpon>Lobby.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ResetPass.resx">
+      <DependentUpon>ResetPass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Room_host.resx">
       <DependentUpon>Room_host.cs</DependentUpon>
