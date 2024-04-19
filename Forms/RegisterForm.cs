@@ -3,6 +3,7 @@ using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -62,12 +63,18 @@ namespace Chat_video_app.Forms
             string password = Security.Encrypt(PasswordBox.Text.Trim());
             string confirmPassword = ConfirmPasswordBox.Text.Trim();
             string id = GenerateUniqueUserId(username, email); 
+            List<string> mem=new List<string>();
+            List<string> is_invited = new List<string>();
+            List<string> host = new List<string>();
             return new UserData()
             {
                 Id = id,
                 Username = username,
                 Email = email,
                 Password = password,
+                Is_invited = is_invited.ToArray(),
+                Mem = mem.ToArray(),
+                Host=host.ToArray(),
             };
         }
         private bool CheckIfUserAlreadyExist()
