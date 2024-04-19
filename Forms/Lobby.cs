@@ -52,7 +52,7 @@ namespace Chat_video_app.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             Hide();
-            Setting form = new Setting();
+            Setting form = new Setting(username);
             form.ShowDialog();
             Close();
         }

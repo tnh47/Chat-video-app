@@ -12,9 +12,15 @@ namespace Chat_video_app.Forms
 {
     public partial class Room_user : Form
     {
+        string id;
+        string username;
         public Room_user(string username,string id)
         {
             InitializeComponent();
+            usernameTextBox.Text = username;
+            portTextBox.Text = id;
+            this.id = id;
+            this.username = username;
         }
     }
 }
