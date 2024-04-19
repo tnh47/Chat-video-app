@@ -68,25 +68,33 @@ namespace Chat_video_app.Forms
         private async void button4_Click(object sender, EventArgs e)
         {
             string id = textBox3.Text.Trim();
-            var db = FirestoreHelper.Database;
-            DocumentReference docRef = db.Collection("RoomData").Document(id);
-            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-            if (data!=null)
+            if(id.Length!=0)
             {
-                MessageBox.Show("Room đã tồn tại.Vui lòng chọn ID khác");
-            }
-            else{
-                    var infor = GetWriteData(id,username);
+                var db = FirestoreHelper.Database;
+                DocumentReference docRef = db.Collection("RoomData").Document(id);
+                RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+                if (data != null)
+                {
+                    MessageBox.Show("Room đã tồn tại.Vui lòng chọn ID khác");
+                }
+                else
+                {
+                    var infor = GetWriteData(id, username);
                     AddData(id, username);
                     DocumentReference docRef2 = db.Collection("RoomData").Document(infor.Id);
                     await docRef2.SetAsync(infor);
                     MessageBox.Show("Success");
                     Hide();
-                    Room_host form = new Room_host(username,infor.Id);
+                    Room_host form = new Room_host(username, infor.Id);
                     form.ShowDialog();
                     Close();
                 }
             }
+            else
+            {
+                MessageBox.Show("Bạn chưa nhập tên phòng! Vui lòng nhập tên phòng!");
+            }
+        }
         private RoomData GetWriteData(string id, string username)
         {
             var db = FirestoreHelper.Database;
@@ -166,17 +174,25 @@ namespace Chat_video_app.Forms
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
             data.Mem = data.Mem ?? new string[0]; // Đảm bảo rằng mảng đã được khởi tạo
 
+            string temp = listBox1.Text.Trim();
             List<string> mem = data.Mem.ToList();
-            foreach(string i in data.Is_invited)
+            if(temp.Length > 0)
             {
-                mem.Add(i);
-                data.Mem = mem.ToArray();
-                var updateTask = docRef.UpdateAsync(nameof(UserData.Mem), data.Mem);
-                updateTask.Wait();
-                DeleteInvite(username, i);
+                foreach (string i in data.Is_invited)
+                {
+                    mem.Add(i);
+                    data.Mem = mem.ToArray();
+                    var updateTask = docRef.UpdateAsync(nameof(UserData.Mem), data.Mem);
+                    updateTask.Wait();
+                    DeleteInvite(username, i);
+                }
+                CheckInvite(username);
+                CheckRoom(username);
             }
-            CheckInvite(username);
-            CheckRoom(username);
+            else
+            {
+                MessageBox.Show("Hiện chưa có lời mời nào từ bạn của bạn!!!");
+            }
         }
         private void button6_Click(object sender, EventArgs e)
         {

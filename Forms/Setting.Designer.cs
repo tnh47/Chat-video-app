@@ -143,6 +143,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Change Username";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -155,6 +156,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Change Email";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -167,6 +169,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "Change Password";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
