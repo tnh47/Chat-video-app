@@ -28,7 +28,7 @@ namespace Chat_video_app.Forms
         private async void button3_Click(object sender, EventArgs e)
         {
             string name=textBox3.Text.Trim();
-            if (name.Length == 0 || name==username) MessageBox.Show("Tên ko hợp lệ");
+            if (name.Length == 0 || name == username) MessageBox.Show("Tên ko hợp lệ");
             else
             {
                 var db = FirestoreHelper.Database;
@@ -37,24 +37,36 @@ namespace Chat_video_app.Forms
 
                 if (snapshot.Exists)
                 {
+
                     UserData data = snapshot.ConvertTo<UserData>();
-                    data.Is_invited = data.Is_invited ?? new string[0]; // Đảm bảo rằng mảng đã được khởi tạo
+                    if (!Check(data)) MessageBox.Show("Tên ko hợp lệ");
+                    else {
+                        data.Is_invited = data.Is_invited ?? new string[0]; // Đảm bảo rằng mảng đã được khởi tạo
 
-                    List<string> invitedRooms = data.Is_invited.ToList();
-                    invitedRooms.Add(id);
-                    data.Is_invited = invitedRooms.ToArray();
+                        List<string> invitedRooms = data.Is_invited.ToList();
+                        invitedRooms.Add(id);
+                        data.Is_invited = invitedRooms.ToArray();
 
-                    // Ghi lại dữ liệu lên Firestore
-                    await docRef.SetAsync(data);
+                        // Ghi lại dữ liệu lên Firestore
+                        await docRef.SetAsync(data);
 
-                    // Hiển thị thông báo sau khi dữ liệu đã được ghi lại thành công
-                    MessageBox.Show("Success");
+                        // Hiển thị thông báo sau khi dữ liệu đã được ghi lại thành công
+                        MessageBox.Show("Success");
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Không tìm thấy người dùng có tên là " + name);
                 }
             }
+        }
+        private bool Check(UserData data)
+        {
+            foreach(string mem in data.Mem)
+            {
+                if (mem == id) return false;
+            }
+            return true;
         }
     }
 }

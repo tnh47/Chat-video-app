@@ -36,7 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.startButton = new System.Windows.Forms.Button();
             this.portLabel = new System.Windows.Forms.Label();
-            this.localaddrLabel = new System.Windows.Forms.Label();
             this.portTextBox = new System.Windows.Forms.TextBox();
             this.logTextBox = new System.Windows.Forms.TextBox();
             this.disconnectButton = new System.Windows.Forms.Button();
@@ -49,7 +48,6 @@
             this.totalLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
-            this.addrTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -77,24 +75,12 @@
             this.portLabel.AutoSize = true;
             this.portLabel.BackColor = System.Drawing.Color.Transparent;
             this.portLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.portLabel.Location = new System.Drawing.Point(491, 33);
+            this.portLabel.Location = new System.Drawing.Point(505, 36);
             this.portLabel.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
             this.portLabel.Name = "portLabel";
-            this.portLabel.Size = new System.Drawing.Size(45, 20);
+            this.portLabel.Size = new System.Drawing.Size(31, 20);
             this.portLabel.TabIndex = 22;
-            this.portLabel.Text = "Port:";
-            // 
-            // localaddrLabel
-            // 
-            this.localaddrLabel.AutoSize = true;
-            this.localaddrLabel.BackColor = System.Drawing.Color.Transparent;
-            this.localaddrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.localaddrLabel.Location = new System.Drawing.Point(246, 33);
-            this.localaddrLabel.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
-            this.localaddrLabel.Name = "localaddrLabel";
-            this.localaddrLabel.Size = new System.Drawing.Size(76, 20);
-            this.localaddrLabel.TabIndex = 21;
-            this.localaddrLabel.Text = "Address:";
+            this.portLabel.Text = "ID:";
             // 
             // portTextBox
             // 
@@ -276,7 +262,7 @@
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.BackColor = System.Drawing.Color.Transparent;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(246, 76);
+            this.usernameLabel.Location = new System.Drawing.Point(262, 33);
             this.usernameLabel.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(82, 20);
@@ -286,7 +272,7 @@
             // usernameTextBox
             // 
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.Location = new System.Drawing.Point(335, 76);
+            this.usernameTextBox.Location = new System.Drawing.Point(351, 33);
             this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.usernameTextBox.MaxLength = 50;
             this.usernameTextBox.Name = "usernameTextBox";
@@ -295,20 +281,6 @@
             this.usernameTextBox.TabIndex = 34;
             this.usernameTextBox.TabStop = false;
             this.usernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // addrTextBox
-            // 
-            this.addrTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addrTextBox.Location = new System.Drawing.Point(335, 30);
-            this.addrTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.addrTextBox.MaxLength = 200;
-            this.addrTextBox.Name = "addrTextBox";
-            this.addrTextBox.ReadOnly = true;
-            this.addrTextBox.Size = new System.Drawing.Size(132, 27);
-            this.addrTextBox.TabIndex = 37;
-            this.addrTextBox.TabStop = false;
-            this.addrTextBox.Text = "127.0.0.1";
-            this.addrTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -384,7 +356,6 @@
             this.ClientSize = new System.Drawing.Size(1323, 578);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.addrTextBox);
             this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.totalLabel);
@@ -395,7 +366,6 @@
             this.Controls.Add(this.logTextBox);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.portLabel);
-            this.Controls.Add(this.localaddrLabel);
             this.Controls.Add(this.portTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -416,7 +386,6 @@
 
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Label portLabel;
-        private System.Windows.Forms.Label localaddrLabel;
         private System.Windows.Forms.TextBox portTextBox;
         private System.Windows.Forms.TextBox logTextBox;
         private System.Windows.Forms.Button disconnectButton;
@@ -429,7 +398,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn dc;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.TextBox usernameTextBox;
-        private System.Windows.Forms.TextBox addrTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label5;

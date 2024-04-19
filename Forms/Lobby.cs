@@ -21,16 +21,32 @@ namespace Chat_video_app.Forms
             InitializeComponent();
             this.username = username;
             CheckRoom(username);
+            CheckInvite(username);
             label2.Text = username;
         }
         private void CheckRoom(string username)
-        {
+        { 
+            listView1.Clear();
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
             foreach(string h in data.Mem)
             {
                 listView1.Items.Add(h);
+            }
+        }
+        private void CheckInvite(string username)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(username);
+            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            if (data.Is_invited != null)
+            {
+                listBox1.Items.Clear();
+                foreach (string i in data.Is_invited)
+                {
+                    listBox1.Items.Add(i);
+                }
             }
         }
         private void button2_Click(object sender, EventArgs e)
@@ -108,32 +124,28 @@ namespace Chat_video_app.Forms
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            bool accept = false;
-            string id = textBox3.Text.Trim();
-            foreach (ListViewItem item in listView1.Items)
+            if (listView1.SelectedItems.Count != 1)
             {
-                if (item.Text == id)
-                {
-                    accept = true;
-                    MessageBox.Show("Success");
-                    
-                    if (Check_host(id))
-                    {
-                        Hide();
-                        Room_host form = new Room_host(username,id);
-                        form.ShowDialog();
-                        Close();
-                    }
-                    else
-                    {
-                        Hide();
-                        Room_user form = new Room_user(username,id);
-                        form.ShowDialog();
-                        Close();
-                    }
-                }
+                MessageBox.Show("Vui lòng chọn một phòng.");
+                return;
             }
-            if(!accept)MessageBox.Show("Bạn chưa vào phòng này hoặc ko tồn tại");
+
+            ListViewItem selectedRoomItem = listView1.SelectedItems[0];
+            string id= selectedRoomItem.Text;
+            if (Check_host(id))
+            {
+                Hide();
+                Room_host roomHostForm = new Room_host(username, id);
+                roomHostForm.ShowDialog();
+                Close();
+            }
+            else
+            {
+                Hide();
+                Room_user roomUserForm = new Room_user(username, id);
+                roomUserForm.ShowDialog();
+                Close();
+            }
         }
         private bool Check_host(string id)
         {
@@ -145,6 +157,55 @@ namespace Chat_video_app.Forms
                 if (i == id) return true;
             }
             return false;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(username);
+            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            data.Mem = data.Mem ?? new string[0]; // Đảm bảo rằng mảng đã được khởi tạo
+
+            List<string> mem = data.Mem.ToList();
+            foreach(string i in data.Is_invited)
+            {
+                mem.Add(i);
+                data.Mem = mem.ToArray();
+                var updateTask = docRef.UpdateAsync(nameof(UserData.Mem), data.Mem);
+                updateTask.Wait();
+                DeleteInvite(username, i);
+            }
+            CheckInvite(username);
+            CheckRoom(username);
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            foreach (string i in listBox1.SelectedItems)
+            {
+                DeleteInvite(username,i);
+            }
+            CheckInvite(username);
+        }
+        private void DeleteInvite(string  username, string roomid)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(username);
+            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            List<string> updatedInvitedRooms = new List<string>();
+            foreach (string iv in data.Is_invited)
+            {
+                if (iv != roomid)
+                {
+                    updatedInvitedRooms.Add(iv);
+                }
+            }
+
+            data.Is_invited = updatedInvitedRooms.ToArray();
+
+            // Cập nhật dữ liệu lên Firestore
+            var updateTask = docRef.UpdateAsync(nameof(UserData.Is_invited), data.Is_invited);
+            updateTask.Wait();
+
         }
     }
 }
