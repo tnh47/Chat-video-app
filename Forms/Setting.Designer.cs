@@ -182,6 +182,7 @@
             this.button4.TabIndex = 8;
             this.button4.Text = "Delete account";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label4
             // 
@@ -217,6 +218,7 @@
             this.button5.TabIndex = 9;
             this.button5.Text = "Delete room";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
