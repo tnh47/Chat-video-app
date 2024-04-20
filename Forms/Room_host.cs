@@ -1,5 +1,6 @@
 ﻿using Chat_video_app.Classes;
 using Google.Cloud.Firestore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,7 +14,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Chat_video_app.Forms
 {
     public partial class Room_host : Form
@@ -43,6 +43,7 @@ namespace Chat_video_app.Forms
             portTextBox.Text = id;
             this.id = id;
             this.username= username;
+            sendTextBox.KeyDown += SendTextBox_KeyDown;
         }
 
         private async void button3_Click(object sender, EventArgs e)
@@ -187,28 +188,114 @@ namespace Chat_video_app.Forms
                 obj.handle.Set();
             }
         }
-        private void Connection(MyClient obj)
+        private void ReadAuth(IAsyncResult result)
         {
-            string msg = string.Format("{0} has connected", obj.username);
-            Log(SystemMsg(msg));
-            Send(SystemMsg(msg), obj.id);
-            while (obj.client.Connected)
+            MyClient obj = (MyClient)result.AsyncState;
+            int bytes = 0;
+            if (obj.client.Connected)
             {
                 try
                 {
-                    obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(Read), obj);
-                    obj.handle.WaitOne();
+                    bytes = obj.stream.EndRead(result);
                 }
                 catch (Exception ex)
                 {
                     Log(ErrorMsg(ex.Message));
                 }
             }
-            obj.client.Close();
-            clients.TryRemove(obj.id, out MyClient tmp);
-            msg = string.Format("{0} has disconnected", tmp.username);
-            Log(SystemMsg(msg));
-            Send(msg, tmp.id);
+            if (bytes > 0)
+            {
+                obj.data.AppendFormat("{0}", Encoding.UTF8.GetString(obj.buffer, 0, bytes));
+                try
+                {
+                    if (obj.stream.DataAvailable)
+                    {
+                        obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(ReadAuth), obj);
+                    }
+                    else
+                    {
+                        var settings = new JsonSerializerSettings
+                        {
+                            TypeNameHandling = TypeNameHandling.All // This line is for demo, adjust as needed
+                        };
+
+                        // Deserialize using Newtonsoft.Json
+                        Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(obj.data.ToString(), settings);
+
+                        if (!data.ContainsKey("username") || data["username"].Length < 1 || !data.ContainsKey("key") || !data["key"].Equals(textBox2.Text))
+                        {
+                            obj.client.Close();
+                        }
+                        else
+                        {
+                            obj.username.Append(data["username"].Length > 200 ? data["username"].Substring(0, 200) : data["username"]);
+                            Send("{\"status\": \"authorized\"}", obj);
+                        }
+                        obj.data.Clear();
+                        obj.handle.Set();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    obj.data.Clear();
+                    Log(ErrorMsg(ex.Message));
+                    obj.handle.Set();
+                }
+            }
+            else
+            {
+                obj.client.Close();
+                obj.handle.Set();
+            }
+        }
+        private bool Authorize(MyClient obj) // no
+        {
+            bool success = false;
+            while (obj.client.Connected)
+            {
+                try
+                {
+                    obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(ReadAuth), obj);
+                    obj.handle.WaitOne();
+                    if (obj.username.Length > 0)
+                    {
+                        success = true;
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log(ErrorMsg(ex.Message));
+                }
+            }
+            return success;
+        }
+        private void Connection(MyClient obj)
+        {
+            if (Authorize(obj))//no
+            {
+                clients.TryAdd(obj.id, obj);//no
+                string msg = string.Format("{0} has connected", obj.username);
+                Log(SystemMsg(msg));
+                Send(SystemMsg(msg), obj.id);
+                while (obj.client.Connected)
+                {
+                    try
+                    {
+                        obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(Read), obj);
+                        obj.handle.WaitOne();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log(ErrorMsg(ex.Message));
+                    }
+                }
+                obj.client.Close();
+                clients.TryRemove(obj.id, out MyClient tmp);
+                msg = string.Format("{0} has disconnected", tmp.username);
+                Log(SystemMsg(msg));
+                Send(msg, tmp.id);
+            }
         }
 
         private void Listener(IPAddress ip, int port)
@@ -226,7 +313,7 @@ namespace Chat_video_app.Forms
                         try //fix
                         {
                             MyClient obj = new MyClient();
-                            obj.id = Int32.Parse(id);
+                            obj.id = int.Parse(id);
                             obj.username = new StringBuilder();
                             obj.client = listener.AcceptTcpClient();
                             obj.stream = obj.client.GetStream();
@@ -272,20 +359,49 @@ namespace Chat_video_app.Forms
             }
             else if (listener == null || !listener.IsAlive)
             {
-                string number = id;
-                string name = username;
+                string address = textBox1.Text.Trim();
+                string number = portTextBox.Text.Trim();
+                string username = usernameTextBox.Text.Trim();
                 bool error = false;
                 IPAddress ip = null;
-                try
-                {
-                    ip = Dns.GetHostEntry("172.20.70.45").AddressList[0];
-                }
-                catch
+                if (address.Length < 1)
                 {
                     error = true;
-                    Log(SystemMsg("Address is not valid"));
+                    Log(SystemMsg("Address is required"));
+                }
+                else
+                {
+                    try
+                    {
+                        ip = Dns.GetHostEntry(address).AddressList[0];
+                    }
+                    catch
+                    {
+                        error = true;
+                        Log(SystemMsg("Address is not valid"));
+                    }
                 }
                 int port = -1;
+                if (number.Length < 1)
+                {
+                    error = true;
+                    Log(SystemMsg("Port number is required"));
+                }
+                else if (!int.TryParse(number, out port))
+                {
+                    error = true;
+                    Log(SystemMsg("Port number is not valid"));
+                }
+                else if (port < 49152 || port > 65535)
+                {
+                    error = true;
+                    Log(SystemMsg("Port number is out of range"));
+                }
+                if (username.Length < 1)
+                {
+                    error = true;
+                    Log(SystemMsg("Username is required"));
+                }
                 if (!error)
                 {
                     listener = new Thread(() => Listener(ip, port))
@@ -296,7 +412,7 @@ namespace Chat_video_app.Forms
                 }
             }
         }
-        private void Send(string msg, long id = -1)
+        private void Send(string msg, long id=-1)
         {
             if (send == null || send.IsCompleted)
             {
@@ -305,6 +421,17 @@ namespace Chat_video_app.Forms
             else
             {
                 send.ContinueWith(antecendent => BeginWrite(msg, id));
+            }
+        }
+        private void Send(string msg, MyClient obj)
+        {
+            if (send == null || send.IsCompleted)
+            {
+                send = Task.Factory.StartNew(() => BeginWrite(msg, obj));
+            }
+            else
+            {
+                send.ContinueWith(antecendent => BeginWrite(msg, obj));
             }
         }
         private void BeginWrite(string msg, long id = -1) // send the message to everyone except the sender or set ID to lesser than zero to send to everyone
@@ -322,6 +449,21 @@ namespace Chat_video_app.Forms
                     {
                         Log(ErrorMsg(ex.Message));
                     }
+                }
+            }
+        }
+        private void BeginWrite(string msg, MyClient obj) // send the message to a specific client
+        {
+            byte[] buffer = Encoding.UTF8.GetBytes(msg);
+            if (obj.client.Connected)
+            {
+                try
+                {
+                    obj.stream.BeginWrite(buffer, 0, buffer.Length, new AsyncCallback(Write), obj);
+                }
+                catch (Exception ex)
+                {
+                    Log(ErrorMsg(ex.Message));
                 }
             }
         }
@@ -376,5 +518,21 @@ namespace Chat_video_app.Forms
             active = false;
             Disconnect();
         }
+        private void SendTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                if (sendTextBox.Text.Length > 0)
+                {
+                    string msg = sendTextBox.Text;
+                    sendTextBox.Clear();
+                    Log(string.Format("{0} (You): {1}", usernameTextBox.Text.Trim(), msg));
+                    Send(string.Format("{0}: {1}", usernameTextBox.Text.Trim(), msg));
+                }
+            }
+        }
     }
+
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,7 @@ namespace Chat_video_app.Forms
         private struct MyClient
         {
             public string username;
+            public string key;
             public TcpClient client;
             public NetworkStream stream;
             public byte[] buffer;
@@ -38,6 +40,8 @@ namespace Chat_video_app.Forms
             portTextBox.Text = id;
             this.id = id;
             this.username = username;
+            sendTextBox.KeyDown += SendTextBox_KeyDown;
+
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -72,6 +76,92 @@ namespace Chat_video_app.Forms
         {
             return string.Format("SYSTEM: {0}", msg);
         }
+        private void ReadAuth(IAsyncResult result)
+        {
+            MyClient obj = (MyClient)result.AsyncState; // Thêm dòng này để lấy ra đối tượng MyClient từ result.AsyncState
+            int bytes = 0;
+            if (obj.client.Connected)
+            {
+                try
+                {
+                    bytes = obj.stream.EndRead(result);
+                }
+                catch (Exception ex)
+                {
+                    Log(ErrorMsg(ex.Message));
+                }
+            }
+            if (bytes > 0)
+            {
+                obj.data.AppendFormat("{0}", Encoding.UTF8.GetString(obj.buffer, 0, bytes));
+                try
+                {
+                    if (obj.stream.DataAvailable)
+                    {
+                        obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(ReadAuth), obj); // Thay null bằng obj
+                    }
+                    else
+                    {
+                        // Thay thế JavaScriptSerializer bằng JsonConvert
+                        Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(obj.data.ToString());
+                        if (data.ContainsKey("status") && data["status"].Equals("authorized"))
+                        {
+                            Connected(true);
+                        }
+                        obj.data.Clear();
+                        obj.handle.Set();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    obj.data.Clear();
+                    Log(ErrorMsg(ex.Message));
+                    obj.handle.Set();
+                }
+            }
+            else
+            {
+                obj.client.Close();
+                obj.handle.Set();
+            }
+        }
+        private bool Authorize()
+        {
+            bool success = false;
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("username", obj.username.ToString());
+            data.Add("key", obj.key);
+
+            string jsonData = JsonConvert.SerializeObject(data); // Chuyển đổi dữ liệu sang chuỗi JSON
+
+            Send(jsonData);
+
+            while (obj.client.Connected)
+            {
+                try
+                {
+                    obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(ReadAuth), null);
+                    obj.handle.WaitOne();
+                    if (connected)
+                    {
+                        success = true;
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log(ErrorMsg(ex.Message));
+                }
+            }
+
+            if (!connected)
+            {
+                Log(SystemMsg("Unauthorized"));
+            }
+
+            return success;
+        }
+
         private void Connected(bool status)
         {
             if (!exit)
@@ -81,7 +171,6 @@ namespace Chat_video_app.Forms
                     connected = status;
                     if (status)
                     {
-
                         connectButton.Text = "Disconnect";
                         Log(SystemMsg("You are now connected"));
                     }
@@ -136,33 +225,37 @@ namespace Chat_video_app.Forms
                 obj.handle.Set();
             }
         }
-        private void Connection(IPAddress ip, int port, string username)
+        private void Connection(IPAddress ip, int port, string username,string key)
         {
+
             try
             {
                 obj = new MyClient();
                 obj.username = username;
+                obj.key = key;
                 obj.client = new TcpClient();
                 obj.client.Connect(ip, port);
                 obj.stream = obj.client.GetStream();
                 obj.buffer = new byte[obj.client.ReceiveBufferSize];
                 obj.data = new StringBuilder();
                 obj.handle = new EventWaitHandle(false, EventResetMode.AutoReset);
-                while (obj.client.Connected)
+                if (Authorize())
                 {
-                    try
+                    while (obj.client.Connected)
                     {
-                        obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(Read), null);
-                        obj.handle.WaitOne();
+                        try
+                        {
+                            obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(Read), null);
+                            obj.handle.WaitOne();
+                        }
+                        catch (Exception ex)
+                        {
+                            Log(ErrorMsg(ex.Message));
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        Log(ErrorMsg(ex.Message));
-                    }
+                    obj.client.Close();
+                    Connected(false);
                 }
-                obj.client.Close();
-                Connected(false);
-
             }
             catch (Exception ex)
             {
@@ -178,25 +271,53 @@ namespace Chat_video_app.Forms
             }
             else if (client == null || !client.IsAlive)
             {
-                string address = "172.20.70.45";
-                string number = id;
-                string name = username;
+                string address = textBox1.Text.Trim();
+                string number = portTextBox.Text.Trim();
+                string username = usernameTextBox.Text.Trim();
                 bool error = false;
                 IPAddress ip = null;
-                try
-                {
-                    ip = Dns.GetHostEntry(address).AddressList[0];
-                }
-                catch
+                if (address.Length < 1)
                 {
                     error = true;
-                    Log(SystemMsg("Address is not valid"));
+                    Log(SystemMsg("Address is required"));
+                }
+                else
+                {
+                    try
+                    {
+                        ip = Dns.GetHostEntry(address).AddressList[0];
+                    }
+                    catch
+                    {
+                        error = true;
+                        Log(SystemMsg("Address is not valid"));
+                    }
                 }
                 int port = -1;
+                if (number.Length < 1)
+                {
+                    error = true;
+                    Log(SystemMsg("Port number is required"));
+                }
+                else if (!int.TryParse(number, out port))
+                {
+                    error = true;
+                    Log(SystemMsg("Port number is not valid"));
+                }
+                else if (port < 0 || port > 65535)
+                {
+                    error = true;
+                    Log(SystemMsg("Port number is out of range"));
+                }
+                if (username.Length < 1)
+                {
+                    error = true;
+                    Log(SystemMsg("Username is required"));
+                }
                 if (!error)
                 {
                     // encryption key is optional
-                    client = new Thread(() => Connection(ip, port, username))
+                    client = new Thread(() => Connection(ip, port, username, textBox2.Text))
                     {
                         IsBackground = true
                     };
