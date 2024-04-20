@@ -81,7 +81,6 @@ namespace Chat_video_app.Forms
                 else
                 {
                     var infor = GetWriteData(id, username);
-                    AddData(id, username);
                     DocumentReference docRef2 = db.Collection("RoomData").Document(infor.Id);
                     await docRef2.SetAsync(infor);
                     MessageBox.Show("Success");
@@ -97,38 +96,26 @@ namespace Chat_video_app.Forms
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            List<string> mem2 = new List<string>();
+            mem2.Add(username);
+
             List<string> mem= data.Mem.ToList();
-            mem.Add(data.Id);
-            List<string>host= data.Host.ToList();
+            List<string> host = data.Host.ToList();
+            mem.Add(id);
+            data.Mem = mem.ToArray();
             host.Add(id);
             data.Host = host.ToArray();
             var updateTask = docRef.UpdateAsync(nameof(UserData.Host), data.Host);
             updateTask.Wait();
+            var updateTask2 = docRef.UpdateAsync(nameof(UserData.Mem), data.Mem);
+            updateTask2.Wait();
+
             return new RoomData()
             {
                 Id = id,
-                Mem = mem.ToArray(),
+                Mem = mem2.ToArray(),
                 Host = data.Id
             };
-        }
-        private void AddData(string id,string username)
-        {
-            var db = FirestoreHelper.Database;
-            DocumentReference docRef = db.Collection("UserData").Document(username);
-            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-            List<string> updatedMemList = new List<string>();
-
-            if (data.Mem != null)
-            {
-                updatedMemList.AddRange(data.Mem);
-            }
-            updatedMemList.Add(id);
-
-            data.Mem = updatedMemList.ToArray();
-
-            var updateTask = docRef.UpdateAsync(nameof(UserData.Mem), data.Mem);
-            updateTask.Wait(); // Chờ cho tác vụ cập nhật hoàn thành
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -172,7 +159,6 @@ namespace Chat_video_app.Forms
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-            data.Mem = data.Mem ?? new string[0]; // Đảm bảo rằng mảng đã được khởi tạo
 
             string temp = listBox1.Text.Trim();
             List<string> mem = data.Mem.ToList();
