@@ -97,10 +97,13 @@ namespace Chat_video_app.Forms
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-            data.Mem = data.Mem ?? new string[0]; // Đảm bảo rằng mảng đã được khởi tạo
-
             List<string> mem= data.Mem.ToList();
-            mem.Add(id);
+            mem.Add(data.Id);
+            List<string>host= data.Host.ToList();
+            host.Add(id);
+            data.Host = host.ToArray();
+            var updateTask = docRef.UpdateAsync(nameof(UserData.Host), data.Host);
+            updateTask.Wait();
             return new RoomData()
             {
                 Id = id,
