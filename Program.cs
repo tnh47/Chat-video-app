@@ -20,7 +20,7 @@ namespace Chat_video_app
             FirestoreHelper.SetEnvironmentVariable();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Room_user("khanh","49152"));
+            Application.Run(new LoginForm());
         }
     }
 }

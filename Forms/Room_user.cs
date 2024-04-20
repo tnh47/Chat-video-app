@@ -78,7 +78,6 @@ namespace Chat_video_app.Forms
         }
         private void ReadAuth(IAsyncResult result)
         {
-            MyClient obj = (MyClient)result.AsyncState; // Thêm dòng này để lấy ra đối tượng MyClient từ result.AsyncState
             int bytes = 0;
             if (obj.client.Connected)
             {
@@ -98,11 +97,10 @@ namespace Chat_video_app.Forms
                 {
                     if (obj.stream.DataAvailable)
                     {
-                        obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(ReadAuth), obj); // Thay null bằng obj
+                        obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(ReadAuth), null); // Thay null bằng obj
                     }
                     else
                     {
-                        // Thay thế JavaScriptSerializer bằng JsonConvert
                         Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(obj.data.ToString());
                         if (data.ContainsKey("status") && data["status"].Equals("authorized"))
                         {
