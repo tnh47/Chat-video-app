@@ -45,6 +45,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -136,6 +137,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.textBox3);
@@ -160,7 +162,7 @@
             this.button4.BackColor = System.Drawing.Color.Olive;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(75, 110);
+            this.button4.Location = new System.Drawing.Point(75, 126);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(154, 49);
             this.button4.TabIndex = 7;
@@ -246,6 +248,17 @@
             this.panel2.Size = new System.Drawing.Size(363, 245);
             this.panel2.TabIndex = 33;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(77, 75);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(152, 25);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "[49152,65535]";
+            // 
             // Lobby
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -287,5 +300,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label6;
     }
 }

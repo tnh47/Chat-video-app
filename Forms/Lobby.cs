@@ -68,8 +68,9 @@ namespace Chat_video_app.Forms
         private async void button4_Click(object sender, EventArgs e)
         {
             string id = textBox3.Text.Trim();
-            if(id.Length!=0)
-            {
+            int tmp = Int32.Parse(id);
+            if (tmp < 49152 || tmp > 65535 || id.Length==0) MessageBox.Show("ID invalid");
+            else { 
                 var db = FirestoreHelper.Database;
                 DocumentReference docRef = db.Collection("RoomData").Document(id);
                 RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
@@ -89,10 +90,6 @@ namespace Chat_video_app.Forms
                     form.ShowDialog();
                     Close();
                 }
-            }
-            else
-            {
-                MessageBox.Show("Bạn chưa nhập tên phòng! Vui lòng nhập tên phòng!");
             }
         }
         private RoomData GetWriteData(string id, string username)
