@@ -23,6 +23,7 @@ namespace Chat_video_app.Forms
             CheckRoom(username);
             CheckInvite(username);
             label2.Text = username;
+            listBox1.SelectionMode = SelectionMode.MultiExtended;
         }
         private void CheckRoom(string username)
         { 
@@ -68,26 +69,30 @@ namespace Chat_video_app.Forms
         private async void button4_Click(object sender, EventArgs e)
         {
             string id = textBox3.Text.Trim();
-            int tmp = Int32.Parse(id);
-            if (tmp < 49152 || tmp > 65535 || id.Length==0) MessageBox.Show("ID invalid");
-            else { 
-                var db = FirestoreHelper.Database;
-                DocumentReference docRef = db.Collection("RoomData").Document(id);
-                RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-                if (data != null)
-                {
-                    MessageBox.Show("Room đã tồn tại.Vui lòng chọn ID khác");
-                }
+            int tmp;
+            if (int.TryParse(id, out tmp))
+            {
+                if (tmp < 49152 || tmp > 65535 || id.Length == 0) MessageBox.Show("ID invalid");
                 else
                 {
-                    var infor = GetWriteData(id, username);
-                    DocumentReference docRef2 = db.Collection("RoomData").Document(infor.Id);
-                    await docRef2.SetAsync(infor);
-                    MessageBox.Show("Success");
-                    Hide();
-                    Room_host form = new Room_host(username, infor.Id);
-                    form.ShowDialog();
-                    Close();
+                    var db = FirestoreHelper.Database;
+                    DocumentReference docRef = db.Collection("RoomData").Document(id);
+                    RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+                    if (data != null)
+                    {
+                        MessageBox.Show("Room đã tồn tại.Vui lòng chọn ID khác");
+                    }
+                    else
+                    {
+                        var infor = GetWriteData(id, username);
+                        DocumentReference docRef2 = db.Collection("RoomData").Document(infor.Id);
+                        await docRef2.SetAsync(infor);
+                        MessageBox.Show("Success");
+                        Hide();
+                        Room_host form = new Room_host(username, infor.Id);
+                        form.ShowDialog();
+                        Close();
+                    }
                 }
             }
         }
@@ -160,25 +165,39 @@ namespace Chat_video_app.Forms
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-
-            string temp = listBox1.Text.Trim();
             List<string> mem = data.Mem.ToList();
-            if(temp.Length > 0)
+            
+            
+            foreach (string i in listBox1.SelectedItems)
             {
-                foreach (string i in data.Is_invited)
-                {
-                    mem.Add(i);
-                    data.Mem = mem.ToArray();
-                    await docRef.SetAsync(data);
-                    DeleteInvite(username, i);
-                }
-                CheckInvite(username);
-                CheckRoom(username);
+                mem.Add(i);
+                DeleteInvite(username, i);
+                AddData(username,i);                
             }
-            else
-            {
-                MessageBox.Show("Hiện chưa có lời mời nào từ bạn của bạn!!!");
-            }
+            data.Mem = mem.ToArray();
+            await docRef.SetAsync(data);            
+            CheckInvite(username);
+            CheckRoom(username);           
+        }
+        private async void AddData(string username, string id)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            List<string>mem= data.Mem.ToList();
+            mem.Add(username);
+            data.Mem=mem.ToArray();
+            await docRef.SetAsync(data);
+        }
+        private async void DeleteInvite(string username, string roomid)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(username);
+            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            List<string> i = new List<string>(data.Is_invited);
+            i.Remove(roomid);
+            data.Is_invited = i.ToArray();
+            await docRef.SetAsync(data);
         }
         private void button6_Click(object sender, EventArgs e)
         {
@@ -188,14 +207,6 @@ namespace Chat_video_app.Forms
             }
             CheckInvite(username);
         }
-        private async void DeleteInvite(string  username, string roomid)
-        {
-            var db = FirestoreHelper.Database;
-            DocumentReference docRef = db.Collection("UserData").Document(username);
-            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-            List<string> updatedInvitedRooms = new List<string>(data.Is_invited);
-            updatedInvitedRooms.Remove(roomid);
-            await docRef.SetAsync(data);
-        }
+       
     }
 }

@@ -154,6 +154,11 @@ namespace Chat_video_app.Forms
                 await docRef2.SetAsync(data);
             }
             await docRef.DeleteAsync();
+            MessageBox.Show("Đã xóa");
+            Hide();
+            LoginForm form = new LoginForm();
+            form.ShowDialog();
+            Close();
         }
     }
 }
