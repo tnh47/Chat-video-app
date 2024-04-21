@@ -98,17 +98,18 @@ namespace Chat_video_app.Forms
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
             List<string> mem2 = new List<string>();
             mem2.Add(username);
+   
+            data.Mem = data.Mem.Append(id).ToArray();
+            data.Host = data.Host.Append(id).ToArray();
 
-            List<string> mem= data.Mem.ToList();
-            List<string> host = data.Host.ToList();
-            mem.Add(id);
-            data.Mem = mem.ToArray();
-            host.Add(id);
-            data.Host = host.ToArray();
-            var updateTask = docRef.UpdateAsync(nameof(UserData.Host), data.Host);
+            
+            var updateTask = docRef.UpdateAsync(new Dictionary<string, object>
+{
+            { nameof(UserData.Host), data.Host },
+            { nameof(UserData.Mem), data.Mem }
+});
             updateTask.Wait();
-            var updateTask2 = docRef.UpdateAsync(nameof(UserData.Mem), data.Mem);
-            updateTask2.Wait();
+
 
             return new RoomData()
             {
@@ -154,7 +155,7 @@ namespace Chat_video_app.Forms
             return false;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private async void button5_Click(object sender, EventArgs e)
         {
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
@@ -168,8 +169,7 @@ namespace Chat_video_app.Forms
                 {
                     mem.Add(i);
                     data.Mem = mem.ToArray();
-                    var updateTask = docRef.UpdateAsync(nameof(UserData.Mem), data.Mem);
-                    updateTask.Wait();
+                    await docRef.SetAsync(data);
                     DeleteInvite(username, i);
                 }
                 CheckInvite(username);
@@ -188,26 +188,14 @@ namespace Chat_video_app.Forms
             }
             CheckInvite(username);
         }
-        private void DeleteInvite(string  username, string roomid)
+        private async void DeleteInvite(string  username, string roomid)
         {
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-            List<string> updatedInvitedRooms = new List<string>();
-            foreach (string iv in data.Is_invited)
-            {
-                if (iv != roomid)
-                {
-                    updatedInvitedRooms.Add(iv);
-                }
-            }
-
-            data.Is_invited = updatedInvitedRooms.ToArray();
-
-            // Cập nhật dữ liệu lên Firestore
-            var updateTask = docRef.UpdateAsync(nameof(UserData.Is_invited), data.Is_invited);
-            updateTask.Wait();
-
+            List<string> updatedInvitedRooms = new List<string>(data.Is_invited);
+            updatedInvitedRooms.Remove(roomid);
+            await docRef.SetAsync(data);
         }
     }
 }

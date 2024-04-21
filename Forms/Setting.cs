@@ -21,8 +21,16 @@ namespace Chat_video_app.Forms
         {
             InitializeComponent();
             this.username = username;
+            WriteData(username);
         }
-
+        private void WriteData(string username)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(username);
+            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            textBox1.Text = data.Username;
+            textBox2.Text = data.Email;
+        }
         private void button6_Click(object sender, EventArgs e)
         {
             Hide();
@@ -120,110 +128,32 @@ namespace Chat_video_app.Forms
         // Delete room
         private void button5_Click(object sender, EventArgs e)
         {
-            string text = ShowInputDialog_Del_Room("Nhập vào Id phòng mà bạn muốn xóa:", "Xử lý xóa phòng");
-            if (text == "-1" || text == "-2") return;
-            if (text.Length == 0)
-            {
-                MessageBox.Show("Bạn chưa nhập Id phòng! Vui lòng nhập Id phòng để xóa!");
-                button5_Click(sender, e);
-            }
-            else
-            {
-                // Xử lý sự kiện delete room
-                MessageBox.Show("Id phòng bạn vừa nhập là: " + text);
-            }
+            Hide();
+            Set_Del_room form = new Set_Del_room(username);
+            form.ShowDialog();
+            Close();
         }
-
-        public static string ShowInputDialog_Del_Room(string prompt, string title)
-        {
-            string result = "";
-            using (Form promptForm = new Form())
-            {
-                promptForm.Width = 400;
-                promptForm.Height = 200;
-                promptForm.FormBorderStyle = FormBorderStyle.FixedDialog;
-                promptForm.Text = title;
-                promptForm.StartPosition = FormStartPosition.CenterScreen;
-
-                Label textLabel = new Label() { Left = 50, Top = 20, Text = prompt };
-                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 300, Height = 25 };
-                Button confirmation = new Button() { Text = "OK", Left = 290, Width = 60, Top = 90, Height = 25, DialogResult = DialogResult.OK };
-                Button cancelation = new Button() { Text = "Cancel", Left = 200, Width = 60, Top = 90, Height = 25, DialogResult = DialogResult.Cancel };
-
-                confirmation.Click += (sender, e) => { result = textBox.Text; promptForm.Close(); };
-                cancelation.Click += (sender, e) => { promptForm.Close(); };
-
-                promptForm.Controls.Add(textBox);
-                promptForm.Controls.Add(confirmation);
-                promptForm.Controls.Add(cancelation);
-                promptForm.Controls.Add(textLabel);
-                promptForm.AcceptButton = confirmation;
-                promptForm.CancelButton = cancelation;
-
-                
-
-                if (promptForm.ShowDialog() == DialogResult.Cancel)
-                {
-                    result = "-1";
-                    promptForm.Close();
-                }
-
-                promptForm.FormClosing += (sender, e) =>
-                {
-                    if (e.CloseReason == CloseReason.UserClosing)
-                    {
-                        result = "-2";
-                    }
-                };
-            }
-
-            return result;
-        }
-
         // Delete account
-        private void button4_Click(object sender, EventArgs e)
+        private async void button4_Click(object sender, EventArgs e)
         {
-            string text = ShowInputDialog_Del_Account("Bạn có chắc muốn xóa vĩnh viễn tài khoản?", "Xác nhận xóa tài khoản!");
-            if (text == "0")
+
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(username);
+            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
+            foreach (string i in data.Host)
             {
-                // xu ly su kien khong xoa tai khoan
-                MessageBox.Show("Delete Account Failure!");
+                DocumentReference docRef2 = db.Collection("RoomData").Document(i);
+                await docRef2.DeleteAsync();
             }
-            else if(text == "1")
+            foreach (string i in data.Mem)
             {
-                // xu ly su kien xoa tai khoan
-                MessageBox.Show("Delete Account Successful!");
+                DocumentReference docRef2 = db.Collection("RoomData").Document(i);
+                List<string> mem = new List<string>(data.Mem);
+                mem.Remove(username);
+                data.Mem = mem.ToArray();
+                await docRef2.SetAsync(data);
             }
-        }
-
-
-        public static string ShowInputDialog_Del_Account(string prompt, string title)
-        {
-            string result = "0";
-            using (Form promptForm = new Form())
-            {
-                promptForm.Width = 300;
-                promptForm.Height = 150;
-                promptForm.FormBorderStyle = FormBorderStyle.FixedDialog;
-                promptForm.Text = title;
-                promptForm.StartPosition = FormStartPosition.CenterScreen;
-
-                Label textLabel = new Label() { Left = 20, Top = 20, Width = 300, Height = 30,  Text = prompt };
-                Button confirmation = new Button() { Text = "OK", Left = 100, Width = 60, Top = 60, Height = 25, DialogResult = DialogResult.OK };
-                Button cancelation = new Button() { Text = "Cancel", Left = 190, Width = 60, Top = 60, Height = 25, DialogResult = DialogResult.Cancel };
-
-                confirmation.Click += (sender, e) => { result = "1"; promptForm.Close(); };
-                cancelation.Click += (sender, e) => { result = "0"; promptForm.Close(); };
-
-                promptForm.Controls.Add(confirmation);
-                promptForm.Controls.Add(cancelation);
-                promptForm.Controls.Add(textLabel);
-                promptForm.AcceptButton = confirmation;
-                promptForm.CancelButton = cancelation;
-
-                promptForm.ShowDialog();
-            }
-            return result;
+            await docRef.DeleteAsync();
         }
     }
 }
