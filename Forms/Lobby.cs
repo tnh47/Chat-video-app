@@ -102,6 +102,7 @@ namespace Chat_video_app.Forms
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
             List<string> mem2 = new List<string>();
+            List<string> his = new List<string>();
             mem2.Add(username);
    
             data.Mem = data.Mem.Append(id).ToArray();
@@ -120,7 +121,8 @@ namespace Chat_video_app.Forms
             {
                 Id = id,
                 Mem = mem2.ToArray(),
-                Host = data.Id
+                Host = data.Id,
+                His = his.ToArray()
             };
         }
         private void button1_Click(object sender, EventArgs e)
@@ -165,17 +167,18 @@ namespace Chat_video_app.Forms
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-            List<string> mem = data.Mem.ToList();
             
             
             foreach (string i in listBox1.SelectedItems)
             {
-                mem.Add(i);
+                data.Mem = data.Mem.Append(i).ToArray();
+                AddData(username, i);
                 DeleteInvite(username, i);
-                AddData(username,i);                
             }
-            data.Mem = mem.ToArray();
-            await docRef.SetAsync(data);            
+            await docRef.UpdateAsync(new Dictionary<string, object>
+{
+                { nameof(UserData.Mem), data.Mem },
+            });
             CheckInvite(username);
             CheckRoom(username);           
         }

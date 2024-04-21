@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Chat_video_app.Classes;
+using Google.Cloud.Firestore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,14 +52,26 @@ namespace Chat_video_app.Forms
             form.ShowDialog();
             Close();
         }
+        private async void AddData(string text)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            List<string> his = data.His.ToList();
+            his.Add(text);
+            data.His = his.ToArray();
+            await docRef.SetAsync(data);
+        }
         private void Log(string msg = "") // clear the log if message is not supplied or is empty
         {
             if (!exit)
             {
                 logTextBox.Invoke((MethodInvoker)delegate
                 {
-                    if (msg.Length > 0)
-                    {
+                    if (msg.Length > 0) { 
+
+                        string text = string.Format("[ {0} ] {1}", DateTime.Now.ToString("HH:mm"), msg);
+                        AddData(text);
                         logTextBox.AppendText(string.Format("[ {0} ] {1}{2}", DateTime.Now.ToString("HH:mm"), msg, Environment.NewLine));
                     }
                     else

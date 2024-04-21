@@ -44,8 +44,26 @@ namespace Chat_video_app.Forms
             this.id = id;
             this.username= username;
             sendTextBox.KeyDown += SendTextBox_KeyDown;
+            DisplayMem(id);
         }
-
+        private void DisplayMem(string id)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            foreach (string i in data.Mem)
+            {
+                if(i==username) continue;
+                DocumentReference docRef2 = db.Collection("UserData").Document(i);
+                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
+                AddGrid("off",data2.Id, data2.Username);
+            }
+        }
+        private void AddGrid(string sta,string id,string name)
+        {
+            string[] row = new string[] { sta,id, name };//fix
+            clientsDataGridView.Rows.Add(row);
+        }
         private async void button3_Click(object sender, EventArgs e)
         {
             string name=textBox3.Text.Trim();
@@ -62,8 +80,6 @@ namespace Chat_video_app.Forms
                     UserData data = snapshot.ConvertTo<UserData>();
                     if (!Check(data)) MessageBox.Show("Tên ko hợp lệ");
                     else {
-                        data.Is_invited = data.Is_invited ?? new string[0]; // Đảm bảo rằng mảng đã được khởi tạo
-
                         List<string> invitedRooms = data.Is_invited.ToList();
                         invitedRooms.Add(id);
                         data.Is_invited = invitedRooms.ToArray();
@@ -97,6 +113,16 @@ namespace Chat_video_app.Forms
             form.ShowDialog();
             Close();
         }
+        private async void AddData(string text)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data=docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            List<string> his = data.His.ToList();
+            his.Add(text);
+            data.His = his.ToArray();
+            await docRef.SetAsync(data);
+        }
         private void Log(string msg = "") // clear the log if message is not supplied or is empty
         {
             if (!exit)
@@ -105,6 +131,8 @@ namespace Chat_video_app.Forms
                 {
                     if (msg.Length > 0)
                     {
+                        string text = string.Format("[ {0} ] {1}", DateTime.Now.ToString("HH:mm"), msg);
+                        AddData(text);
                         logTextBox.AppendText(string.Format("[ {0} ] {1}{2}", DateTime.Now.ToString("HH:mm"), msg, Environment.NewLine));
                     }
                     else
