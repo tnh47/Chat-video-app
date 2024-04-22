@@ -547,6 +547,7 @@ namespace Chat_video_app.Forms
             exit = true;
             active = false;
             Disconnect();
+            Del_url(id);
         }
         private void SendTextBox_KeyDown(object sender, KeyEventArgs e)
         {
