@@ -84,10 +84,8 @@ namespace Chat_video_app.Forms
                         invitedRooms.Add(id);
                         data.Is_invited = invitedRooms.ToArray();
 
-                        // Ghi lại dữ liệu lên Firestore
                         await docRef.SetAsync(data);
 
-                        // Hiển thị thông báo sau khi dữ liệu đã được ghi lại thành công
                         MessageBox.Show("Success");
                     }
                 }
@@ -123,7 +121,7 @@ namespace Chat_video_app.Forms
             data.His = his.ToArray();
             await docRef.SetAsync(data);
         }
-        private void Log(string msg = "") // clear the log if message is not supplied or is empty
+        private void Log(string msg = "") 
         {
             if (!exit)
             {
@@ -133,7 +131,8 @@ namespace Chat_video_app.Forms
                     {
                         string text = string.Format("[ {0} ] {1}", DateTime.Now.ToString("HH:mm"), msg);
                         AddData(text);
-                        logTextBox.AppendText(string.Format("[ {0} ] {1}{2}", DateTime.Now.ToString("HH:mm"), msg, Environment.NewLine));
+                        logTextBox.AppendText(text);
+                        logTextBox.AppendText(Environment.NewLine);
                     }
                     else
                     {
@@ -300,9 +299,9 @@ namespace Chat_video_app.Forms
         }
         private void Connection(MyClient obj)
         {
-            if (Authorize(obj))//no
+            if (Authorize(obj))
             {
-                clients.TryAdd(obj.id, obj);//no
+                clients.TryAdd(obj.id, obj);
                 string msg = string.Format("{0} has connected", obj.username);
                 Log(SystemMsg(msg));
                 Send(SystemMsg(msg), obj.id);

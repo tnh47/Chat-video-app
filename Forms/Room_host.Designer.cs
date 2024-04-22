@@ -259,12 +259,12 @@
             this.totalLabel.BackColor = System.Drawing.Color.Transparent;
             this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.totalLabel.Location = new System.Drawing.Point(333, 155);
+            this.totalLabel.Location = new System.Drawing.Point(329, 155);
             this.totalLabel.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(133, 30);
             this.totalLabel.TabIndex = 31;
-            this.totalLabel.Text = "Total clients: 0";
+            this.totalLabel.Text = "Total members: 0";
             this.totalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // usernameLabel
@@ -397,7 +397,7 @@
             this.textBox1.Size = new System.Drawing.Size(132, 27);
             this.textBox1.TabIndex = 52;
             this.textBox1.TabStop = false;
-            this.textBox1.Text = "127.0.0.1";
+            this.textBox1.Text = "192.168.35.197";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
@@ -417,7 +417,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(744, 99);
+            this.label4.Location = new System.Drawing.Point(1419, 207);
             this.label4.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 20);
@@ -427,7 +427,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(783, 93);
+            this.textBox2.Location = new System.Drawing.Point(1419, 253);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.MaxLength = 10;
             this.textBox2.Name = "textBox2";
@@ -440,7 +440,7 @@
             // Room_host
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1365, 578);
+            this.ClientSize = new System.Drawing.Size(1361, 578);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
