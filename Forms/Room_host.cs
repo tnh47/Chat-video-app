@@ -106,6 +106,8 @@ namespace Chat_video_app.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Disconnect();
+            Del_url(id);
             Hide();
             Lobby form = new Lobby(username);
             form.ShowDialog();
@@ -538,6 +540,7 @@ namespace Chat_video_app.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             Disconnect();
+            Del_url(id);
         }
         private void Server_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -570,6 +573,17 @@ namespace Chat_video_app.Forms
             string port=textBox5.Text.Trim();
             data.URL = ip + port;
             await docRef.SetAsync(data);
+        }
+        private async void Del_url(string id)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            data.URL = "";
+            await docRef.UpdateAsync(new Dictionary<string, object>
+{
+                { nameof(RoomData.URL), data.URL},
+            });
         }
     }
 
