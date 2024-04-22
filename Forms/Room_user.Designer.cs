@@ -48,10 +48,13 @@
             this.dc = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.clientsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,21 +75,20 @@
             // 
             this.portLabel.AutoSize = true;
             this.portLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.portLabel.Location = new System.Drawing.Point(555, 28);
+            this.portLabel.Location = new System.Drawing.Point(564, 25);
             this.portLabel.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
             this.portLabel.Name = "portLabel";
-            this.portLabel.Size = new System.Drawing.Size(80, 20);
+            this.portLabel.Size = new System.Drawing.Size(31, 20);
             this.portLabel.TabIndex = 27;
-            this.portLabel.Text = "ID Room:";
+            this.portLabel.Text = "ID:";
             // 
             // portTextBox
             // 
             this.portTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.portTextBox.Location = new System.Drawing.Point(643, 25);
+            this.portTextBox.Location = new System.Drawing.Point(603, 22);
             this.portTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.portTextBox.MaxLength = 10;
             this.portTextBox.Name = "portTextBox";
-            this.portTextBox.ReadOnly = true;
             this.portTextBox.Size = new System.Drawing.Size(132, 27);
             this.portTextBox.TabIndex = 25;
             this.portTextBox.TabStop = false;
@@ -132,7 +134,7 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(301, 28);
+            this.usernameLabel.Location = new System.Drawing.Point(169, 28);
             this.usernameLabel.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(91, 20);
@@ -142,7 +144,7 @@
             // usernameTextBox
             // 
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.Location = new System.Drawing.Point(405, 25);
+            this.usernameTextBox.Location = new System.Drawing.Point(273, 25);
             this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.usernameTextBox.MaxLength = 50;
             this.usernameTextBox.Name = "usernameTextBox";
@@ -179,7 +181,7 @@
             this.clientsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.clientsDataGridView.EnableHeadersVisualStyles = false;
             this.clientsDataGridView.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.clientsDataGridView.Location = new System.Drawing.Point(534, 159);
+            this.clientsDataGridView.Location = new System.Drawing.Point(543, 168);
             this.clientsDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.clientsDataGridView.MultiSelect = false;
             this.clientsDataGridView.Name = "clientsDataGridView";
@@ -207,7 +209,7 @@
             this.clientsDataGridView.ShowCellToolTips = false;
             this.clientsDataGridView.ShowEditingIcon = false;
             this.clientsDataGridView.ShowRowErrors = false;
-            this.clientsDataGridView.Size = new System.Drawing.Size(257, 285);
+            this.clientsDataGridView.Size = new System.Drawing.Size(305, 285);
             this.clientsDataGridView.TabIndex = 44;
             this.clientsDataGridView.TabStop = false;
             // 
@@ -267,38 +269,13 @@
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(710, 492);
+            this.button2.Location = new System.Drawing.Point(39, 69);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 43);
+            this.button2.Size = new System.Drawing.Size(104, 43);
             this.button2.TabIndex = 46;
             this.button2.Text = "Out";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(301, 79);
-            this.label2.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 20);
-            this.label2.TabIndex = 50;
-            this.label2.Text = "Address";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(405, 79);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.MaxLength = 50;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(132, 27);
-            this.textBox1.TabIndex = 49;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "192.168.35.197";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -324,12 +301,76 @@
             this.textBox2.TabStop = false;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(506, 78);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox4.MaxLength = 50;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(132, 27);
+            this.textBox4.TabIndex = 60;
+            this.textBox4.TabStop = false;
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(417, 78);
+            this.label6.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(75, 20);
+            this.label6.TabIndex = 59;
+            this.label6.Text = "Public IP";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(649, 84);
+            this.label7.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 20);
+            this.label7.TabIndex = 58;
+            this.label7.Text = "Port:";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(693, 78);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox5.MaxLength = 10;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(132, 27);
+            this.textBox5.TabIndex = 57;
+            this.textBox5.TabStop = false;
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(603, 122);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 32);
+            this.button1.TabIndex = 61;
+            this.button1.Text = "Load URL";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Room_user
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(867, 559);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(861, 559);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button2);
@@ -372,9 +413,12 @@
         private System.Windows.Forms.DataGridViewButtonColumn dc;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button button1;
     }
 }

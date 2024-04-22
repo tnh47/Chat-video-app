@@ -560,6 +560,17 @@ namespace Chat_video_app.Forms
                 }
             }
         }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            string ip=textBox4.Text.Trim();
+            string port=textBox5.Text.Trim();
+            data.URL = ip + port;
+            await docRef.SetAsync(data);
+        }
     }
 
 }

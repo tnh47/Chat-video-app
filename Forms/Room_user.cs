@@ -283,8 +283,8 @@ namespace Chat_video_app.Forms
             }
             else if (client == null || !client.IsAlive)
             {
-                string address = textBox1.Text.Trim();
-                string number = portTextBox.Text.Trim();
+                string address = textBox4.Text.Trim();
+                string number = textBox5.Text.Trim();
                 string username = usernameTextBox.Text.Trim();
                 bool error = false;
                 IPAddress ip = null;
@@ -297,7 +297,11 @@ namespace Chat_video_app.Forms
                 {
                     try
                     {
-                        ip = Dns.GetHostEntry(address).AddressList[0];
+                        IPAddress[] addresses = Dns.GetHostAddresses(address);
+                        if (addresses.Length > 0)
+                        {
+                            ip = addresses[0];
+                        }
                     }
                     catch
                     {
@@ -404,6 +408,30 @@ namespace Chat_video_app.Forms
             {
                 obj.client.Close();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            if (data.URL == null) MessageBox.Show("Host chưa cấp url");
+            else
+            {
+                string tmp = "";
+                for(int i=0;i<17;i++)
+                {
+                    tmp += data.URL[i];
+                }
+                textBox4.Text = tmp;
+                tmp = "";
+                for(int i=17;i<data.URL.Length;i++)
+                {
+                    tmp+= data.URL[i];
+                }
+                textBox5.Text = tmp;
+            }
+
         }
     }
 }
