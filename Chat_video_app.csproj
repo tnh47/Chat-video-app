@@ -147,7 +147,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Chat_his.cs" />
     <Compile Include="Classes\FirestoreHelper.cs" />
     <Compile Include="Classes\RoomData.cs" />
     <Compile Include="Classes\Security.cs" />
