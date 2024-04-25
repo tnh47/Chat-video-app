@@ -270,6 +270,12 @@
     <Compile Include="RJPicture2.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RScontrol\RJComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RScontrol\RJComboBox.Designer.cs">
+      <DependentUpon>RJComboBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="RScontrol\RJTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>

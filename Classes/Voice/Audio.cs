@@ -33,7 +33,7 @@ namespace Chat_video_app.Classes.Voice
 
             Input = new WaveInEvent();
             Input.WaveFormat = GetFormat();
-            Input.BufferMilliseconds = 25;
+            Input.BufferMilliseconds = 24;
             Input.DataAvailable += NewInputData;
             Input.StartRecording();
 
@@ -71,7 +71,7 @@ namespace Chat_video_app.Classes.Voice
             {
                 Forms.Room2_host.Log("Creating new Buffered Wave Provider for key '" + key + "'");
                 BufferedWaveProvider bufferedWave = new BufferedWaveProvider(GetFormat());
-                bufferedWave.BufferLength = (32 / 8) * SAMPLE_RATE * CHANNELS * 5; // 5 seconds of buffer.
+                bufferedWave.BufferLength = (32 / 8) * SAMPLE_RATE * CHANNELS * 4; // 4 seconds of buffer.
                 Mixer.AddMixerInput(bufferedWave);
                 Providers[key] = bufferedWave;
 
