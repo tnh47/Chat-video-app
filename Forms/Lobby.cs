@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Chat_video_app.Forms
@@ -24,16 +25,28 @@ namespace Chat_video_app.Forms
             CheckInvite(username);
             label2.Text = username;
             listBox1.SelectionMode = SelectionMode.MultiExtended;
+            comboBox1.Items.Add("Text"); 
+            comboBox1.Items.Add("Voice");
         }
         private void CheckRoom(string username)
         { 
             listView1.Clear();
+            listView2.Clear();
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
             foreach(string h in data.Mem)
             {
-                listView1.Items.Add(h);
+                DocumentReference docRef2 = db.Collection("RoomData").Document(h);
+                RoomData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+                if (data2.Type == false)
+                {
+                    listView1.Items.Add(h);
+                }
+                else
+                {
+                    listView2.Items.Add(h);
+                }
             }
         }
         private void CheckInvite(string username)
@@ -115,39 +128,63 @@ namespace Chat_video_app.Forms
             { nameof(UserData.Mem), data.Mem }
 });
             updateTask.Wait();
-
-
+            bool type = comboBox1.SelectedItem.ToString() == "Text" ? false : true;
             return new RoomData()
             {
                 Id = id,
                 Mem = mem2.ToArray(),
                 Host = data.Id,
-                His = his.ToArray()
+                His = his.ToArray(),
+                Type=type,
+                URL=""
             };
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count != 1)
+            int a = listView1.SelectedItems.Count;
+            int b = listView2.SelectedItems.Count;
+            if ((a+b)>1)
             {
                 MessageBox.Show("Vui lòng chọn một phòng.");
                 return;
             }
-
-            ListViewItem selectedRoomItem = listView1.SelectedItems[0];
+            ListViewItem selectedRoomItem;
+            if (a==1)selectedRoomItem = listView1.SelectedItems[0];
+            else selectedRoomItem = listView2.SelectedItems[0];
             string id= selectedRoomItem.Text;
             if (Check_host(id))
             {
-                Hide();
-                Room_host roomHostForm = new Room_host(username, id);
-                roomHostForm.ShowDialog();
-                Close();
+                if (a == 1)
+                {
+                    Hide();
+                    Room_host roomHostForm = new Room_host(username, id);
+                    roomHostForm.ShowDialog();
+                    Close();
+                }
+                else
+                {
+                    Hide();
+                    Room2_host roomHostForm = new Room2_host(username, id);
+                    roomHostForm.ShowDialog();
+                    Close();
+                }
             }
             else
             {
-                Hide();
-                Room_user roomUserForm = new Room_user(username, id);
-                roomUserForm.ShowDialog();
-                Close();
+                if (a == 1)
+                {
+                    Hide();
+                    Room_user roomUserForm = new Room_user(username, id);
+                    roomUserForm.ShowDialog();
+                    Close();
+                }
+                else
+                {
+                    Hide();
+                    Room2_host roomHostForm = new Room2_host(username, id);
+                    roomHostForm.ShowDialog();
+                    Close();
+                }
             }
         }
         private bool Check_host(string id)
@@ -210,6 +247,5 @@ namespace Chat_video_app.Forms
             }
             CheckInvite(username);
         }
-       
     }
 }
