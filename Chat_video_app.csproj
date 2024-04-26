@@ -242,6 +242,12 @@
     <Compile Include="Forms\Room_user.Designer.cs">
       <DependentUpon>Room_user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Search_mess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Search_mess.Designer.cs">
+      <DependentUpon>Search_mess.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Setting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Room_user.resx">
       <DependentUpon>Room_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Search_mess.resx">
+      <DependentUpon>Search_mess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
