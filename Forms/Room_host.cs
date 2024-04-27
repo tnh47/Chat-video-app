@@ -46,6 +46,7 @@ namespace Chat_video_app.Forms
             this.id = id;
             this.username= username;
             sendTextBox.KeyDown += SendTextBox_KeyDown;
+            clientsDataGridView.CellClick += new DataGridViewCellEventHandler(clientsDataGridView_CellClick);
             DisplayMem(id);
         }
         private void DisplayMem(string id)
@@ -65,6 +66,28 @@ namespace Chat_video_app.Forms
         {
             string[] row = new string[] { sta,id, name };//fix
             clientsDataGridView.Rows.Add(row);
+        }
+        private async void clientsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && clientsDataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = clientsDataGridView.Rows[e.RowIndex];
+                string memberName = selectedRow.Cells["Name"].Value.ToString();
+                clientsDataGridView.Rows.Remove(selectedRow);
+                var db = FirestoreHelper.Database;
+                DocumentReference docRef = db.Collection("RoomData").Document(id);
+                RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+                List<string> mem = new List<string>(data.Mem);
+                mem.Remove(memberName);
+                data.Mem = mem.ToArray();
+                await docRef.SetAsync(data);
+                DocumentReference docRef2 = db.Collection("UserData").Document(memberName);
+                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
+                List<string> mem2 = new List<string>(data2.Mem);
+                mem2.Remove(id);
+                data2.Mem = mem2.ToArray();
+                await docRef2.SetAsync(data2);
+            }
         }
         private async void button3_Click(object sender, EventArgs e)
         {
@@ -108,8 +131,8 @@ namespace Chat_video_app.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Disconnect();
             Del_url(id);
+            Disconnect();            
             Hide();
             Lobby form = new Lobby(username);
             form.ShowDialog();
@@ -541,15 +564,16 @@ namespace Chat_video_app.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Disconnect();
             Del_url(id);
+            Disconnect();          
         }
         private void Server_FormClosing(object sender, FormClosingEventArgs e)
         {
             exit = true;
             active = false;
-            Disconnect();
             Del_url(id);
+            Disconnect();
+            
         }
         private void SendTextBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -623,28 +647,28 @@ namespace Chat_video_app.Forms
             // Dựa vào chỉ số hình ảnh trong ImageList, chúng ta sẽ trả về emoji tương ứng
             switch (imageIndex)
             {
-                case 4: // Emoji cho trạng thái vui
-                    return "😀"; // Mặt cười với mắt mở cười
-                case 1: // Emoji cho trạng thái buồn
-                    return "😢"; // Mặt cười với nước mắt
-                case 0: // Emoji cho trạng thái tức giận
-                    return "😡"; // Khuôn mặt tức giận
-                case 6: // Emoji cho trạng thái tự hào
-                    return "😎"; // Khuôn mặt tự hào với kính râm
-                case 8: // Emoji cho trạng thái suy nghĩ
-                    return "🤔"; // Khuôn mặt nghĩ
-                case 7: // Emoji cho trạng thái bất ngờ
-                    return "😲"; // Khuôn mặt kinh ngạc
-                case 9: // Emoji cho trạng thái đùa cợt
-                    return "😜"; // Khuôn mặt đùa cợt với ngôn ngữ
-                case 5: // Emoji cho trạng thái khinh bỉ
-                    return "😏"; // Khuôn mặt khinh bỉ
-                case 2: // Emoji cho trạng thái yêu
-                    return "😍"; // Khuôn mặt yêu
-                case 3: // Emoji cho trạng thái sợ hãi
-                    return "😱"; // Khuôn mặt kinh hãi
+                case 4:
+                    return "😀"; 
+                case 1: 
+                    return "😢"; 
+                case 0: 
+                    return "😡";
+                case 6: 
+                    return "😎"; 
+                case 8: 
+                    return "🤔"; 
+                case 7: 
+                    return "😲"; 
+                case 9: 
+                    return "😜"; 
+                case 5: 
+                    return "😏"; 
+                case 2: 
+                    return "😍"; 
+                case 3: 
+                    return "😱"; 
                 default:
-                    return ""; // Trả về một chuỗi rỗng nếu chỉ số không hợp lệ
+                    return "";
             }
         }
 
