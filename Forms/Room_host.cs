@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -14,6 +15,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace Chat_video_app.Forms
 {
     public partial class Room_host : Form
@@ -591,6 +593,88 @@ namespace Chat_video_app.Forms
         {
             Search_mess form = new Search_mess(id,textBox6.Text);
             form.ShowDialog();        
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ImageList emojiImageList = new ImageList();
+            emojiImageList.ImageSize = new Size(20, 20);
+
+            string emojiDirectory = "E:\\Project\\Net-programming\\Chat_video_app\\Emoji";
+            string[] emojiFiles = Directory.GetFiles(emojiDirectory);
+
+            foreach (string emojiFile in emojiFiles)
+            {
+                emojiImageList.Images.Add(Image.FromFile(emojiFile));
+            }
+
+            listView1.LargeImageList = emojiImageList;
+
+            for (int i = 0; i < emojiImageList.Images.Count; i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.ImageIndex = i; // Sử dụng chỉ số của hình ảnh trong ImageList
+                listView1.Items.Add(item);
+            }
+        }
+        // Hàm này chuyển đổi chỉ số hình ảnh trong ImageList thành ký tự emoji tương ứng
+        private string GetEmojiText(int imageIndex)
+        {
+            // Dựa vào chỉ số hình ảnh trong ImageList, chúng ta sẽ trả về emoji tương ứng
+            switch (imageIndex)
+            {
+                case 4: // Emoji cho trạng thái vui
+                    return "😀"; // Mặt cười với mắt mở cười
+                case 1: // Emoji cho trạng thái buồn
+                    return "😢"; // Mặt cười với nước mắt
+                case 0: // Emoji cho trạng thái tức giận
+                    return "😡"; // Khuôn mặt tức giận
+                case 6: // Emoji cho trạng thái tự hào
+                    return "😎"; // Khuôn mặt tự hào với kính râm
+                case 8: // Emoji cho trạng thái suy nghĩ
+                    return "🤔"; // Khuôn mặt nghĩ
+                case 7: // Emoji cho trạng thái bất ngờ
+                    return "😲"; // Khuôn mặt kinh ngạc
+                case 9: // Emoji cho trạng thái đùa cợt
+                    return "😜"; // Khuôn mặt đùa cợt với ngôn ngữ
+                case 5: // Emoji cho trạng thái khinh bỉ
+                    return "😏"; // Khuôn mặt khinh bỉ
+                case 2: // Emoji cho trạng thái yêu
+                    return "😍"; // Khuôn mặt yêu
+                case 3: // Emoji cho trạng thái sợ hãi
+                    return "😱"; // Khuôn mặt kinh hãi
+                default:
+                    return ""; // Trả về một chuỗi rỗng nếu chỉ số không hợp lệ
+            }
+        }
+
+        private void listView1_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+            // Lấy ra mục đang được chọn trong ListView
+            ListViewItem selectedItem = listView1.GetItemAt(e.X, e.Y);
+
+            // Kiểm tra xem mục đã được chọn hay không
+            if (selectedItem != null)
+            {
+                // Lấy ra chỉ số của hình ảnh trong ImageList
+                int imageIndex = selectedItem.ImageIndex;
+
+                // Kiểm tra xem chỉ số hình ảnh có hợp lệ không
+                if (imageIndex >= 0 && imageIndex < listView1.LargeImageList.Images.Count)
+                {
+                    // Lấy hình ảnh từ ImageList dựa trên chỉ số
+                    Image emojiImage = listView1.LargeImageList.Images[imageIndex];
+
+                    // Hiển thị emoji trong textbox
+                    if (emojiImage != null)
+                    {
+                        // Chèn emoji vào vị trí hiện tại của con trỏ trong textbox
+                        int selectionStart = sendTextBox.SelectionStart;
+                        sendTextBox.Text = sendTextBox.Text.Insert(selectionStart, GetEmojiText(imageIndex));
+                        sendTextBox.SelectionStart = selectionStart + 2; // Di chuyển con trỏ đến phía sau emoji vừa chèn
+                    }
+                }
+            }
         }
     }
 
