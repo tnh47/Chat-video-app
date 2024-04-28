@@ -351,7 +351,6 @@ namespace Chat_video_app.Forms
                 Send(msg, tmp.id);
             }
         }
-
         private void Listener(IPAddress ip, int port)
         {
             TcpListener listener = null;
