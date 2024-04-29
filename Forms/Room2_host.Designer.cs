@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label3;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ShutdownServer = new System.Windows.Forms.Button();
             this.NewServerPortBox = new System.Windows.Forms.TextBox();
             this.CreateNewServerButton = new System.Windows.Forms.Button();
@@ -45,13 +51,21 @@
             this.confirmNameButton = new System.Windows.Forms.Button();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.NameInputBox = new System.Windows.Forms.TextBox();
+            this.clientsDataGridView = new System.Windows.Forms.DataGridView();
+            this.identifier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.clientsDataGridView)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(41, 406);
+            label3.Location = new System.Drawing.Point(17, 32);
             label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(34, 16);
@@ -61,7 +75,7 @@
             // ShutdownServer
             // 
             this.ShutdownServer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ShutdownServer.Location = new System.Drawing.Point(193, 433);
+            this.ShutdownServer.Location = new System.Drawing.Point(206, 56);
             this.ShutdownServer.Margin = new System.Windows.Forms.Padding(4);
             this.ShutdownServer.Name = "ShutdownServer";
             this.ShutdownServer.Size = new System.Drawing.Size(140, 28);
@@ -72,7 +86,7 @@
             // 
             // NewServerPortBox
             // 
-            this.NewServerPortBox.Location = new System.Drawing.Point(83, 403);
+            this.NewServerPortBox.Location = new System.Drawing.Point(73, 26);
             this.NewServerPortBox.Margin = new System.Windows.Forms.Padding(4);
             this.NewServerPortBox.Name = "NewServerPortBox";
             this.NewServerPortBox.Size = new System.Drawing.Size(132, 22);
@@ -81,7 +95,7 @@
             // CreateNewServerButton
             // 
             this.CreateNewServerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CreateNewServerButton.Location = new System.Drawing.Point(33, 433);
+            this.CreateNewServerButton.Location = new System.Drawing.Point(20, 56);
             this.CreateNewServerButton.Margin = new System.Windows.Forms.Padding(4);
             this.CreateNewServerButton.Name = "CreateNewServerButton";
             this.CreateNewServerButton.Size = new System.Drawing.Size(152, 28);
@@ -94,7 +108,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 368);
+            this.label1.Location = new System.Drawing.Point(17, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 17);
@@ -233,16 +247,132 @@
             this.NameInputBox.Size = new System.Drawing.Size(164, 22);
             this.NameInputBox.TabIndex = 22;
             // 
+            // clientsDataGridView
+            // 
+            this.clientsDataGridView.AllowUserToAddRows = false;
+            this.clientsDataGridView.AllowUserToDeleteRows = false;
+            this.clientsDataGridView.AllowUserToResizeColumns = false;
+            this.clientsDataGridView.AllowUserToResizeRows = false;
+            this.clientsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.clientsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.clientsDataGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.clientsDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.clientsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.clientsDataGridView.ColumnHeadersHeight = 24;
+            this.clientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.clientsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.identifier,
+            this.name,
+            this.dc});
+            this.clientsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.clientsDataGridView.EnableHeadersVisualStyles = false;
+            this.clientsDataGridView.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.clientsDataGridView.Location = new System.Drawing.Point(573, 14);
+            this.clientsDataGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.clientsDataGridView.MultiSelect = false;
+            this.clientsDataGridView.Name = "clientsDataGridView";
+            this.clientsDataGridView.ReadOnly = true;
+            this.clientsDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.clientsDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.clientsDataGridView.RowHeadersVisible = false;
+            this.clientsDataGridView.RowHeadersWidth = 40;
+            this.clientsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            this.clientsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            this.clientsDataGridView.RowTemplate.Height = 24;
+            this.clientsDataGridView.RowTemplate.ReadOnly = true;
+            this.clientsDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clientsDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.clientsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.clientsDataGridView.ShowCellErrors = false;
+            this.clientsDataGridView.ShowCellToolTips = false;
+            this.clientsDataGridView.ShowEditingIcon = false;
+            this.clientsDataGridView.ShowRowErrors = false;
+            this.clientsDataGridView.Size = new System.Drawing.Size(468, 542);
+            this.clientsDataGridView.TabIndex = 44;
+            this.clientsDataGridView.TabStop = false;
+            // 
+            // identifier
+            // 
+            this.identifier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.identifier.DefaultCellStyle = dataGridViewCellStyle14;
+            this.identifier.HeaderText = "ID";
+            this.identifier.MaxInputLength = 20;
+            this.identifier.MinimumWidth = 20;
+            this.identifier.Name = "identifier";
+            this.identifier.ReadOnly = true;
+            this.identifier.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.identifier.Width = 75;
+            // 
+            // name
+            // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.name.DefaultCellStyle = dataGridViewCellStyle15;
+            this.name.HeaderText = "Name";
+            this.name.MaxInputLength = 20;
+            this.name.MinimumWidth = 50;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.name.Width = 150;
+            // 
+            // dc
+            // 
+            this.dc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dc.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dc.HeaderText = "OutRoom";
+            this.dc.MinimumWidth = 20;
+            this.dc.Name = "dc";
+            this.dc.ReadOnly = true;
+            this.dc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dc.Text = "Kick";
+            this.dc.UseColumnTextForButtonValue = true;
+            this.dc.Width = 125;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(label3);
+            this.panel1.Controls.Add(this.CreateNewServerButton);
+            this.panel1.Controls.Add(this.ShutdownServer);
+            this.panel1.Controls.Add(this.NewServerPortBox);
+            this.panel1.Location = new System.Drawing.Point(36, 354);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(501, 100);
+            this.panel1.TabIndex = 45;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(36, 357);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(498, 97);
+            this.panel2.TabIndex = 46;
+            // 
             // Room2_host
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 599);
-            this.Controls.Add(this.ShutdownServer);
-            this.Controls.Add(label3);
-            this.Controls.Add(this.NewServerPortBox);
-            this.Controls.Add(this.CreateNewServerButton);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1107, 599);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.clientsDataGridView);
             this.Controls.Add(this.KickButton);
             this.Controls.Add(this.MuteButton);
             this.Controls.Add(this.ClientNameList);
@@ -257,6 +387,9 @@
             this.Controls.Add(this.NameInputBox);
             this.Name = "Room2_host";
             this.Text = "Room2_host";
+            ((System.ComponentModel.ISupportInitialize)(this.clientsDataGridView)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,5 +413,11 @@
         private System.Windows.Forms.Button confirmNameButton;
         private System.Windows.Forms.Label usernameLabel;
         public System.Windows.Forms.TextBox NameInputBox;
+        private System.Windows.Forms.DataGridView clientsDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn identifier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewButtonColumn dc;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

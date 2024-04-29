@@ -1,11 +1,17 @@
-﻿using Chat_video_app.Classes.Voice;
+﻿using Chat_video_app.Classes;
+using Chat_video_app.Classes.Voice;
+using Google.Cloud.Firestore;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Chat_video_app.Forms
 {
     public partial class Room2_host : Form
     {
+        string id;
+        string username;
         public static Room2_host Instance;
         public static string ActiveUsername = null;
 
@@ -15,6 +21,8 @@ namespace Chat_video_app.Forms
             InitializeComponent();
             NameInputBox.Text=username;
             NewServerPortBox.Text = id;
+            this.id = id;
+            this.username= username;
             this.FormClosing += AppClosing;
             ServerList.SelectedIndexChanged += SelectedServerChanged;
             ClientNameList.SelectedIndexChanged += SelectedUserChanged;
@@ -27,6 +35,63 @@ namespace Chat_video_app.Forms
             SetButtonState(CreateNewServerButton, false);
             SetButtonState(RefreshButton, false);
             SetButtonState(ShutdownServer, false);
+            clientsDataGridView.CellClick += new DataGridViewCellEventHandler(clientsDataGridView_CellClick);
+            DisplayMem(id);
+            Check_Role(id);
+        }
+        private void Check_Role(string id)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            if (username == data.Host)
+            {
+                panel1.BringToFront();
+            }
+            else
+            {
+                panel2.BringToFront();
+            }
+        }
+        private void DisplayMem(string id)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            foreach (string i in data.Mem)
+            {
+                if (i==username) continue;
+                DocumentReference docRef2 = db.Collection("UserData").Document(i);
+                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
+                AddGrid("off", data2.Id, data2.Username);
+            }
+        }
+        private void AddGrid(string sta, string id, string name)
+        {
+            string[] row = new string[] { sta, id, name };//fix
+            clientsDataGridView.Rows.Add(row);
+        }
+        private async void clientsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && clientsDataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = clientsDataGridView.Rows[e.RowIndex];
+                string memberName = selectedRow.Cells["Name"].Value.ToString();
+                clientsDataGridView.Rows.Remove(selectedRow);
+                var db = FirestoreHelper.Database;
+                DocumentReference docRef = db.Collection("RoomData").Document(id);
+                RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+                List<string> mem = new List<string>(data.Mem);
+                mem.Remove(memberName);
+                data.Mem = mem.ToArray();
+                await docRef.SetAsync(data);
+                DocumentReference docRef2 = db.Collection("UserData").Document(memberName);
+                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
+                List<string> mem2 = new List<string>(data2.Mem);
+                mem2.Remove(id);
+                data2.Mem = mem2.ToArray();
+                await docRef2.SetAsync(data2);
+            }
         }
         public static void AddUser(string name)
         {
@@ -137,7 +202,7 @@ namespace Chat_video_app.Forms
             var name = GetNewServerName();
             int port = GetNewServerPort();
 
-            bool worked = Net.StartServer(port,name);
+            bool worked = Net.StartServer(port, name);
             if (worked)
             {
                 SetButtonState(CreateNewServerButton, false);
@@ -150,15 +215,29 @@ namespace Chat_video_app.Forms
 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
-            if (!Net.IsClient)
-                Net.StartClient();
-
-            var s = GetSelectedServer();
-            Log("Attempting to connect to " + s);
-            bool worked = Net.ConnectClient(s.EndPoint.Address.ToString(), s.EndPoint.Port);
-            if (worked)
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            foreach (string i in data.Mem)
             {
-                SetButtonState(ConnectButton, false);
+                if (i==username)
+                {
+                    if (!Net.IsClient)
+                        Net.StartClient();
+
+                    var s = GetSelectedServer();
+                    Log("Attempting to connect to " + s);
+                    bool worked = Net.ConnectClient(s.EndPoint.Address.ToString(), s.EndPoint.Port);
+                    if (worked)
+                    {
+                        SetButtonState(ConnectButton, false);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ban chua tham gia phong nay!");
+                }
+
             }
         }
         public static void UponDisconnected()
