@@ -534,5 +534,11 @@ namespace Chat_video_app.Forms
                 }
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Search_mess form = new Search_mess(id, textBox6.Text);
+            form.ShowDialog();
+        }
     }
 }
