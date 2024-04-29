@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -43,7 +44,26 @@ namespace Chat_video_app.Forms
             this.id = id;
             this.username = username;
             sendTextBox.KeyDown += SendTextBox_KeyDown;
-
+            listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(listView1_MouseDoubleClick_1);
+            DisplayMem(id);
+        }
+        private void DisplayMem(string id)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            foreach (string i in data.Mem)
+            {
+                if (i == username) continue;
+                DocumentReference docRef2 = db.Collection("UserData").Document(i);
+                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
+                AddGrid(data2.Id, data2.Username);
+            }
+        }
+        private void AddGrid(string id, string name)
+        {
+            string[] row = new string[] { id, name };//fix
+            clientsDataGridView.Rows.Add(row);
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -432,6 +452,93 @@ namespace Chat_video_app.Forms
                 textBox5.Text = tmp;
             }
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ImageList emojiImageList = new ImageList();
+            emojiImageList.ImageSize = new Size(20, 20);
+
+            string emojiDirectory = "E:\\Project\\Net-programming\\Chat_video_app\\Emoji";
+            string[] emojiFiles = Directory.GetFiles(emojiDirectory);
+
+            foreach (string emojiFile in emojiFiles)
+            {
+                emojiImageList.Images.Add(Image.FromFile(emojiFile));
+            }
+
+            listView1.LargeImageList = emojiImageList;
+
+            for (int i = 0; i < emojiImageList.Images.Count; i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.ImageIndex = i; // Sử dụng chỉ số của hình ảnh trong ImageList
+                listView1.Items.Add(item);
+            }
+        }
+        // Hàm này chuyển đổi chỉ số hình ảnh trong ImageList thành ký tự emoji tương ứng
+        private string GetEmojiText(int imageIndex)
+        {
+            // Dựa vào chỉ số hình ảnh trong ImageList, chúng ta sẽ trả về emoji tương ứng
+            switch (imageIndex)
+            {
+                case 4:
+                    return "😀";
+                case 1:
+                    return "😢";
+                case 0:
+                    return "😡";
+                case 6:
+                    return "😎";
+                case 8:
+                    return "🤔";
+                case 7:
+                    return "😲";
+                case 9:
+                    return "😜";
+                case 5:
+                    return "😏";
+                case 2:
+                    return "😍";
+                case 3:
+                    return "😱";
+                default:
+                    return "";
+            }
+        }
+        private void listView1_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+            // Lấy ra mục đang được chọn trong ListView
+            ListViewItem selectedItem = listView1.GetItemAt(e.X, e.Y);
+
+            // Kiểm tra xem mục đã được chọn hay không
+            if (selectedItem != null)
+            {
+                // Lấy ra chỉ số của hình ảnh trong ImageList
+                int imageIndex = selectedItem.ImageIndex;
+
+                // Kiểm tra xem chỉ số hình ảnh có hợp lệ không
+                if (imageIndex >= 0 && imageIndex < listView1.LargeImageList.Images.Count)
+                {
+                    // Lấy hình ảnh từ ImageList dựa trên chỉ số
+                    Image emojiImage = listView1.LargeImageList.Images[imageIndex];
+
+                    // Hiển thị emoji trong textbox
+                    if (emojiImage != null)
+                    {
+                        // Chèn emoji vào vị trí hiện tại của con trỏ trong textbox
+                        int selectionStart = sendTextBox.SelectionStart;
+                        sendTextBox.Text = sendTextBox.Text.Insert(selectionStart, GetEmojiText(imageIndex));
+                        sendTextBox.SelectionStart = selectionStart + 2; // Di chuyển con trỏ đến phía sau emoji vừa chèn
+                    }
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Search_mess form = new Search_mess(id, textBox6.Text);
+            form.ShowDialog();
         }
     }
 }
