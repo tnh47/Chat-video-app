@@ -36,19 +36,16 @@ namespace Chat_video_app.Forms
             SetButtonState(RefreshButton, false);
             SetButtonState(ShutdownServer, false);
             clientsDataGridView.CellClick += new DataGridViewCellEventHandler(clientsDataGridView_CellClick);
-            DisplayMem(id);
             Check_Role(id);
+            DisplayMem(id);
+            
         }
         private void Check_Role(string id)
         {
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("RoomData").Document(id);
             RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-            if (username == data.Host)
-            {
-                panel1.BringToFront();
-            }
-            else
+            if (username != data.Host)
             {
                 panel2.BringToFront();
             }
