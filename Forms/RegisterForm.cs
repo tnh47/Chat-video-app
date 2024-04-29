@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Chat_video_app.Forms
@@ -44,17 +45,47 @@ namespace Chat_video_app.Forms
         }
         private async void RegisterBtn_Click(object sender, EventArgs e)
         {
+            string email = EmailBox.Text.Trim();
+            string password = PasswordBox.Text.Trim();
+
+            if (password.Length < 6)
+            {
+                MessageBox.Show("Password must be at least 6 characters long!");
+                return;
+            }
+
+            // Kiểm tra định dạng email
+            if (!IsValidEmail(email))
+            {
+                MessageBox.Show("Invalid email format!");
+                return;
+            }
+
             var db = FirestoreHelper.Database;
             if (CheckIfUserAlreadyExist())
             {
-                MessageBox.Show("User Already Exist");
+                MessageBox.Show("User Already Exist!");
                 return;
             }
             var data = GetWriteData();
             DocumentReference docRef = db.Collection("UserData").Document(data.Username);
             await docRef.SetAsync(data);
-            MessageBox.Show("Success");
-            
+            Hide();
+            LoginForm form = new LoginForm();
+            form.ShowDialog();
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
         private UserData GetWriteData()
         {

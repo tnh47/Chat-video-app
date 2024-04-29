@@ -59,12 +59,12 @@ namespace Chat_video_app.Forms
                 if(i==username) continue;
                 DocumentReference docRef2 = db.Collection("UserData").Document(i);
                 UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
-                AddGrid("off",data2.Id, data2.Username);
+                AddGrid(data2.Id, data2.Username);
             }
         }
-        private void AddGrid(string sta,string id,string name)
+        private void AddGrid(string id,string name)
         {
-            string[] row = new string[] { sta,id, name };//fix
+            string[] row = new string[] {id, name };//fix
             clientsDataGridView.Rows.Add(row);
         }
         private async void clientsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
