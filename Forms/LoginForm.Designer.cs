@@ -38,6 +38,7 @@
             this.UsernameBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorMsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -83,7 +84,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.label5.Location = new System.Drawing.Point(171, 38);
+            this.label5.Location = new System.Drawing.Point(162, 21);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 33);
@@ -161,12 +162,24 @@
             this.label1.Text = "Forgot Password?";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // errorMsg
+            // 
+            this.errorMsg.AutoSize = true;
+            this.errorMsg.ForeColor = System.Drawing.Color.Red;
+            this.errorMsg.Location = new System.Drawing.Point(84, 75);
+            this.errorMsg.Name = "errorMsg";
+            this.errorMsg.Size = new System.Drawing.Size(49, 23);
+            this.errorMsg.TabIndex = 35;
+            this.errorMsg.Text = "label";
+            this.errorMsg.Visible = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(427, 596);
+            this.Controls.Add(this.errorMsg);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -199,5 +212,6 @@
         private System.Windows.Forms.TextBox UsernameBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label errorMsg;
     }
 }
