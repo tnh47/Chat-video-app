@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Text.RegularExpressions;
 
@@ -45,7 +46,6 @@ namespace Chat_video_app.Forms
         }
         private async void RegisterBtn_Click(object sender, EventArgs e)
         {
-            errorMsg.Visible = false;
             var db = FirestoreHelper.Database;
             string username = UsernameBox.Text.Trim();
             string email = EmailBox.Text.Trim();
@@ -109,18 +109,13 @@ namespace Chat_video_app.Forms
             // Kiểm tra xem người dùng đã tồn tại chưa
             if (CheckIfUserAlreadyExist())
             {
-                errorMsg.Text = "User already exists.";
-                errorMsg.Visible = true;
-                UsernameBox.Clear();
+                MessageBox.Show("User Already Exist");
                 return;
             }
             var data = GetWriteData();
             DocumentReference docRef = db.Collection("UserData").Document(data.Username);
             await docRef.SetAsync(data);
-            errorMsg.Visible = false;
-            notimsg.Text = "Success! Your account has been created.";
-            notimsg.Visible = true;
-            //MessageBox.Show("Success");
+            MessageBox.Show("Success");
             
         }
         private UserData GetWriteData()

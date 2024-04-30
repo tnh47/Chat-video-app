@@ -1,4 +1,7 @@
-﻿namespace Chat_video_app.Forms
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace Chat_video_app.Forms
 {
     partial class LoginForm
     {
@@ -46,7 +49,7 @@
             this.label7.AutoSize = true;
             this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.label7.Location = new System.Drawing.Point(145, 475);
+            this.label7.Location = new System.Drawing.Point(248, 444);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(132, 23);
@@ -58,19 +61,21 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label6.Location = new System.Drawing.Point(126, 452);
+            this.label6.ForeColor = System.Drawing.Color.DimGray;
+            this.label6.Location = new System.Drawing.Point(47, 444);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(196, 23);
+            this.label6.Size = new System.Drawing.Size(203, 23);
             this.label6.TabIndex = 31;
-            this.label6.Text = "Don\'t Have An Account";
+            this.label6.Text = "Don\'t Have An Account?";
             // 
             // checkBoxShowPass
             // 
             this.checkBoxShowPass.AutoSize = true;
             this.checkBoxShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxShowPass.Location = new System.Drawing.Point(267, 309);
+            this.checkBoxShowPass.ForeColor = System.Drawing.Color.DimGray;
+            this.checkBoxShowPass.Location = new System.Drawing.Point(240, 309);
             this.checkBoxShowPass.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxShowPass.Name = "checkBoxShowPass";
             this.checkBoxShowPass.Size = new System.Drawing.Size(151, 27);
@@ -84,23 +89,23 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.label5.Location = new System.Drawing.Point(162, 21);
+            this.label5.Location = new System.Drawing.Point(171, 38);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 33);
+            this.label5.Size = new System.Drawing.Size(123, 43);
             this.label5.TabIndex = 29;
             this.label5.Text = "Zeem";
             // 
             // LoginBtn
             // 
-            this.LoginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.LoginBtn.BackColor = System.Drawing.Color.Black;
             this.LoginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LoginBtn.FlatAppearance.BorderSize = 0;
             this.LoginBtn.ForeColor = System.Drawing.Color.White;
-            this.LoginBtn.Location = new System.Drawing.Point(63, 355);
+            this.LoginBtn.Location = new System.Drawing.Point(40, 365);
             this.LoginBtn.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.LoginBtn.Name = "LoginBtn";
-            this.LoginBtn.Size = new System.Drawing.Size(305, 72);
+            this.LoginBtn.Size = new System.Drawing.Size(351, 56);
             this.LoginBtn.TabIndex = 28;
             this.LoginBtn.Text = "Login";
             this.LoginBtn.UseVisualStyleBackColor = false;
@@ -110,18 +115,19 @@
             // 
             this.PasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.PasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PasswordBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F);
-            this.PasswordBox.Location = new System.Drawing.Point(63, 260);
+            this.PasswordBox.Font = new System.Drawing.Font("MS UI Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordBox.Location = new System.Drawing.Point(40, 249);
             this.PasswordBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.PasswordBox.Name = "PasswordBox";
-            this.PasswordBox.Size = new System.Drawing.Size(305, 27);
+            this.PasswordBox.Size = new System.Drawing.Size(351, 37);
             this.PasswordBox.TabIndex = 25;
             this.PasswordBox.UseSystemPasswordChar = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 212);
+            this.label2.ForeColor = System.Drawing.Color.DimGray;
+            this.label2.Location = new System.Drawing.Point(36, 211);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 23);
@@ -132,17 +138,18 @@
             // 
             this.UsernameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.UsernameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UsernameBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsernameBox.Location = new System.Drawing.Point(63, 151);
+            this.UsernameBox.Font = new System.Drawing.Font("MS UI Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsernameBox.Location = new System.Drawing.Point(40, 151);
             this.UsernameBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.UsernameBox.Name = "UsernameBox";
-            this.UsernameBox.Size = new System.Drawing.Size(305, 27);
+            this.UsernameBox.Size = new System.Drawing.Size(351, 37);
             this.UsernameBox.TabIndex = 21;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(36, 110);
+            this.label9.ForeColor = System.Drawing.Color.DimGray;
+            this.label9.Location = new System.Drawing.Point(36, 113);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(94, 23);
@@ -154,7 +161,7 @@
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.label1.Location = new System.Drawing.Point(136, 513);
+            this.label1.Location = new System.Drawing.Point(138, 491);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 23);
