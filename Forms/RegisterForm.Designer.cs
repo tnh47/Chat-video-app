@@ -151,9 +151,9 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.label5.Location = new System.Drawing.Point(155, 45);
+            this.label5.Location = new System.Drawing.Point(172, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 44);
+            this.label5.Size = new System.Drawing.Size(96, 33);
             this.label5.TabIndex = 10;
             this.label5.Text = "Zeem";
             // 
@@ -196,7 +196,7 @@
             // 
             this.errorMsg.AutoSize = true;
             this.errorMsg.ForeColor = System.Drawing.Color.Red;
-            this.errorMsg.Location = new System.Drawing.Point(127, 112);
+            this.errorMsg.Location = new System.Drawing.Point(99, 56);
             this.errorMsg.Name = "errorMsg";
             this.errorMsg.Size = new System.Drawing.Size(59, 23);
             this.errorMsg.TabIndex = 14;
@@ -207,7 +207,7 @@
             // 
             this.notimsg.AutoSize = true;
             this.notimsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.notimsg.Location = new System.Drawing.Point(127, 112);
+            this.notimsg.Location = new System.Drawing.Point(99, 56);
             this.notimsg.Name = "notimsg";
             this.notimsg.Size = new System.Drawing.Size(59, 23);
             this.notimsg.TabIndex = 15;
@@ -219,7 +219,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(545, 674);
+            this.ClientSize = new System.Drawing.Size(459, 674);
             this.Controls.Add(this.notimsg);
             this.Controls.Add(this.errorMsg);
             this.Controls.Add(this.label7);

@@ -92,7 +92,7 @@ namespace Chat_video_app.Forms
             this.label5.Location = new System.Drawing.Point(171, 38);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 43);
+            this.label5.Size = new System.Drawing.Size(96, 33);
             this.label5.TabIndex = 29;
             this.label5.Text = "Zeem";
             // 
@@ -173,7 +173,7 @@ namespace Chat_video_app.Forms
             // 
             this.errorMsg.AutoSize = true;
             this.errorMsg.ForeColor = System.Drawing.Color.Red;
-            this.errorMsg.Location = new System.Drawing.Point(84, 75);
+            this.errorMsg.Location = new System.Drawing.Point(81, 72);
             this.errorMsg.Name = "errorMsg";
             this.errorMsg.Size = new System.Drawing.Size(49, 23);
             this.errorMsg.TabIndex = 35;
