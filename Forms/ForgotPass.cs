@@ -46,7 +46,9 @@ namespace Chat_video_app.Forms
             smtp.Credentials = new NetworkCredential("ttn4704@gmail.com", p);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(message);
-            MessageBox.Show("Email has been sent");
+            notmsg.Text = "Email has been sent.";
+            errmsg1.Visible = false;
+            notmsg.Visible = true;
         }
         private void SendCodeBtn_Click(object sender, EventArgs e)
         {
@@ -73,7 +75,8 @@ namespace Chat_video_app.Forms
             }
             else
             {
-                MessageBox.Show("Email does not exist.");
+                errmsg1.Text = "Email does not exist.";
+                errmsg1.Visible = true;
             }
         }
 
@@ -96,7 +99,8 @@ namespace Chat_video_app.Forms
             }
             else
             {
-                MessageBox.Show("Code does not match");
+                errmsg2.Text = "Code does not match.";
+                errmsg2.Visible = true;
             }
         }
     }

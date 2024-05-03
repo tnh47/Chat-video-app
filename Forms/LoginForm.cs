@@ -22,9 +22,15 @@ namespace Chat_video_app.Forms
         }
         private void LoginBtn_Click(object sender, EventArgs e)
         {
+            errorMsg.Visible = false;
             string username = UsernameBox.Text.Trim();
             string password = PasswordBox.Text.Trim();
-
+            if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
+            {
+                errorMsg.Text = "Please enter your username and password.";
+                errorMsg.Visible = true;
+                return;
+            }
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("UserData").Document(username);
             UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
@@ -32,7 +38,7 @@ namespace Chat_video_app.Forms
             {
                 if(password == Security.Decrypt(data.Password))
                 {
-                    MessageBox.Show("Login Success");
+                    //MessageBox.Show("Login Success");
                     Hide();
                     Lobby form = new Lobby(username);
                     form.ShowDialog();
@@ -40,12 +46,14 @@ namespace Chat_video_app.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Login Failed");
+                    errorMsg.Text = "Incorrect Username or Password.";
+                    errorMsg.Visible = true;
                 }
             }
             else
             {
-                MessageBox.Show("Login Failed");
+                errorMsg.Text = "Incorrect Username or Password.";
+                errorMsg.Visible = true;
             }
         }
 

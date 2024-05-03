@@ -36,6 +36,8 @@
             this.PasswordBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.checkBoxShowPass = new System.Windows.Forms.CheckBox();
+            this.errmsg = new System.Windows.Forms.Label();
+            this.notimsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label7
@@ -57,7 +59,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.label5.Location = new System.Drawing.Point(277, 57);
+            this.label5.Location = new System.Drawing.Point(279, 36);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 33);
@@ -84,7 +86,7 @@
             this.ConfirmPasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.ConfirmPasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ConfirmPasswordBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F);
-            this.ConfirmPasswordBox.Location = new System.Drawing.Point(196, 232);
+            this.ConfirmPasswordBox.Location = new System.Drawing.Point(216, 232);
             this.ConfirmPasswordBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.ConfirmPasswordBox.Name = "ConfirmPasswordBox";
             this.ConfirmPasswordBox.Size = new System.Drawing.Size(369, 27);
@@ -108,7 +110,7 @@
             this.PasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.PasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PasswordBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordBox.Location = new System.Drawing.Point(196, 135);
+            this.PasswordBox.Location = new System.Drawing.Point(216, 135);
             this.PasswordBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.PasswordBox.Name = "PasswordBox";
             this.PasswordBox.Size = new System.Drawing.Size(369, 27);
@@ -143,12 +145,40 @@
             this.checkBoxShowPass.UseVisualStyleBackColor = true;
             this.checkBoxShowPass.CheckedChanged += new System.EventHandler(this.checkBoxShowPass_CheckedChanged);
             // 
+            // errmsg
+            // 
+            this.errmsg.AutoSize = true;
+            this.errmsg.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errmsg.ForeColor = System.Drawing.Color.Red;
+            this.errmsg.Location = new System.Drawing.Point(167, 85);
+            this.errmsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.errmsg.Name = "errmsg";
+            this.errmsg.Size = new System.Drawing.Size(49, 23);
+            this.errmsg.TabIndex = 59;
+            this.errmsg.Text = "label";
+            this.errmsg.Visible = false;
+            // 
+            // notimsg
+            // 
+            this.notimsg.AutoSize = true;
+            this.notimsg.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notimsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.notimsg.Location = new System.Drawing.Point(167, 189);
+            this.notimsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.notimsg.Name = "notimsg";
+            this.notimsg.Size = new System.Drawing.Size(49, 23);
+            this.notimsg.TabIndex = 60;
+            this.notimsg.Text = "label";
+            this.notimsg.Visible = false;
+            // 
             // ResetPass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(661, 466);
+            this.Controls.Add(this.notimsg);
+            this.Controls.Add(this.errmsg);
             this.Controls.Add(this.checkBoxShowPass);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -174,5 +204,7 @@
         private System.Windows.Forms.TextBox PasswordBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox checkBoxShowPass;
+        private System.Windows.Forms.Label errmsg;
+        private System.Windows.Forms.Label notimsg;
     }
 }

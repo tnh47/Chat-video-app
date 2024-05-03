@@ -35,11 +35,28 @@ namespace Chat_video_app.Forms
                 await docRef.SetAsync(data);
                 PasswordBox.Clear();
                 ConfirmPasswordBox.Clear();
-                MessageBox.Show("Changed Password Successful!!!");
+                notimsg.Text = "Changed Password Successful!!!";
+                errmsg.Visible = false;
+                notimsg.Visible = true;
+                label9.Visible = false;
+                label2.Visible = false;
+                PasswordBox.Visible = false;
+                ConfirmPasswordBox.Visible = false;
+                VerifyBtn.Visible = false;
+                checkBoxShowPass.Visible = false;
             }
             else
             {
-                MessageBox.Show("Lỗi!");
+                if (checkPassword.Length < 8)
+                {
+                    errmsg.Text = "Password must be at least 8 characters long.";
+                    errmsg.Visible = true;
+                }
+                else
+                {
+                    errmsg.Text = "Passwords do not match.";
+                    errmsg.Visible = true;
+                }
             }
         }
 

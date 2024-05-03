@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Text.RegularExpressions;
 
 namespace Chat_video_app.Forms
 {
@@ -45,47 +46,77 @@ namespace Chat_video_app.Forms
         }
         private async void RegisterBtn_Click(object sender, EventArgs e)
         {
+            var db = FirestoreHelper.Database;
+            string username = UsernameBox.Text.Trim();
             string email = EmailBox.Text.Trim();
             string password = PasswordBox.Text.Trim();
+            string confirmPassword = ConfirmPasswordBox.Text.Trim();
 
-            if (password.Length < 6)
+            // Kiểm tra nếu một trong các ô trống
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
-                MessageBox.Show("Password must be at least 6 characters long!");
+                errorMsg.Text = "Please fill in all fields.";
+                errorMsg.Visible = true;
                 return;
             }
 
-            // Kiểm tra định dạng email
+            // Kiểm tra tính hợp lệ của email
             if (!IsValidEmail(email))
             {
-                MessageBox.Show("Invalid email format!");
+                errorMsg.Text = "Invalid email address.";
+                errorMsg.Visible = true;
+                EmailBox.Clear();
                 return;
             }
 
-            var db = FirestoreHelper.Database;
+            // Kiểm tra tính hợp lệ của username
+            string regexPattern = @"^[a-z0-9]{5,}$";
+
+            if (!Regex.IsMatch(username, regexPattern))
+            {
+                errorMsg.Text = "Username must have at least 5 letters and\ncan only contain lowercase letters and numbers.";
+                errorMsg.Visible = true;
+                UsernameBox.Clear(); // Xóa nội dung của TextBox username
+                return;
+
+            }
+
+            // Kiểm tra tính hợp lệ của password
+            if (password.Length < 8)
+            {
+                errorMsg.Text = "Password must be at least 8 characters long.";
+                errorMsg.Visible = true;
+                PasswordBox.Clear();
+                ConfirmPasswordBox.Clear();
+                return;
+            }
+
+            // Kiểm tra xác nhận mật khẩu
+            if (password != confirmPassword)
+            {
+                errorMsg.Text = "Passwords do not match.";
+                errorMsg.Visible = true;
+                ConfirmPasswordBox.Clear();
+                return;
+            }
+            if (CheckIfEmailAlreadyExist())
+            {
+                errorMsg.Text = "Email already exists.";
+                errorMsg.Visible = true;
+                EmailBox.Clear();
+                return;
+            }
+            // Kiểm tra xem người dùng đã tồn tại chưa
             if (CheckIfUserAlreadyExist())
             {
-                MessageBox.Show("User Already Exist!");
+                MessageBox.Show("User Already Exist");
                 return;
             }
             var data = GetWriteData();
             DocumentReference docRef = db.Collection("UserData").Document(data.Username);
             await docRef.SetAsync(data);
-            Hide();
-            LoginForm form = new LoginForm();
-            form.ShowDialog();
-        }
-
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
+            MessageBox.Show("Success");
+            
         }
         private UserData GetWriteData()
         {
@@ -108,6 +139,18 @@ namespace Chat_video_app.Forms
                 Host=host.ToArray(),
             };
         }
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private bool CheckIfUserAlreadyExist()
         {
             string username = UsernameBox.Text.Trim();
@@ -119,6 +162,25 @@ namespace Chat_video_app.Forms
             {
                 return true;
             }
+            return false;
+        }
+        private bool CheckIfEmailAlreadyExist()
+        {
+            string email = EmailBox.Text.Trim();
+
+            var db = FirestoreHelper.Database;
+            var query = db.Collection("UserData").WhereEqualTo("Email", email);
+            QuerySnapshot querySnapshot = query.GetSnapshotAsync().Result;
+
+            // Nếu có bất kỳ tài khoản nào sử dụng địa chỉ email này, trả về true
+            foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+            {
+                if (documentSnapshot.Exists)
+                {
+                    return true;
+                }
+            }
+
             return false;
         }
 
