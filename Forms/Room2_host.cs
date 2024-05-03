@@ -42,25 +42,83 @@ namespace Chat_video_app.Forms
         }
         private void Check_Role(string id)
         {
+            panel1.Hide();
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("RoomData").Document(id);
-            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-            if (username != data.Host)
+            var roomSnapshot = docRef.GetSnapshotAsync().Result;
+
+            if (roomSnapshot.Exists)
             {
-                panel2.BringToFront();
+                RoomData data = roomSnapshot.ConvertTo<RoomData>();
+
+                foreach (string i in data.Mem)
+                {
+                    if (i != username) continue;
+                    DocumentReference docRef2 = db.Collection("UserData").Document(i);
+                    var userSnapshot = docRef2.GetSnapshotAsync().Result;
+
+                    if (userSnapshot.Exists)
+                    {
+                        UserData data2 = userSnapshot.ConvertTo<UserData>();
+                        if (data2.Id == data.Host)
+                        {
+                            panel1.Show();
+                        }
+                        // Add else condition to handle case where user exists but not the host
+                        else
+                        {
+                            MessageBox.Show("You are not the host of this room");
+                        }
+                    }
+                    else
+                    {
+                        // Handle case where UserData does not exist
+                        MessageBox.Show("User does not exist");
+                        return; // Exit the method if user does not exist
+                    }
+                }
+            }
+            else
+            {
+                // Handle case where RoomData does not exist
+                MessageBox.Show("Room does not exist");
+                // You might want to return or take appropriate action here
             }
         }
+
+
+
         private void DisplayMem(string id)
         {
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("RoomData").Document(id);
-            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-            foreach (string i in data.Mem)
+            var roomSnapshot = docRef.GetSnapshotAsync().Result;
+
+            if (roomSnapshot.Exists)
             {
-                if (i==username) continue;
-                DocumentReference docRef2 = db.Collection("UserData").Document(i);
-                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
-                AddGrid("off", data2.Id, data2.Username);
+                RoomData data = roomSnapshot.ConvertTo<RoomData>();
+
+                foreach (string i in data.Mem)
+                {
+                    if (i == username) continue;
+
+                    DocumentReference docRef2 = db.Collection("UserData").Document(i);
+                    var userSnapshot = docRef2.GetSnapshotAsync().Result;
+
+                    if (userSnapshot.Exists)
+                    {
+                        UserData data2 = userSnapshot.ConvertTo<UserData>();
+                        AddGrid("off", data2.Id, data2.Username);
+                    }
+                    else
+                    {
+                        // Handle case where UserData does not exist
+                    }
+                }
+            }
+            else
+            {
+                // Handle case where RoomData does not exist
             }
         }
         private void AddGrid(string sta, string id, string name)
