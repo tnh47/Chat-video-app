@@ -29,7 +29,6 @@ namespace Chat_video_app.Forms
             SetStatus("Disconnected");
 
             SetButtonState(MuteButton, false);
-            SetButtonState(KickButton, false);
             SetButtonState(DisconnectButton, false);
             SetButtonState(ConnectButton, false);
             SetButtonState(CreateNewServerButton, false);
@@ -43,6 +42,7 @@ namespace Chat_video_app.Forms
         private void Check_Role(string id)
         {
             panel1.Hide();
+            panel2.Hide();
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("RoomData").Document(id);
             var roomSnapshot = docRef.GetSnapshotAsync().Result;
@@ -62,12 +62,14 @@ namespace Chat_video_app.Forms
                         UserData data2 = userSnapshot.ConvertTo<UserData>();
                         if (data2.Id == data.Host)
                         {
+                            AddGrid(data2.Id, data2.Username);
                             panel1.Show();
                         }
                         // Add else condition to handle case where user exists but not the host
                         else
                         {
-                            MessageBox.Show("You are not the host of this room");
+                            AddGrid(data2.Id, data2.Username);
+                            panel2.Show();
                         }
                     }
                     else
@@ -82,13 +84,31 @@ namespace Chat_video_app.Forms
             {
                 // Handle case where RoomData does not exist
                 MessageBox.Show("Room does not exist");
+                return;
                 // You might want to return or take appropriate action here
             }
         }
 
 
-
         private void DisplayMem(string id)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            foreach (string i in data.Mem)
+            {
+                if (i==username) continue;
+                DocumentReference docRef2 = db.Collection("UserData").Document(i);
+                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
+                AddGrid(data2.Id, data2.Username);
+            }
+        }
+        private void AddGrid(string id, string name)
+        {
+            string[] row = new string[] {id, name };//fix
+            clientsDataGridView.Rows.Add(row);
+        }
+        private async void clientsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("RoomData").Document(id);
@@ -100,52 +120,50 @@ namespace Chat_video_app.Forms
 
                 foreach (string i in data.Mem)
                 {
-                    if (i == username) continue;
-
+                    if (i != username) continue;
                     DocumentReference docRef2 = db.Collection("UserData").Document(i);
                     var userSnapshot = docRef2.GetSnapshotAsync().Result;
 
                     if (userSnapshot.Exists)
                     {
                         UserData data2 = userSnapshot.ConvertTo<UserData>();
-                        AddGrid("off", data2.Id, data2.Username);
+                        if (data2.Id == data.Host)
+                        {
+                            if (e.ColumnIndex >= 0 && clientsDataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+                            {
+                                DataGridViewRow selectedRow = clientsDataGridView.Rows[e.RowIndex];
+                                string memberName = selectedRow.Cells["Name"].Value.ToString();
+                                clientsDataGridView.Rows.Remove(selectedRow);
+                                List<string> mem = new List<string>(data.Mem);
+                                mem.Remove(memberName);
+                                data.Mem = mem.ToArray();
+                                await docRef.SetAsync(data);
+                                List<string> mem2 = new List<string>(data2.Mem);
+                                mem2.Remove(id);
+                                data2.Mem = mem2.ToArray();
+                                await docRef2.SetAsync(data2);
+                            }
+                        }
+                        // Add else condition to handle case where user exists but not the host
+                        else
+                        {
+                            MessageBox.Show("You are not the host!");
+                        }
                     }
                     else
                     {
                         // Handle case where UserData does not exist
+                        MessageBox.Show("User does not exist");
+                        return; // Exit the method if user does not exist
                     }
                 }
             }
             else
             {
                 // Handle case where RoomData does not exist
-            }
-        }
-        private void AddGrid(string sta, string id, string name)
-        {
-            string[] row = new string[] { sta, id, name };//fix
-            clientsDataGridView.Rows.Add(row);
-        }
-        private async void clientsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex >= 0 && clientsDataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = clientsDataGridView.Rows[e.RowIndex];
-                string memberName = selectedRow.Cells["Name"].Value.ToString();
-                clientsDataGridView.Rows.Remove(selectedRow);
-                var db = FirestoreHelper.Database;
-                DocumentReference docRef = db.Collection("RoomData").Document(id);
-                RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-                List<string> mem = new List<string>(data.Mem);
-                mem.Remove(memberName);
-                data.Mem = mem.ToArray();
-                await docRef.SetAsync(data);
-                DocumentReference docRef2 = db.Collection("UserData").Document(memberName);
-                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
-                List<string> mem2 = new List<string>(data2.Mem);
-                mem2.Remove(id);
-                data2.Mem = mem2.ToArray();
-                await docRef2.SetAsync(data2);
+                MessageBox.Show("Room does not exist");
+                return;
+                // You might want to return or take appropriate action here
             }
         }
         public static void AddUser(string name)
@@ -314,7 +332,6 @@ namespace Chat_video_app.Forms
         public static void UponServerStop()
         {
             Instance.SetButtonState(Instance.MuteButton, false);
-            Instance.SetButtonState(Instance.KickButton, false);
         }
 
         private void ShutdownServer_Click(object sender, EventArgs e)
@@ -397,13 +414,11 @@ namespace Chat_video_app.Forms
             {
                 if (selected == ActiveUsername)
                 {
-                    SetButtonState(KickButton, false);
                     SetButtonState(MuteButton, true);
                     MuteButton.Text = "Mute Person";
                 }
                 else
                 {
-                    SetButtonState(KickButton, true);
                     SetButtonState(MuteButton, true);
 
                     bool muted = Net.Server.IsMuted(selected);
@@ -412,7 +427,6 @@ namespace Chat_video_app.Forms
             }
             else
             {
-                SetButtonState(KickButton, false);
                 SetButtonState(MuteButton, false);
                 MuteButton.Text = "Mute Person";
             }

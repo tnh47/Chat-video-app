@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label3;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ShutdownServer = new System.Windows.Forms.Button();
             this.NewServerPortBox = new System.Windows.Forms.TextBox();
             this.CreateNewServerButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.KickButton = new System.Windows.Forms.Button();
             this.MuteButton = new System.Windows.Forms.Button();
             this.ClientNameList = new System.Windows.Forms.ListBox();
             this.DisconnectButton = new System.Windows.Forms.Button();
@@ -56,9 +55,11 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dc = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientsDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -114,20 +115,9 @@
             this.label1.TabIndex = 37;
             this.label1.Text = "Host Server";
             // 
-            // KickButton
-            // 
-            this.KickButton.Location = new System.Drawing.Point(392, 521);
-            this.KickButton.Margin = new System.Windows.Forms.Padding(4);
-            this.KickButton.Name = "KickButton";
-            this.KickButton.Size = new System.Drawing.Size(147, 28);
-            this.KickButton.TabIndex = 34;
-            this.KickButton.Text = "Kick Person";
-            this.KickButton.UseVisualStyleBackColor = true;
-            this.KickButton.Click += new System.EventHandler(this.KickButton_Click);
-            // 
             // MuteButton
             // 
-            this.MuteButton.Location = new System.Drawing.Point(392, 485);
+            this.MuteButton.Location = new System.Drawing.Point(405, 391);
             this.MuteButton.Margin = new System.Windows.Forms.Padding(4);
             this.MuteButton.Name = "MuteButton";
             this.MuteButton.Size = new System.Drawing.Size(147, 28);
@@ -140,7 +130,7 @@
             // 
             this.ClientNameList.FormattingEnabled = true;
             this.ClientNameList.ItemHeight = 16;
-            this.ClientNameList.Location = new System.Drawing.Point(33, 485);
+            this.ClientNameList.Location = new System.Drawing.Point(33, 366);
             this.ClientNameList.Margin = new System.Windows.Forms.Padding(4);
             this.ClientNameList.Name = "ClientNameList";
             this.ClientNameList.Size = new System.Drawing.Size(349, 100);
@@ -151,7 +141,7 @@
             // 
             this.DisconnectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.DisconnectButton.Enabled = false;
-            this.DisconnectButton.Location = new System.Drawing.Point(141, 293);
+            this.DisconnectButton.Location = new System.Drawing.Point(146, 142);
             this.DisconnectButton.Margin = new System.Windows.Forms.Padding(4);
             this.DisconnectButton.Name = "DisconnectButton";
             this.DisconnectButton.Size = new System.Drawing.Size(100, 28);
@@ -163,7 +153,7 @@
             // ConnectButton
             // 
             this.ConnectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ConnectButton.Location = new System.Drawing.Point(33, 293);
+            this.ConnectButton.Location = new System.Drawing.Point(29, 142);
             this.ConnectButton.Margin = new System.Windows.Forms.Padding(4);
             this.ConnectButton.Name = "ConnectButton";
             this.ConnectButton.Size = new System.Drawing.Size(100, 28);
@@ -186,10 +176,10 @@
             // 
             // RefreshButton
             // 
-            this.RefreshButton.Location = new System.Drawing.Point(438, 117);
+            this.RefreshButton.Location = new System.Drawing.Point(388, 16);
             this.RefreshButton.Margin = new System.Windows.Forms.Padding(4);
             this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(100, 27);
+            this.RefreshButton.Size = new System.Drawing.Size(76, 27);
             this.RefreshButton.TabIndex = 28;
             this.RefreshButton.Text = "Refresh";
             this.RefreshButton.UseVisualStyleBackColor = true;
@@ -198,7 +188,7 @@
             // serversFoundLabel
             // 
             this.serversFoundLabel.AutoSize = true;
-            this.serversFoundLabel.Location = new System.Drawing.Point(33, 129);
+            this.serversFoundLabel.Location = new System.Drawing.Point(13, 4);
             this.serversFoundLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.serversFoundLabel.Name = "serversFoundLabel";
             this.serversFoundLabel.Size = new System.Drawing.Size(98, 16);
@@ -209,11 +199,11 @@
             // 
             this.ServerList.FormattingEnabled = true;
             this.ServerList.ItemHeight = 16;
-            this.ServerList.Location = new System.Drawing.Point(33, 153);
+            this.ServerList.Location = new System.Drawing.Point(16, 51);
             this.ServerList.Margin = new System.Windows.Forms.Padding(4);
             this.ServerList.Name = "ServerList";
             this.ServerList.ScrollAlwaysVisible = true;
-            this.ServerList.Size = new System.Drawing.Size(504, 132);
+            this.ServerList.Size = new System.Drawing.Size(469, 84);
             this.ServerList.TabIndex = 25;
             // 
             // confirmNameButton
@@ -256,14 +246,14 @@
             this.clientsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.clientsDataGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.clientsDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.clientsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.clientsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.clientsDataGridView.ColumnHeadersHeight = 24;
             this.clientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.clientsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -279,19 +269,19 @@
             this.clientsDataGridView.Name = "clientsDataGridView";
             this.clientsDataGridView.ReadOnly = true;
             this.clientsDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle41.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.clientsDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.clientsDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.clientsDataGridView.RowHeadersVisible = false;
             this.clientsDataGridView.RowHeadersWidth = 40;
             this.clientsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.Black;
-            this.clientsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.clientsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.clientsDataGridView.RowTemplate.Height = 24;
             this.clientsDataGridView.RowTemplate.ReadOnly = true;
             this.clientsDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -301,15 +291,15 @@
             this.clientsDataGridView.ShowCellToolTips = false;
             this.clientsDataGridView.ShowEditingIcon = false;
             this.clientsDataGridView.ShowRowErrors = false;
-            this.clientsDataGridView.Size = new System.Drawing.Size(468, 542);
+            this.clientsDataGridView.Size = new System.Drawing.Size(468, 464);
             this.clientsDataGridView.TabIndex = 44;
             this.clientsDataGridView.TabStop = false;
             // 
             // identifier
             // 
             this.identifier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.identifier.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.identifier.DefaultCellStyle = dataGridViewCellStyle2;
             this.identifier.HeaderText = "ID";
             this.identifier.MaxInputLength = 20;
             this.identifier.MinimumWidth = 20;
@@ -320,8 +310,8 @@
             // 
             // name
             // 
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.name.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.name.DefaultCellStyle = dataGridViewCellStyle3;
             this.name.HeaderText = "Name";
             this.name.MaxInputLength = 20;
             this.name.MinimumWidth = 50;
@@ -333,9 +323,9 @@
             // dc
             // 
             this.dc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dc.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dc.DefaultCellStyle = dataGridViewCellStyle4;
             this.dc.HeaderText = "OutRoom";
             this.dc.MinimumWidth = 20;
             this.dc.Name = "dc";
@@ -352,27 +342,34 @@
             this.panel1.Controls.Add(this.CreateNewServerButton);
             this.panel1.Controls.Add(this.ShutdownServer);
             this.panel1.Controls.Add(this.NewServerPortBox);
-            this.panel1.Location = new System.Drawing.Point(38, 355);
+            this.panel1.Location = new System.Drawing.Point(33, 156);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(501, 100);
+            this.panel1.Size = new System.Drawing.Size(500, 176);
             this.panel1.TabIndex = 45;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.serversFoundLabel);
+            this.panel2.Controls.Add(this.ServerList);
+            this.panel2.Controls.Add(this.RefreshButton);
+            this.panel2.Controls.Add(this.ConnectButton);
+            this.panel2.Controls.Add(this.DisconnectButton);
+            this.panel2.Location = new System.Drawing.Point(33, 156);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(500, 176);
+            this.panel2.TabIndex = 46;
             // 
             // Room2_host
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1107, 599);
+            this.ClientSize = new System.Drawing.Size(1107, 507);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.clientsDataGridView);
-            this.Controls.Add(this.KickButton);
             this.Controls.Add(this.MuteButton);
             this.Controls.Add(this.ClientNameList);
-            this.Controls.Add(this.DisconnectButton);
-            this.Controls.Add(this.ConnectButton);
             this.Controls.Add(this.StatusLabel);
-            this.Controls.Add(this.RefreshButton);
-            this.Controls.Add(this.serversFoundLabel);
-            this.Controls.Add(this.ServerList);
             this.Controls.Add(this.confirmNameButton);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.NameInputBox);
@@ -381,6 +378,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.clientsDataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,7 +391,6 @@
         public System.Windows.Forms.TextBox NewServerPortBox;
         public System.Windows.Forms.Button CreateNewServerButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button KickButton;
         public System.Windows.Forms.Button MuteButton;
         public System.Windows.Forms.ListBox ClientNameList;
         public System.Windows.Forms.Button DisconnectButton;
@@ -409,5 +407,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewButtonColumn dc;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
