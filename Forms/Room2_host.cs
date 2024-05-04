@@ -74,7 +74,7 @@ namespace Chat_video_app.Forms
                     else
                     {
                         // Handle case where UserData does not exist
-                        MessageBox.Show("User does not exist");
+                        MessageBox.Show("User does not exist!");
                         return; // Exit the method if user does not exist
                     }
                 }
@@ -82,9 +82,22 @@ namespace Chat_video_app.Forms
             else
             {
                 // Handle case where RoomData does not exist
-                MessageBox.Show("Room does not exist");
+                MessageBox.Show("Room does not exist!");
                 return;
                 // You might want to return or take appropriate action here
+            }
+        }
+        private void DisplayMem(string id)
+        {
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("RoomData").Document(id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            foreach (string i in data.Mem)
+            {
+                if (i==username) continue;
+                DocumentReference docRef2 = db.Collection("UserData").Document(i);
+                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
+                AddGrid(data2.Id, data2.Username);
             }
         }
 
@@ -138,7 +151,7 @@ namespace Chat_video_app.Forms
                     else
                     {
                         // Handle case where UserData does not exist
-                        MessageBox.Show("User does not exist");
+                        MessageBox.Show("User does not exist!");
                         return; // Exit the method if user does not exist
                     }
                 }
@@ -146,7 +159,7 @@ namespace Chat_video_app.Forms
             else
             {
                 // Handle case where RoomData does not exist
-                MessageBox.Show("Room does not exist");
+                MessageBox.Show("Room does not exist!");
                 return;
                 // You might want to return or take appropriate action here
             }
