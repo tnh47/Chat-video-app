@@ -36,6 +36,7 @@ namespace Chat_video_app.Forms
             SetButtonState(ShutdownServer, false);
             clientsDataGridView.CellClick += new DataGridViewCellEventHandler(clientsDataGridView_CellClick);
             Check_Role(id);
+            DisplayMem(id);
             
         }
         private void Check_Role(string id)
@@ -61,13 +62,11 @@ namespace Chat_video_app.Forms
                         UserData data2 = userSnapshot.ConvertTo<UserData>();
                         if (data2.Id == data.Host)
                         {
-                            AddGrid(data2.Id, data2.Username);
                             panel1.Show();
                         }
                         // Add else condition to handle case where user exists but not the host
                         else
                         {
-                            AddGrid(data2.Id, data2.Username);
                             panel2.Show();
                         }
                     }
