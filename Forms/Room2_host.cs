@@ -36,7 +36,6 @@ namespace Chat_video_app.Forms
             SetButtonState(ShutdownServer, false);
             clientsDataGridView.CellClick += new DataGridViewCellEventHandler(clientsDataGridView_CellClick);
             Check_Role(id);
-            DisplayMem(id);
             
         }
         private void Check_Role(string id)
@@ -89,20 +88,6 @@ namespace Chat_video_app.Forms
             }
         }
 
-
-        private void DisplayMem(string id)
-        {
-            var db = FirestoreHelper.Database;
-            DocumentReference docRef = db.Collection("RoomData").Document(id);
-            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-            foreach (string i in data.Mem)
-            {
-                if (i==username) continue;
-                DocumentReference docRef2 = db.Collection("UserData").Document(i);
-                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
-                AddGrid(data2.Id, data2.Username);
-            }
-        }
         private void AddGrid(string id, string name)
         {
             string[] row = new string[] {id, name };//fix
