@@ -54,7 +54,7 @@ namespace Chat_video_app.Forms
             RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
             foreach (string i in data.Mem)
             {
-                if (i == username) continue;
+                if (i == data.Mem[0]) continue;
                 DocumentReference docRef2 = db.Collection("UserData").Document(i);
                 UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
                 AddGrid(data2.Id, data2.Username);

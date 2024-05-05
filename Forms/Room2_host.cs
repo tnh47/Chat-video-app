@@ -35,58 +35,28 @@ namespace Chat_video_app.Forms
             SetButtonState(CreateNewServerButton, false);
             SetButtonState(RefreshButton, false);
             SetButtonState(ShutdownServer, false);
-            clientsDataGridView.CellClick += new DataGridViewCellEventHandler(clientsDataGridView_CellClick);
             Check_Role(id);
             DisplayMem(id);
             
         }
-        private void Check_Role(string id)
+        private void Check_Role(string Id)
         {
-            panel1.Hide();
-            panel2.Hide();
             var db = FirestoreHelper.Database;
-            DocumentReference docRef = db.Collection("RoomData").Document(id);
-            var roomSnapshot = docRef.GetSnapshotAsync().Result;
-
-            if (roomSnapshot.Exists)
-            {
-                RoomData data = roomSnapshot.ConvertTo<RoomData>();
-
-                foreach (string i in data.Mem)
-                {
-                    if (i != username) continue;
-                    DocumentReference docRef2 = db.Collection("UserData").Document(i);
-                    var userSnapshot = docRef2.GetSnapshotAsync().Result;
-
-                    if (userSnapshot.Exists)
-                    {
-                        UserData data2 = userSnapshot.ConvertTo<UserData>();
-                        if (data2.Id == data.Host)
-                        {
-                            panel1.Show();
-                        }
-                        // Add else condition to handle case where user exists but not the host
-                        else
-                        {
-                            panel2.Show();
-                        }
-                    }
-                    else
-                    {
-                        // Handle case where UserData does not exist
-                        MessageBox.Show("User does not exist!");
-                        return; // Exit the method if user does not exist
-                    }
-                }
+            DocumentReference docRef = db.Collection("RoomData").Document(Id);
+            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+            if (username == data.Mem[0]) { 
+                panel1.Show();
+                panel2.Hide();
+                panel3.Hide();
             }
             else
             {
-                // Handle case where RoomData does not exist
-                MessageBox.Show("Room does not exist!");
-                return;
-                // You might want to return or take appropriate action here
+                panel1.Hide();
+                panel2.Show();
+                panel3.Show();
             }
         }
+                    
         private void DisplayMem(string id)
         {
             var db = FirestoreHelper.Database;
@@ -94,7 +64,7 @@ namespace Chat_video_app.Forms
             RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
             foreach (string i in data.Mem)
             {
-                if (i==username) continue;
+                if (i == data.Mem[0]) continue;
                 DocumentReference docRef2 = db.Collection("UserData").Document(i);
                 UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
                 AddGrid(data2.Id, data2.Username);
@@ -106,62 +76,34 @@ namespace Chat_video_app.Forms
             string[] row = new string[] {id, name };//fix
             clientsDataGridView.Rows.Add(row);
         }
-        private async void clientsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void clientsDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var db = FirestoreHelper.Database;
-            DocumentReference docRef = db.Collection("RoomData").Document(id);
-            var roomSnapshot = docRef.GetSnapshotAsync().Result;
-
-            if (roomSnapshot.Exists)
+            string name = GetSelectedUser();
+            if (!string.IsNullOrWhiteSpace(name))
             {
-                RoomData data = roomSnapshot.ConvertTo<RoomData>();
-
-                foreach (string i in data.Mem)
+                if (Net.IsServer)
                 {
-                    if (i != username) continue;
-                    DocumentReference docRef2 = db.Collection("UserData").Document(i);
-                    var userSnapshot = docRef2.GetSnapshotAsync().Result;
-
-                    if (userSnapshot.Exists)
-                    {
-                        UserData data2 = userSnapshot.ConvertTo<UserData>();
-                        if (data2.Id == data.Host)
-                        {
-                            if (e.ColumnIndex >= 0 && clientsDataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-                            {
-                                DataGridViewRow selectedRow = clientsDataGridView.Rows[e.RowIndex];
-                                string memberName = selectedRow.Cells["Name"].Value.ToString();
-                                clientsDataGridView.Rows.Remove(selectedRow);
-                                List<string> mem = new List<string>(data.Mem);
-                                mem.Remove(memberName);
-                                data.Mem = mem.ToArray();
-                                await docRef.SetAsync(data);
-                                List<string> mem2 = new List<string>(data2.Mem);
-                                mem2.Remove(id);
-                                data2.Mem = mem2.ToArray();
-                                await docRef2.SetAsync(data2);
-                            }
-                        }
-                        // Add else condition to handle case where user exists but not the host
-                        else
-                        {
-                            MessageBox.Show("You are not the host!");
-                        }
-                    }
-                    else
-                    {
-                        // Handle case where UserData does not exist
-                        MessageBox.Show("User does not exist!");
-                        return; // Exit the method if user does not exist
-                    }
+                    Net.Server.Kick(name);
                 }
             }
-            else
+            if (e.ColumnIndex >= 0 && clientsDataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                // Handle case where RoomData does not exist
-                MessageBox.Show("Room does not exist!");
-                return;
-                // You might want to return or take appropriate action here
+                DataGridViewRow selectedRow = clientsDataGridView.Rows[e.RowIndex];
+                string memberName = selectedRow.Cells["Name"].Value.ToString();
+                clientsDataGridView.Rows.Remove(selectedRow);
+                var db = FirestoreHelper.Database;
+                DocumentReference docRef = db.Collection("RoomData").Document(id);
+                RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
+                List<string> mem = new List<string>(data.Mem);
+                mem.Remove(memberName);
+                data.Mem = mem.ToArray();
+                await docRef.SetAsync(data);
+                DocumentReference docRef2 = db.Collection("UserData").Document(memberName);
+                UserData data2 = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
+                List<string> mem2 = new List<string>(data2.Mem);
+                mem2.Remove(id);
+                data2.Mem = mem2.ToArray();
+                await docRef2.SetAsync(data2);
             }
         }
         public static void AddUser(string name)
@@ -368,18 +310,6 @@ namespace Chat_video_app.Forms
             if (!Net.IsServer && !Net.IsConnecting && !GetSelectedServer().IsInvalid())
                 SetButtonState(ConnectButton, true);
         }
-        private void KickButton_Click(object sender, EventArgs e)
-        {
-            string name = GetSelectedUser();
-            if (!string.IsNullOrWhiteSpace(name))
-            {
-                if (Net.IsServer)
-                {
-                    Net.Server.Kick(name);
-                }
-            }
-        }
-
         private void MuteButton_Click(object sender, EventArgs e)
         {
             string name = GetSelectedUser();

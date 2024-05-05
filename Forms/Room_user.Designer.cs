@@ -400,7 +400,7 @@
             // Room_user
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1298, 559);
+            this.ClientSize = new System.Drawing.Size(1133, 559);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button6);
