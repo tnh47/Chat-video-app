@@ -56,6 +56,10 @@
             this.dc = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientsDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -263,7 +267,7 @@
             this.clientsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.clientsDataGridView.EnableHeadersVisualStyles = false;
             this.clientsDataGridView.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.clientsDataGridView.Location = new System.Drawing.Point(573, 14);
+            this.clientsDataGridView.Location = new System.Drawing.Point(599, 30);
             this.clientsDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.clientsDataGridView.MultiSelect = false;
             this.clientsDataGridView.Name = "clientsDataGridView";
@@ -291,7 +295,7 @@
             this.clientsDataGridView.ShowCellToolTips = false;
             this.clientsDataGridView.ShowEditingIcon = false;
             this.clientsDataGridView.ShowRowErrors = false;
-            this.clientsDataGridView.Size = new System.Drawing.Size(468, 464);
+            this.clientsDataGridView.Size = new System.Drawing.Size(353, 464);
             this.clientsDataGridView.TabIndex = 44;
             this.clientsDataGridView.TabStop = false;
             // 
@@ -337,14 +341,18 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(label3);
             this.panel1.Controls.Add(this.CreateNewServerButton);
             this.panel1.Controls.Add(this.ShutdownServer);
             this.panel1.Controls.Add(this.NewServerPortBox);
-            this.panel1.Location = new System.Drawing.Point(33, 156);
+            this.panel1.Location = new System.Drawing.Point(37, 138);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 176);
+            this.panel1.Size = new System.Drawing.Size(500, 214);
             this.panel1.TabIndex = 45;
             // 
             // panel2
@@ -354,10 +362,55 @@
             this.panel2.Controls.Add(this.RefreshButton);
             this.panel2.Controls.Add(this.ConnectButton);
             this.panel2.Controls.Add(this.DisconnectButton);
-            this.panel2.Location = new System.Drawing.Point(33, 156);
+            this.panel2.Location = new System.Drawing.Point(33, 138);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(500, 176);
+            this.panel2.Size = new System.Drawing.Size(504, 214);
             this.panel2.TabIndex = 46;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(305, 113);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(187, 30);
+            this.textBox3.TabIndex = 44;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.label2.Location = new System.Drawing.Point(16, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(198, 20);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Invite a user into room";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Green;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(305, 173);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(104, 29);
+            this.button3.TabIndex = 42;
+            this.button3.TabStop = false;
+            this.button3.Text = "Invite";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.label5.Location = new System.Drawing.Point(231, 116);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 20);
+            this.label5.TabIndex = 43;
+            this.label5.Text = "Name";
             // 
             // Room2_host
             // 
@@ -408,5 +461,9 @@
         private System.Windows.Forms.DataGridViewButtonColumn dc;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
     }
 }

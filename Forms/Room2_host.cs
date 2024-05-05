@@ -3,6 +3,7 @@ using Chat_video_app.Classes.Voice;
 using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -427,6 +428,47 @@ namespace Chat_video_app.Forms
                 SetButtonState(MuteButton, false);
                 MuteButton.Text = "Mute Person";
             }
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            string name = textBox3.Text.Trim();
+            if (name.Length == 0 || name == username) MessageBox.Show("Tên ko hợp lệ");
+            else
+            {
+                var db = FirestoreHelper.Database;
+                DocumentReference docRef = db.Collection("UserData").Document(name);
+                DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+
+                if (snapshot.Exists)
+                {
+
+                    UserData data = snapshot.ConvertTo<UserData>();
+                    if (!Check(data)) MessageBox.Show("Tên ko hợp lệ");
+                    else
+                    {
+                        List<string> invitedRooms = data.Is_invited.ToList();
+                        invitedRooms.Add(id);
+                        data.Is_invited = invitedRooms.ToArray();
+
+                        await docRef.SetAsync(data);
+
+                        MessageBox.Show("Success");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy người dùng có tên là " + name);
+                }
+            }
+        }
+        private bool Check(UserData data)
+        {
+            foreach (string mem in data.Mem)
+            {
+                if (mem == id) return false;
+            }
+            return true;
         }
     }
 }
