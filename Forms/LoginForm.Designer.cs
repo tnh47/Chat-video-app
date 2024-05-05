@@ -49,7 +49,7 @@ namespace Chat_video_app.Forms
             this.label7.AutoSize = true;
             this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.label7.Location = new System.Drawing.Point(248, 444);
+            this.label7.Location = new System.Drawing.Point(258, 461);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(132, 23);
@@ -62,7 +62,7 @@ namespace Chat_video_app.Forms
             this.label6.AutoSize = true;
             this.label6.Cursor = System.Windows.Forms.Cursors.Default;
             this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(47, 444);
+            this.label6.Location = new System.Drawing.Point(47, 461);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(203, 23);
@@ -75,7 +75,7 @@ namespace Chat_video_app.Forms
             this.checkBoxShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxShowPass.ForeColor = System.Drawing.Color.DimGray;
-            this.checkBoxShowPass.Location = new System.Drawing.Point(240, 309);
+            this.checkBoxShowPass.Location = new System.Drawing.Point(240, 329);
             this.checkBoxShowPass.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxShowPass.Name = "checkBoxShowPass";
             this.checkBoxShowPass.Size = new System.Drawing.Size(151, 27);
@@ -102,10 +102,10 @@ namespace Chat_video_app.Forms
             this.LoginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LoginBtn.FlatAppearance.BorderSize = 0;
             this.LoginBtn.ForeColor = System.Drawing.Color.White;
-            this.LoginBtn.Location = new System.Drawing.Point(40, 365);
+            this.LoginBtn.Location = new System.Drawing.Point(142, 386);
             this.LoginBtn.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.LoginBtn.Name = "LoginBtn";
-            this.LoginBtn.Size = new System.Drawing.Size(351, 56);
+            this.LoginBtn.Size = new System.Drawing.Size(151, 56);
             this.LoginBtn.TabIndex = 28;
             this.LoginBtn.Text = "Login";
             this.LoginBtn.UseVisualStyleBackColor = false;
@@ -116,7 +116,7 @@ namespace Chat_video_app.Forms
             this.PasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.PasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PasswordBox.Font = new System.Drawing.Font("MS UI Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordBox.Location = new System.Drawing.Point(40, 249);
+            this.PasswordBox.Location = new System.Drawing.Point(40, 269);
             this.PasswordBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.PasswordBox.Name = "PasswordBox";
             this.PasswordBox.Size = new System.Drawing.Size(351, 37);
@@ -127,7 +127,7 @@ namespace Chat_video_app.Forms
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(36, 211);
+            this.label2.Location = new System.Drawing.Point(36, 231);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 23);
@@ -161,7 +161,7 @@ namespace Chat_video_app.Forms
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.label1.Location = new System.Drawing.Point(138, 491);
+            this.label1.Location = new System.Drawing.Point(138, 508);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 23);
@@ -173,7 +173,7 @@ namespace Chat_video_app.Forms
             // 
             this.errorMsg.AutoSize = true;
             this.errorMsg.ForeColor = System.Drawing.Color.Red;
-            this.errorMsg.Location = new System.Drawing.Point(81, 72);
+            this.errorMsg.Location = new System.Drawing.Point(47, 331);
             this.errorMsg.Name = "errorMsg";
             this.errorMsg.Size = new System.Drawing.Size(49, 23);
             this.errorMsg.TabIndex = 35;

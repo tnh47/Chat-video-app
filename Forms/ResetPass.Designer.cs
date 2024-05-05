@@ -150,7 +150,7 @@
             this.errmsg.AutoSize = true;
             this.errmsg.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errmsg.ForeColor = System.Drawing.Color.Red;
-            this.errmsg.Location = new System.Drawing.Point(167, 85);
+            this.errmsg.Location = new System.Drawing.Point(220, 168);
             this.errmsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.errmsg.Name = "errmsg";
             this.errmsg.Size = new System.Drawing.Size(49, 23);
@@ -163,7 +163,7 @@
             this.notimsg.AutoSize = true;
             this.notimsg.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notimsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.notimsg.Location = new System.Drawing.Point(167, 189);
+            this.notimsg.Location = new System.Drawing.Point(220, 265);
             this.notimsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.notimsg.Name = "notimsg";
             this.notimsg.Size = new System.Drawing.Size(49, 23);

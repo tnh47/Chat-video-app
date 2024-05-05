@@ -560,12 +560,6 @@ namespace Chat_video_app.Forms
                 disconnect.Start();
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Del_url(id);
-            Disconnect();          
-        }
         private void Server_FormClosing(object sender, FormClosingEventArgs e)
         {
             exit = true;
