@@ -44,15 +44,12 @@ namespace Chat_video_app.Forms
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("RoomData").Document(Id);
             RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-            if (username == data.Mem[0]) { 
-                panel1.Show();
-                panel2.Hide();
+            if (username == data.Mem[0]) {
                 panel3.Hide();
             }
             else
             {
                 panel1.Hide();
-                panel2.Show();
                 panel3.Show();
             }
         }
