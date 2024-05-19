@@ -1,21 +1,21 @@
 ﻿using Chat_video_app.Classes;
 using Google.Cloud.Firestore;
+using Google.Type;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace Chat_video_app.Forms
 {
     public partial class Room_host : Form
@@ -38,6 +38,8 @@ namespace Chat_video_app.Forms
         private Task send = null;
         private Thread disconnect = null;
         private bool exit = false;
+
+        private Process ngrok;
         public Room_host(string username,string id)
         {
             InitializeComponent();
@@ -48,6 +50,23 @@ namespace Chat_video_app.Forms
             sendTextBox.KeyDown += SendTextBox_KeyDown;
             clientsDataGridView.CellClick += new DataGridViewCellEventHandler(clientsDataGridView_CellClick);
             DisplayMem(id);
+            Startngrok();
+        }
+        private void Startngrok()
+        {
+            string ngrokPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ngrok", "ngrok.exe");
+            string arguments = "tcp "+id;
+            ngrok = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $"/c \"{ngrokPath}\" {arguments} & pause",
+                    UseShellExecute = false,
+                    CreateNoWindow = false
+                }
+            };
+            ngrok.Start();
         }
         private void DisplayMem(string id)
         {
@@ -132,7 +151,11 @@ namespace Chat_video_app.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             Del_url(id);
-            Disconnect();            
+            Disconnect();
+            if (ngrok != null && !ngrok.HasExited)
+            {
+                ngrok.Kill();
+            }
             Hide();
             Lobby form = new Lobby(username);
             form.ShowDialog();
@@ -156,7 +179,7 @@ namespace Chat_video_app.Forms
                 {
                     if (msg.Length > 0)
                     {
-                        string text = string.Format("[ {0} ] {1}", DateTime.Now.ToString("HH:mm"), msg);
+                        string text = string.Format("[ {0} ] {1}", System.DateTime.Now.ToString("HH:mm"), msg);
                         AddData(text);
                         logTextBox.AppendText(text);
                         logTextBox.AppendText(Environment.NewLine);
@@ -566,7 +589,10 @@ namespace Chat_video_app.Forms
             active = false;
             Del_url(id);
             Disconnect();
-            
+            if (ngrok != null && !ngrok.HasExited)
+            {
+                ngrok.Kill();
+            }
         }
         private void SendTextBox_KeyDown(object sender, KeyEventArgs e)
         {
