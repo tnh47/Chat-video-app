@@ -5,7 +5,7 @@
 
 **Nhóm 7:**
 
-- **Trưởng nhóm:** Nguyễn Phan Hữu  - 22520645  ([@KhanhHuhu](https://github.com/KhanhHuhu))
+- **Trưởng nhóm:** Nguyễn Phan Hữu Khánh  - 22520645  ([@KhanhHuhu](https://github.com/KhanhHuhu))
 - Nguyễn Ngọc Khoa - 22520678 ([@ngockhoa13](https://github.com/ngockhoa13))
 - Trần Tiễn Nhật - 22521030 ([@tnh47](https://github.com/tnh47))
 - Võ Văn Phúc - 22521147 ([@p2vnogud](https://github.com/p2vnogud))
