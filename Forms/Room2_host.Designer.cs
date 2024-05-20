@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label3;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ShutdownServer = new System.Windows.Forms.Button();
             this.NewServerPortBox = new System.Windows.Forms.TextBox();
             this.CreateNewServerButton = new System.Windows.Forms.Button();
@@ -60,16 +60,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.clientsDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(17, 32);
+            label3.ForeColor = System.Drawing.Color.White;
+            label3.Location = new System.Drawing.Point(61, 50);
             label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(34, 16);
@@ -78,11 +81,11 @@
             // 
             // ShutdownServer
             // 
-            this.ShutdownServer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ShutdownServer.Location = new System.Drawing.Point(206, 56);
+            this.ShutdownServer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.ShutdownServer.Location = new System.Drawing.Point(205, 88);
             this.ShutdownServer.Margin = new System.Windows.Forms.Padding(4);
             this.ShutdownServer.Name = "ShutdownServer";
-            this.ShutdownServer.Size = new System.Drawing.Size(140, 28);
+            this.ShutdownServer.Size = new System.Drawing.Size(122, 28);
             this.ShutdownServer.TabIndex = 43;
             this.ShutdownServer.Text = "Close";
             this.ShutdownServer.UseVisualStyleBackColor = false;
@@ -90,7 +93,7 @@
             // 
             // NewServerPortBox
             // 
-            this.NewServerPortBox.Location = new System.Drawing.Point(73, 26);
+            this.NewServerPortBox.Location = new System.Drawing.Point(114, 44);
             this.NewServerPortBox.Margin = new System.Windows.Forms.Padding(4);
             this.NewServerPortBox.Name = "NewServerPortBox";
             this.NewServerPortBox.ReadOnly = true;
@@ -99,11 +102,11 @@
             // 
             // CreateNewServerButton
             // 
-            this.CreateNewServerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.CreateNewServerButton.Location = new System.Drawing.Point(20, 56);
+            this.CreateNewServerButton.BackColor = System.Drawing.Color.SpringGreen;
+            this.CreateNewServerButton.Location = new System.Drawing.Point(38, 88);
             this.CreateNewServerButton.Margin = new System.Windows.Forms.Padding(4);
             this.CreateNewServerButton.Name = "CreateNewServerButton";
-            this.CreateNewServerButton.Size = new System.Drawing.Size(152, 28);
+            this.CreateNewServerButton.Size = new System.Drawing.Size(122, 28);
             this.CreateNewServerButton.TabIndex = 40;
             this.CreateNewServerButton.Text = "Start";
             this.CreateNewServerButton.UseVisualStyleBackColor = false;
@@ -112,44 +115,47 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(25, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 17);
+            this.label1.Size = new System.Drawing.Size(110, 20);
             this.label1.TabIndex = 37;
             this.label1.Text = "Host Server";
             // 
             // MuteButton
             // 
-            this.MuteButton.Location = new System.Drawing.Point(390, 432);
+            this.MuteButton.BackColor = System.Drawing.Color.OrangeRed;
+            this.MuteButton.Location = new System.Drawing.Point(356, 42);
             this.MuteButton.Margin = new System.Windows.Forms.Padding(4);
             this.MuteButton.Name = "MuteButton";
             this.MuteButton.Size = new System.Drawing.Size(99, 28);
             this.MuteButton.TabIndex = 33;
             this.MuteButton.Text = "Mute";
-            this.MuteButton.UseVisualStyleBackColor = true;
+            this.MuteButton.UseVisualStyleBackColor = false;
             this.MuteButton.Click += new System.EventHandler(this.MuteButton_Click);
             // 
             // ClientNameList
             // 
+            this.ClientNameList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientNameList.FormattingEnabled = true;
-            this.ClientNameList.ItemHeight = 16;
-            this.ClientNameList.Location = new System.Drawing.Point(33, 394);
+            this.ClientNameList.ItemHeight = 20;
+            this.ClientNameList.Location = new System.Drawing.Point(8, 14);
             this.ClientNameList.Margin = new System.Windows.Forms.Padding(4);
             this.ClientNameList.Name = "ClientNameList";
-            this.ClientNameList.Size = new System.Drawing.Size(349, 100);
+            this.ClientNameList.Size = new System.Drawing.Size(340, 84);
             this.ClientNameList.Sorted = true;
             this.ClientNameList.TabIndex = 32;
             // 
             // DisconnectButton
             // 
-            this.DisconnectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.DisconnectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.DisconnectButton.Enabled = false;
-            this.DisconnectButton.Location = new System.Drawing.Point(146, 142);
+            this.DisconnectButton.Location = new System.Drawing.Point(170, 169);
             this.DisconnectButton.Margin = new System.Windows.Forms.Padding(4);
             this.DisconnectButton.Name = "DisconnectButton";
-            this.DisconnectButton.Size = new System.Drawing.Size(100, 28);
+            this.DisconnectButton.Size = new System.Drawing.Size(122, 28);
             this.DisconnectButton.TabIndex = 31;
             this.DisconnectButton.Text = "Disconnect";
             this.DisconnectButton.UseVisualStyleBackColor = false;
@@ -157,11 +163,11 @@
             // 
             // ConnectButton
             // 
-            this.ConnectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ConnectButton.Location = new System.Drawing.Point(29, 142);
+            this.ConnectButton.BackColor = System.Drawing.Color.SpringGreen;
+            this.ConnectButton.Location = new System.Drawing.Point(27, 169);
             this.ConnectButton.Margin = new System.Windows.Forms.Padding(4);
             this.ConnectButton.Name = "ConnectButton";
-            this.ConnectButton.Size = new System.Drawing.Size(100, 28);
+            this.ConnectButton.Size = new System.Drawing.Size(122, 28);
             this.ConnectButton.TabIndex = 30;
             this.ConnectButton.Text = "Connect";
             this.ConnectButton.UseVisualStyleBackColor = false;
@@ -170,9 +176,10 @@
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.StatusLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.StatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLabel.Location = new System.Drawing.Point(33, 0);
+            this.StatusLabel.ForeColor = System.Drawing.Color.White;
+            this.StatusLabel.Location = new System.Drawing.Point(32, 18);
             this.StatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(65, 24);
@@ -181,54 +188,62 @@
             // 
             // RefreshButton
             // 
-            this.RefreshButton.Location = new System.Drawing.Point(388, 16);
+            this.RefreshButton.BackColor = System.Drawing.Color.PaleGreen;
+            this.RefreshButton.ForeColor = System.Drawing.Color.White;
+            this.RefreshButton.Location = new System.Drawing.Point(343, 31);
             this.RefreshButton.Margin = new System.Windows.Forms.Padding(4);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(76, 27);
             this.RefreshButton.TabIndex = 28;
             this.RefreshButton.Text = "Refresh";
-            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.UseVisualStyleBackColor = false;
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // serversFoundLabel
             // 
             this.serversFoundLabel.AutoSize = true;
-            this.serversFoundLabel.Location = new System.Drawing.Point(13, 4);
+            this.serversFoundLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serversFoundLabel.ForeColor = System.Drawing.Color.White;
+            this.serversFoundLabel.Location = new System.Drawing.Point(12, 16);
             this.serversFoundLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.serversFoundLabel.Name = "serversFoundLabel";
-            this.serversFoundLabel.Size = new System.Drawing.Size(98, 16);
+            this.serversFoundLabel.Size = new System.Drawing.Size(131, 20);
             this.serversFoundLabel.TabIndex = 26;
-            this.serversFoundLabel.Text = "Servers Found:";
+            this.serversFoundLabel.Text = "Servers Found";
             // 
             // ServerList
             // 
             this.ServerList.FormattingEnabled = true;
             this.ServerList.ItemHeight = 16;
-            this.ServerList.Location = new System.Drawing.Point(16, 51);
+            this.ServerList.Location = new System.Drawing.Point(16, 66);
             this.ServerList.Margin = new System.Windows.Forms.Padding(4);
             this.ServerList.Name = "ServerList";
             this.ServerList.ScrollAlwaysVisible = true;
-            this.ServerList.Size = new System.Drawing.Size(469, 84);
+            this.ServerList.Size = new System.Drawing.Size(432, 84);
             this.ServerList.TabIndex = 25;
             // 
             // confirmNameButton
             // 
+            this.confirmNameButton.BackColor = System.Drawing.SystemColors.Highlight;
+            this.confirmNameButton.ForeColor = System.Drawing.Color.White;
             this.confirmNameButton.Location = new System.Drawing.Point(206, 79);
             this.confirmNameButton.Margin = new System.Windows.Forms.Padding(4);
             this.confirmNameButton.Name = "confirmNameButton";
             this.confirmNameButton.Size = new System.Drawing.Size(123, 25);
             this.confirmNameButton.TabIndex = 24;
             this.confirmNameButton.Text = "Confirm Name";
-            this.confirmNameButton.UseVisualStyleBackColor = true;
+            this.confirmNameButton.UseVisualStyleBackColor = false;
             this.confirmNameButton.Click += new System.EventHandler(this.confirmNameButton_Click);
             // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(33, 55);
+            this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLabel.ForeColor = System.Drawing.Color.White;
+            this.usernameLabel.Location = new System.Drawing.Point(30, 57);
             this.usernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(70, 16);
+            this.usernameLabel.Size = new System.Drawing.Size(77, 18);
             this.usernameLabel.TabIndex = 23;
             this.usernameLabel.Text = "Username";
             // 
@@ -252,14 +267,14 @@
             this.clientsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.clientsDataGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.clientsDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.clientsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.clientsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.clientsDataGridView.ColumnHeadersHeight = 24;
             this.clientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.clientsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -269,25 +284,25 @@
             this.clientsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.clientsDataGridView.EnableHeadersVisualStyles = false;
             this.clientsDataGridView.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.clientsDataGridView.Location = new System.Drawing.Point(548, 35);
+            this.clientsDataGridView.Location = new System.Drawing.Point(530, 41);
             this.clientsDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.clientsDataGridView.MultiSelect = false;
             this.clientsDataGridView.Name = "clientsDataGridView";
             this.clientsDataGridView.ReadOnly = true;
             this.clientsDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.clientsDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.clientsDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.clientsDataGridView.RowHeadersVisible = false;
             this.clientsDataGridView.RowHeadersWidth = 40;
             this.clientsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.clientsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
+            this.clientsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle30;
             this.clientsDataGridView.RowTemplate.Height = 24;
             this.clientsDataGridView.RowTemplate.ReadOnly = true;
             this.clientsDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -297,7 +312,7 @@
             this.clientsDataGridView.ShowCellToolTips = false;
             this.clientsDataGridView.ShowEditingIcon = false;
             this.clientsDataGridView.ShowRowErrors = false;
-            this.clientsDataGridView.Size = new System.Drawing.Size(371, 464);
+            this.clientsDataGridView.Size = new System.Drawing.Size(434, 464);
             this.clientsDataGridView.TabIndex = 44;
             this.clientsDataGridView.TabStop = false;
             this.clientsDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.clientsDataGridView_CellMouseClick);
@@ -305,8 +320,8 @@
             // identifier
             // 
             this.identifier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.identifier.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.identifier.DefaultCellStyle = dataGridViewCellStyle27;
             this.identifier.HeaderText = "ID";
             this.identifier.MaxInputLength = 20;
             this.identifier.MinimumWidth = 100;
@@ -317,8 +332,8 @@
             // 
             // name
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.name.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.name.DefaultCellStyle = dataGridViewCellStyle28;
             this.name.HeaderText = "Name";
             this.name.MaxInputLength = 20;
             this.name.MinimumWidth = 100;
@@ -339,6 +354,7 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button3);
@@ -348,7 +364,7 @@
             this.panel1.Controls.Add(this.CreateNewServerButton);
             this.panel1.Controls.Add(this.ShutdownServer);
             this.panel1.Controls.Add(this.NewServerPortBox);
-            this.panel1.Location = new System.Drawing.Point(37, 138);
+            this.panel1.Location = new System.Drawing.Point(36, 138);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(464, 226);
             this.panel1.TabIndex = 45;
@@ -356,7 +372,7 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(253, 138);
+            this.textBox3.Location = new System.Drawing.Point(105, 177);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(187, 30);
             this.textBox3.TabIndex = 44;
@@ -366,7 +382,7 @@
             this.button3.BackColor = System.Drawing.Color.Green;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(292, 184);
+            this.button3.Location = new System.Drawing.Point(331, 177);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(104, 29);
@@ -379,27 +395,28 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.label5.Location = new System.Drawing.Point(178, 144);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(25, 187);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 20);
+            this.label5.Size = new System.Drawing.Size(53, 20);
             this.label5.TabIndex = 43;
             this.label5.Text = "Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(7, 104);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(12, 131);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 20);
+            this.label2.Size = new System.Drawing.Size(175, 20);
             this.label2.TabIndex = 45;
             this.label2.Text = "Invite a user into room";
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.serversFoundLabel);
             this.panel2.Controls.Add(this.ServerList);
             this.panel2.Controls.Add(this.RefreshButton);
@@ -412,21 +429,37 @@
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(770, 35);
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.ClientNameList);
+            this.panel3.Controls.Add(this.MuteButton);
+            this.panel3.Location = new System.Drawing.Point(37, 393);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(149, 465);
+            this.panel3.Size = new System.Drawing.Size(463, 112);
             this.panel3.TabIndex = 47;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(369, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 35);
+            this.button1.TabIndex = 48;
+            this.button1.Text = "Out";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Room2_host
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 518);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1011, 518);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.clientsDataGridView);
-            this.Controls.Add(this.MuteButton);
-            this.Controls.Add(this.ClientNameList);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.confirmNameButton);
             this.Controls.Add(this.usernameLabel);
@@ -439,6 +472,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,9 +502,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridViewTextBoxColumn identifier;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewButtonColumn ou;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button1;
     }
 }

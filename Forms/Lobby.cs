@@ -82,6 +82,7 @@ namespace Chat_video_app.Forms
         private async void button4_Click(object sender, EventArgs e)
         {
             string id = textBox3.Text.Trim();
+            string choice = comboBox1.Text;
             int tmp;
             if (int.TryParse(id, out tmp))
             {
@@ -97,14 +98,29 @@ namespace Chat_video_app.Forms
                     }
                     else
                     {
-                        var infor = GetWriteData(id, username);
-                        DocumentReference docRef2 = db.Collection("RoomData").Document(infor.Id);
-                        await docRef2.SetAsync(infor);
-                        MessageBox.Show("Success");
-                        Hide();
-                        Room_host form = new Room_host(username, infor.Id);
-                        form.ShowDialog();
-                        Close();
+                        if (choice == "Text")
+                        {
+                            var infor = GetWriteData(id, username);
+                            DocumentReference docRef2 = db.Collection("RoomData").Document(infor.Id);
+                            await docRef2.SetAsync(infor);
+                            MessageBox.Show("Success");
+                            Hide();
+                            Room_host form = new Room_host(username, infor.Id);
+                            form.ShowDialog();
+                            Close();
+                        }
+                        else
+                        {
+                            var infor = GetWriteData(id, username);
+                            DocumentReference docRef2 = db.Collection("RoomData").Document(infor.Id);
+                            await docRef2.SetAsync(infor);
+                            MessageBox.Show("Success");
+                            Hide();
+                            Room2_host form = new Room2_host(username, infor.Id);
+                            form.ShowDialog();
+                            Close();
+                        }
+
                     }
                 }
             }

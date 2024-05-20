@@ -45,12 +45,12 @@ namespace Chat_video_app.Forms
             DocumentReference docRef = db.Collection("RoomData").Document(Id);
             RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
             if (username == data.Mem[0]) {
-                panel3.Hide();
+
             }
             else
             {
                 panel1.Hide();
-                panel3.Show();
+                clientsDataGridView.Columns[2].Visible = false;
             }
         }
                     
@@ -396,6 +396,14 @@ namespace Chat_video_app.Forms
                 if (mem == id) return false;
             }
             return true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Lobby form = new Lobby(username);
+            form.ShowDialog();
+            Close();
         }
     }
 }

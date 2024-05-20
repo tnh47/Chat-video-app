@@ -71,6 +71,7 @@
             this.VerifyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
             this.VerifyBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.VerifyBtn.FlatAppearance.BorderSize = 0;
+            this.VerifyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VerifyBtn.ForeColor = System.Drawing.Color.White;
             this.VerifyBtn.Location = new System.Drawing.Point(224, 316);
             this.VerifyBtn.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -97,7 +98,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(27, 236);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
@@ -120,8 +121,9 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label9.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(27, 139);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
@@ -135,7 +137,7 @@
             this.checkBoxShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxShowPass.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxShowPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.checkBoxShowPass.ForeColor = System.Drawing.Color.White;
             this.checkBoxShowPass.Location = new System.Drawing.Point(434, 269);
             this.checkBoxShowPass.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxShowPass.Name = "checkBoxShowPass";
@@ -150,7 +152,7 @@
             this.errmsg.AutoSize = true;
             this.errmsg.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errmsg.ForeColor = System.Drawing.Color.Red;
-            this.errmsg.Location = new System.Drawing.Point(220, 168);
+            this.errmsg.Location = new System.Drawing.Point(167, 85);
             this.errmsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.errmsg.Name = "errmsg";
             this.errmsg.Size = new System.Drawing.Size(49, 23);
@@ -163,7 +165,7 @@
             this.notimsg.AutoSize = true;
             this.notimsg.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notimsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.notimsg.Location = new System.Drawing.Point(220, 265);
+            this.notimsg.Location = new System.Drawing.Point(167, 189);
             this.notimsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.notimsg.Name = "notimsg";
             this.notimsg.Size = new System.Drawing.Size(49, 23);
@@ -175,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(661, 466);
             this.Controls.Add(this.notimsg);
             this.Controls.Add(this.errmsg);

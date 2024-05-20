@@ -48,7 +48,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 96);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(209, 159);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 23);
@@ -60,7 +61,7 @@
             this.UsernameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.UsernameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.UsernameBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsernameBox.Location = new System.Drawing.Point(61, 132);
+            this.UsernameBox.Location = new System.Drawing.Point(237, 186);
             this.UsernameBox.Margin = new System.Windows.Forms.Padding(4);
             this.UsernameBox.Name = "UsernameBox";
             this.UsernameBox.Size = new System.Drawing.Size(356, 27);
@@ -69,7 +70,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 179);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(209, 227);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 23);
@@ -81,7 +83,7 @@
             this.EmailBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.EmailBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.EmailBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F);
-            this.EmailBox.Location = new System.Drawing.Point(61, 217);
+            this.EmailBox.Location = new System.Drawing.Point(237, 265);
             this.EmailBox.Margin = new System.Windows.Forms.Padding(4);
             this.EmailBox.Name = "EmailBox";
             this.EmailBox.Size = new System.Drawing.Size(356, 27);
@@ -92,7 +94,7 @@
             this.PasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.PasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PasswordBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F);
-            this.PasswordBox.Location = new System.Drawing.Point(61, 291);
+            this.PasswordBox.Location = new System.Drawing.Point(237, 335);
             this.PasswordBox.Margin = new System.Windows.Forms.Padding(4);
             this.PasswordBox.Name = "PasswordBox";
             this.PasswordBox.Size = new System.Drawing.Size(356, 27);
@@ -102,7 +104,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 255);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(209, 299);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 23);
@@ -114,7 +117,7 @@
             this.ConfirmPasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.ConfirmPasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ConfirmPasswordBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F);
-            this.ConfirmPasswordBox.Location = new System.Drawing.Point(61, 367);
+            this.ConfirmPasswordBox.Location = new System.Drawing.Point(237, 408);
             this.ConfirmPasswordBox.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmPasswordBox.Name = "ConfirmPasswordBox";
             this.ConfirmPasswordBox.Size = new System.Drawing.Size(356, 27);
@@ -124,7 +127,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 328);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(209, 369);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(160, 23);
@@ -133,14 +137,15 @@
             // 
             // RegisterBtn
             // 
-            this.RegisterBtn.BackColor = System.Drawing.Color.Black;
+            this.RegisterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
             this.RegisterBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RegisterBtn.FlatAppearance.BorderSize = 0;
-            this.RegisterBtn.ForeColor = System.Drawing.Color.White;
-            this.RegisterBtn.Location = new System.Drawing.Point(138, 461);
+            this.RegisterBtn.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterBtn.ForeColor = System.Drawing.Color.Transparent;
+            this.RegisterBtn.Location = new System.Drawing.Point(237, 488);
             this.RegisterBtn.Margin = new System.Windows.Forms.Padding(4);
             this.RegisterBtn.Name = "RegisterBtn";
-            this.RegisterBtn.Size = new System.Drawing.Size(173, 50);
+            this.RegisterBtn.Size = new System.Drawing.Size(356, 50);
             this.RegisterBtn.TabIndex = 9;
             this.RegisterBtn.Text = "Register";
             this.RegisterBtn.UseVisualStyleBackColor = false;
@@ -151,7 +156,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.label5.Location = new System.Drawing.Point(180, 22);
+            this.label5.Location = new System.Drawing.Point(344, 62);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 33);
             this.label5.TabIndex = 10;
@@ -162,7 +167,8 @@
             this.checkBoxShowPass.AutoSize = true;
             this.checkBoxShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxShowPass.Location = new System.Drawing.Point(276, 402);
+            this.checkBoxShowPass.ForeColor = System.Drawing.Color.White;
+            this.checkBoxShowPass.Location = new System.Drawing.Point(434, 442);
             this.checkBoxShowPass.Name = "checkBoxShowPass";
             this.checkBoxShowPass.Size = new System.Drawing.Size(151, 27);
             this.checkBoxShowPass.TabIndex = 11;
@@ -174,7 +180,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label6.Location = new System.Drawing.Point(117, 528);
+            this.label6.Location = new System.Drawing.Point(302, 563);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(214, 23);
             this.label6.TabIndex = 12;
@@ -185,7 +191,7 @@
             this.label7.AutoSize = true;
             this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.label7.Location = new System.Drawing.Point(165, 551);
+            this.label7.Location = new System.Drawing.Point(346, 596);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 23);
             this.label7.TabIndex = 13;
@@ -196,7 +202,7 @@
             // 
             this.errorMsg.AutoSize = true;
             this.errorMsg.ForeColor = System.Drawing.Color.Red;
-            this.errorMsg.Location = new System.Drawing.Point(134, 96);
+            this.errorMsg.Location = new System.Drawing.Point(271, 117);
             this.errorMsg.Name = "errorMsg";
             this.errorMsg.Size = new System.Drawing.Size(59, 23);
             this.errorMsg.TabIndex = 14;
@@ -207,7 +213,7 @@
             // 
             this.notimsg.AutoSize = true;
             this.notimsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.notimsg.Location = new System.Drawing.Point(99, 179);
+            this.notimsg.Location = new System.Drawing.Point(271, 117);
             this.notimsg.Name = "notimsg";
             this.notimsg.Size = new System.Drawing.Size(59, 23);
             this.notimsg.TabIndex = 15;
@@ -218,8 +224,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(459, 590);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(834, 661);
             this.Controls.Add(this.notimsg);
             this.Controls.Add(this.errorMsg);
             this.Controls.Add(this.label7);

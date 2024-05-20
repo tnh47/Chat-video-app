@@ -20,8 +20,8 @@ namespace Chat_video_app
             FirestoreHelper.SetEnvironmentVariable();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
-            //Application.Run(new Room2_host("p2v", "49999"));
+            //Application.Run(new LoginForm());
+            Application.Run(new Room2_host("nhatnhat", "54444"));
         }
     }
 }
