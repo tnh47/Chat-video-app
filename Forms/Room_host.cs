@@ -435,7 +435,7 @@ namespace Chat_video_app.Forms
             }
             else if (listener == null || !listener.IsAlive)
             {
-                string address = textBox1.Text.Trim();
+                string address = "127.0.0.1";
                 string number = portTextBox.Text.Trim();
                 string username = usernameTextBox.Text.Trim();
                 bool error = false;
@@ -615,7 +615,7 @@ namespace Chat_video_app.Forms
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("RoomData").Document(id);
             RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-            string ip=textBox4.Text.Trim();
+            string ip = "0.tcp.ap.ngrok.io";
             string port=textBox5.Text.Trim();
             data.URL = ip + port;
             await docRef.SetAsync(data);

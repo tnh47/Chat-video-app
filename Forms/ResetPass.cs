@@ -38,8 +38,6 @@ namespace Chat_video_app.Forms
                 notimsg.Text = "Changed Password Successful!!!";
                 errmsg.Visible = false;
                 notimsg.Visible = true;
-                label9.Visible = false;
-                label2.Visible = false;
                 PasswordBox.Visible = false;
                 ConfirmPasswordBox.Visible = false;
                 VerifyBtn.Visible = false;
