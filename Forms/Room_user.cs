@@ -26,7 +26,6 @@ namespace Chat_video_app.Forms
         private struct MyClient
         {
             public string username;
-            public string key;
             public TcpClient client;
             public NetworkStream stream;
             public byte[] buffer;
@@ -162,7 +161,6 @@ namespace Chat_video_app.Forms
             bool success = false;
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("username", obj.username.ToString());
-            data.Add("key", obj.key);
 
             string jsonData = JsonConvert.SerializeObject(data); // Chuyển đổi dữ liệu sang chuỗi JSON
 
@@ -257,14 +255,13 @@ namespace Chat_video_app.Forms
                 obj.handle.Set();
             }
         }
-        private void Connection(IPAddress ip, int port, string username,string key)
+        private void Connection(IPAddress ip, int port, string username)
         {
 
             try
             {
                 obj = new MyClient();
                 obj.username = username;
-                obj.key = key;
                 obj.client = new TcpClient();
                 obj.client.Connect(ip, port);
                 obj.stream = obj.client.GetStream();
@@ -353,7 +350,7 @@ namespace Chat_video_app.Forms
                 if (!error)
                 {
                     // encryption key is optional
-                    client = new Thread(() => Connection(ip, port, username, textBox2.Text))
+                    client = new Thread(() => Connection(ip, port, username))
                     {
                         IsBackground = true
                     };
@@ -439,12 +436,6 @@ namespace Chat_video_app.Forms
             else
             {
                 string tmp = "";
-                for(int i=0;i<17;i++)
-                {
-                    tmp += data.URL[i];
-                }
-                textBox4.Text = tmp;
-                tmp = "";
                 for(int i=17;i<data.URL.Length;i++)
                 {
                     tmp+= data.URL[i];

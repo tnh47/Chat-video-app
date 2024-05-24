@@ -61,7 +61,7 @@ namespace Chat_video_app.Forms
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
-                    Arguments = $"/c \"{ngrokPath}\" {arguments} & pause",
+                    Arguments = $"/c \"{ngrokPath}\" {arguments}",
                     UseShellExecute = false,
                     CreateNoWindow = false
                 }
@@ -152,10 +152,6 @@ namespace Chat_video_app.Forms
         {
             Del_url(id);
             Disconnect();
-            if (ngrok != null && !ngrok.HasExited)
-            {
-                ngrok.Kill();
-            }
             Hide();
             Lobby form = new Lobby(username);
             form.ShowDialog();
@@ -299,7 +295,7 @@ namespace Chat_video_app.Forms
                         // Deserialize using Newtonsoft.Json
                         Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(obj.data.ToString(), settings);
 
-                        if (!data.ContainsKey("username") || data["username"].Length < 1 || !data.ContainsKey("key") || !data["key"].Equals(textBox2.Text))
+                        if (!data.ContainsKey("username") || data["username"].Length < 1)
                         {
                             obj.client.Close();
                         }
@@ -432,6 +428,7 @@ namespace Chat_video_app.Forms
             if (active)
             {
                 active = false;
+                Disconnect();// Dừng server hiện tại nếu đang chạy
             }
             else if (listener == null || !listener.IsAlive)
             {
@@ -589,10 +586,6 @@ namespace Chat_video_app.Forms
             active = false;
             Del_url(id);
             Disconnect();
-            if (ngrok != null && !ngrok.HasExited)
-            {
-                ngrok.Kill();
-            }
         }
         private void SendTextBox_KeyDown(object sender, KeyEventArgs e)
         {
