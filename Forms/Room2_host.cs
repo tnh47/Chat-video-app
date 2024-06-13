@@ -136,7 +136,7 @@ namespace Chat_video_app.Forms
         {
             ActiveUsername = this.NameInputBox.Text.Trim();
             Log("Confirmed new name - " + ActiveUsername);
-            this.Text = "Crap Chat 2 - " + ActiveUsername;
+            this.Text = "Team7 - " + ActiveUsername;
 
             SetButtonState(CreateNewServerButton, true);
 
@@ -242,11 +242,6 @@ namespace Chat_video_app.Forms
                         SetButtonState(ConnectButton, false);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("You have not joined this room yet!");
-                }
-
             }
         }
         public static void UponDisconnected()
@@ -384,7 +379,7 @@ namespace Chat_video_app.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Cann't find username: " + name);
+                    MessageBox.Show("Can't find username: " + name);
                 }
             }
         }
@@ -399,6 +394,16 @@ namespace Chat_video_app.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (Net.IsServer)
+            {
+                Net.StopServer();  // Tắt server
+            }
+
+            // Kiểm tra nếu đang chạy client
+            if (Net.IsClient && Net.IsConnected)
+            {
+                Net.StopClient();  // Ngắt kết nối client
+            }
             Hide();
             Lobby form = new Lobby(username);
             form.ShowDialog();

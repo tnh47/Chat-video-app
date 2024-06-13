@@ -5,7 +5,7 @@ namespace Chat_video_app.Classes.Voice
 {
     internal class Net
     {
-        public const string APP_ID = "Crap Chat 2";
+        public const string APP_ID = "Team7";
         public static CClient Client;
         public static CServer Server;
 
