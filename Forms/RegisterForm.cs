@@ -108,12 +108,10 @@ namespace Chat_video_app.Forms
             DocumentReference docRef = db.Collection("UserData").Document(data.Username);
             await docRef.SetAsync(data);
             //MessageBox.Show("Success");
-
-            this.Hide();
-            LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog();
-
-            this.Close();
+            
+            errorMsg.Visible = false;
+            notimsg.Text = "Success! Your account has been created.";
+            notimsg.Visible = true;
 
         }
         private UserData GetWriteData()

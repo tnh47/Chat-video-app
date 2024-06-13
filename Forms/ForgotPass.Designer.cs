@@ -94,8 +94,13 @@
             // 
             this.CodeBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.CodeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+<<<<<<< HEAD
             this.CodeBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F);
             this.CodeBox.Location = new System.Drawing.Point(143, 284);
+=======
+            this.CodeBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CodeBox.Location = new System.Drawing.Point(133, 284);
+>>>>>>> 55d17067fe70e61ba4c2bc90e50d2dc02bf526dc
             this.CodeBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CodeBox.Name = "CodeBox";
             this.CodeBox.Size = new System.Drawing.Size(305, 27);
@@ -105,8 +110,13 @@
             // 
             this.EmailBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.EmailBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+<<<<<<< HEAD
             this.EmailBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailBox.Location = new System.Drawing.Point(143, 167);
+=======
+            this.EmailBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailBox.Location = new System.Drawing.Point(133, 167);
+>>>>>>> 55d17067fe70e61ba4c2bc90e50d2dc02bf526dc
             this.EmailBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.EmailBox.Name = "EmailBox";
             this.EmailBox.Size = new System.Drawing.Size(305, 27);

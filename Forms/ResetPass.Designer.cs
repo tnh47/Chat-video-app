@@ -77,7 +77,7 @@
             // 
             this.ConfirmPasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.ConfirmPasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ConfirmPasswordBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F);
+            this.ConfirmPasswordBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmPasswordBox.Location = new System.Drawing.Point(134, 225);
             this.ConfirmPasswordBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.ConfirmPasswordBox.Name = "ConfirmPasswordBox";
@@ -89,7 +89,7 @@
             // 
             this.PasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.PasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PasswordBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordBox.Location = new System.Drawing.Point(134, 128);
             this.PasswordBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.PasswordBox.Name = "PasswordBox";
@@ -118,7 +118,7 @@
             this.errmsg.AutoSize = true;
             this.errmsg.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errmsg.ForeColor = System.Drawing.Color.Red;
-            this.errmsg.Location = new System.Drawing.Point(138, 171);
+            this.errmsg.Location = new System.Drawing.Point(138, 292);
             this.errmsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.errmsg.Name = "errmsg";
             this.errmsg.Size = new System.Drawing.Size(49, 23);
@@ -131,7 +131,7 @@
             this.notimsg.AutoSize = true;
             this.notimsg.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notimsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.notimsg.Location = new System.Drawing.Point(138, 291);
+            this.notimsg.Location = new System.Drawing.Point(138, 176);
             this.notimsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.notimsg.Name = "notimsg";
             this.notimsg.Size = new System.Drawing.Size(49, 23);

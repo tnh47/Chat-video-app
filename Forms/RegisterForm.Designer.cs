@@ -55,7 +55,7 @@
             this.UsernameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.UsernameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.UsernameBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsernameBox.ForeColor = System.Drawing.Color.Gray;
+            this.UsernameBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.UsernameBox.Location = new System.Drawing.Point(110, 135);
             this.UsernameBox.Margin = new System.Windows.Forms.Padding(4);
             this.UsernameBox.Name = "UsernameBox";
@@ -67,7 +67,7 @@
             this.EmailBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.EmailBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.EmailBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailBox.ForeColor = System.Drawing.Color.Gray;
+            this.EmailBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.EmailBox.Location = new System.Drawing.Point(113, 212);
             this.EmailBox.Margin = new System.Windows.Forms.Padding(4);
             this.EmailBox.Name = "EmailBox";
@@ -79,7 +79,7 @@
             this.PasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.PasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PasswordBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordBox.ForeColor = System.Drawing.Color.Gray;
+            this.PasswordBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.PasswordBox.Location = new System.Drawing.Point(110, 291);
             this.PasswordBox.Margin = new System.Windows.Forms.Padding(4);
             this.PasswordBox.Name = "PasswordBox";
@@ -134,7 +134,7 @@
             this.checkBoxShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxShowPass.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxShowPass.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.checkBoxShowPass.Location = new System.Drawing.Point(263, 325);
+            this.checkBoxShowPass.Location = new System.Drawing.Point(260, 417);
             this.checkBoxShowPass.Name = "checkBoxShowPass";
             this.checkBoxShowPass.Size = new System.Drawing.Size(152, 27);
             this.checkBoxShowPass.TabIndex = 11;
@@ -170,7 +170,7 @@
             this.errorMsg.AutoSize = true;
             this.errorMsg.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorMsg.ForeColor = System.Drawing.Color.Red;
-            this.errorMsg.Location = new System.Drawing.Point(109, 420);
+            this.errorMsg.Location = new System.Drawing.Point(87, 421);
             this.errorMsg.Name = "errorMsg";
             this.errorMsg.Size = new System.Drawing.Size(59, 23);
             this.errorMsg.TabIndex = 14;
@@ -182,7 +182,7 @@
             this.notimsg.AutoSize = true;
             this.notimsg.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notimsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.notimsg.Location = new System.Drawing.Point(109, 254);
+            this.notimsg.Location = new System.Drawing.Point(100, 87);
             this.notimsg.Name = "notimsg";
             this.notimsg.Size = new System.Drawing.Size(59, 23);
             this.notimsg.TabIndex = 15;
