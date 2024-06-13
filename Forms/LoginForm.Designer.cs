@@ -110,7 +110,7 @@ namespace Chat_video_app.Forms
             // 
             this.PasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.PasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PasswordBox.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordBox.Location = new System.Drawing.Point(107, 166);
             this.PasswordBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.PasswordBox.Name = "PasswordBox";
@@ -122,7 +122,7 @@ namespace Chat_video_app.Forms
             // 
             this.UsernameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.UsernameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UsernameBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsernameBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsernameBox.Location = new System.Drawing.Point(107, 102);
             this.UsernameBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.UsernameBox.Name = "UsernameBox";

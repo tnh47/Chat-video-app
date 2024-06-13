@@ -42,6 +42,8 @@ namespace Chat_video_app.Forms
                 ConfirmPasswordBox.Visible = false;
                 VerifyBtn.Visible = false;
                 checkBoxShowPass.Visible = false;
+                pictureBox3.Visible = false;
+                pictureBox4.Visible = false;
             }
             else
             {
