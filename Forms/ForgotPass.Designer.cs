@@ -198,6 +198,7 @@
             this.Controls.Add(this.VerifyBtn);
             this.Controls.Add(this.CodeBox);
             this.Controls.Add(this.EmailBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ForgotPass";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ForgotPass";

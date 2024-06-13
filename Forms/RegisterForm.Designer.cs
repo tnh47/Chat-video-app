@@ -123,7 +123,7 @@
             this.label5.ForeColor = System.Drawing.Color.DarkBlue;
             this.label5.Location = new System.Drawing.Point(189, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 46);
+            this.label5.Size = new System.Drawing.Size(106, 45);
             this.label5.TabIndex = 10;
             this.label5.Text = "Zeem";
             // 
@@ -249,6 +249,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
