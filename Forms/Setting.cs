@@ -124,7 +124,7 @@ namespace Chat_video_app.Forms
                 await docRef2.SetAsync(data);
             }
             await docRef.DeleteAsync();
-            MessageBox.Show("Đã xóa");
+            MessageBox.Show("Deleted successfully");
             Hide();
             LoginForm form = new LoginForm();
             form.ShowDialog();

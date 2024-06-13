@@ -432,7 +432,7 @@ namespace Chat_video_app.Forms
             var db = FirestoreHelper.Database;
             DocumentReference docRef = db.Collection("RoomData").Document(id);
             RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-            if (data.URL == null) MessageBox.Show("Host chưa cấp url");
+            if (data.URL == null) MessageBox.Show("Host not yet added url");
             else
             {
                 string tmp = "";

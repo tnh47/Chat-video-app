@@ -94,7 +94,7 @@ namespace Chat_video_app.Forms
                     RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
                     if (data != null)
                     {
-                        MessageBox.Show("Room đã tồn tại.Vui lòng chọn ID khác");
+                        MessageBox.Show("Room already exists, please choose another id!");
                     }
                     else
                     {
@@ -161,7 +161,7 @@ namespace Chat_video_app.Forms
             int b = listView2.SelectedItems.Count;
             if ((a+b)>1)
             {
-                MessageBox.Show("Vui lòng chọn một phòng.");
+                MessageBox.Show("Please choose a room!");
                 return;
             }
             ListViewItem selectedRoomItem;

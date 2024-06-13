@@ -115,8 +115,14 @@ namespace Chat_video_app.Forms
             var data = GetWriteData();
             DocumentReference docRef = db.Collection("UserData").Document(data.Username);
             await docRef.SetAsync(data);
-            MessageBox.Show("Success");
-            
+            //MessageBox.Show("Success");
+
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+
+            this.Close();
+
         }
         private UserData GetWriteData()
         {

@@ -245,7 +245,7 @@ namespace Chat_video_app.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Ban chua tham gia phong nay!");
+                    MessageBox.Show("You have not joined this room yet!");
                 }
 
             }
@@ -360,7 +360,7 @@ namespace Chat_video_app.Forms
         private async void button3_Click(object sender, EventArgs e)
         {
             string name = textBox3.Text.Trim();
-            if (name.Length == 0 || name == username) MessageBox.Show("Tên ko hợp lệ");
+            if (name.Length == 0 || name == username) MessageBox.Show("Name invalid!");
             else
             {
                 var db = FirestoreHelper.Database;
@@ -371,7 +371,7 @@ namespace Chat_video_app.Forms
                 {
 
                     UserData data = snapshot.ConvertTo<UserData>();
-                    if (!Check(data)) MessageBox.Show("Tên ko hợp lệ");
+                    if (!Check(data)) MessageBox.Show("Name invalid!");
                     else
                     {
                         List<string> invitedRooms = data.Is_invited.ToList();
@@ -385,7 +385,7 @@ namespace Chat_video_app.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy người dùng có tên là " + name);
+                    MessageBox.Show("Cann't find username: " + name);
                 }
             }
         }

@@ -37,7 +37,7 @@ namespace Chat_video_app.Forms
         {
             if (listView1.SelectedItems.Count < 1)
             {
-                MessageBox.Show("Vui lòng chọn phòng.");
+                MessageBox.Show("Please choose room!");
                 return;
             }
             foreach (ListViewItem i in listView1.SelectedItems)
@@ -57,7 +57,7 @@ namespace Chat_video_app.Forms
                 data.Mem = mem.ToArray();
                 await docRef2.SetAsync(data);
             }
-            MessageBox.Show("Đã xóa");
+            MessageBox.Show("Deleted successfully!");
         }
 
         private void button2_Click(object sender, EventArgs e)
