@@ -185,6 +185,7 @@
             this.Controls.Add(this.VerifyBtn);
             this.Controls.Add(this.ConfirmPasswordBox);
             this.Controls.Add(this.PasswordBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ResetPass";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ResetPass";
