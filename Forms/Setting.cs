@@ -49,7 +49,7 @@ namespace Chat_video_app.Forms
             {
                 MessageBox.Show("Invalid email format!");
             }
-            else if (newEmail.Length > 0 && (checkPassword.Length >= 6 || checkPassword.Length == 0))
+            else if (newEmail.Length > 0 && (checkPassword.Length >= 8 || checkPassword.Length == 0))
             {
                 var db = FirestoreHelper.Database;
                 DocumentReference docRef = db.Collection("UserData").Document(username);
@@ -58,7 +58,7 @@ namespace Chat_video_app.Forms
                 data.Email = newEmail;
                 await docRef.SetAsync(data);
 
-                if (checkPassword.Length >= 6)
+                if (checkPassword.Length >= 8)
                 {
                     string newPassword = Security.Encrypt(checkPassword);
                     db = FirestoreHelper.Database;
@@ -72,7 +72,7 @@ namespace Chat_video_app.Forms
 
                 MessageBox.Show("Changed Succeed!");
             }
-            else if (checkPassword.Length > 0 && checkPassword.Length < 6)
+            else if (checkPassword.Length > 0 && checkPassword.Length < 8)
             {
                 MessageBox.Show("Password must be at least 6 characters long!");
             }

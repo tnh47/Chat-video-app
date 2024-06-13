@@ -63,7 +63,7 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(78, 413);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 42);
+            this.button1.Size = new System.Drawing.Size(113, 42);
             this.button1.TabIndex = 4;
             this.button1.Text = "Delete";
             this.button1.UseVisualStyleBackColor = false;
@@ -74,9 +74,9 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(194, 413);
+            this.button2.Location = new System.Drawing.Point(222, 413);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(203, 42);
+            this.button2.Size = new System.Drawing.Size(189, 42);
             this.button2.TabIndex = 5;
             this.button2.Text = "Back to setting";
             this.button2.UseVisualStyleBackColor = false;

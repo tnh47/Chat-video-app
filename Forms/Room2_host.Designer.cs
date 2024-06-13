@@ -403,10 +403,10 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.ServerList);
-            this.panel2.Controls.Add(this.RefreshButton);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.ConnectButton);
             this.panel2.Controls.Add(this.DisconnectButton);
+            this.panel2.Controls.Add(this.RefreshButton);
             this.panel2.Location = new System.Drawing.Point(37, 138);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(464, 198);

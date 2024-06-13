@@ -90,7 +90,7 @@ namespace Chat_video_app.Forms
                     if (msg.Length > 0) { 
 
                         string text = string.Format("[ {0} ] {1}", DateTime.Now.ToString("HH:mm"), msg);
-                        AddData(text);
+                        if(connected==true)AddData(text);
                         logTextBox.AppendText(string.Format("[ {0} ] {1}{2}", DateTime.Now.ToString("HH:mm"), msg, Environment.NewLine));
                     }
                     else

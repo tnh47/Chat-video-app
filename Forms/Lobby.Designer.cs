@@ -91,7 +91,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(114, 35);
             this.button2.TabIndex = 9;
-            this.button2.Text = "Set profile";
+            this.button2.Text = "Setting";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -231,7 +231,7 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.DarkGreen;
+            this.button4.BackColor = System.Drawing.Color.SaddleBrown;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(141, 133);
