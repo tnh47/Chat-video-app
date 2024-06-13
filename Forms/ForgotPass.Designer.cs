@@ -76,7 +76,7 @@
             // 
             // VerifyBtn
             // 
-            this.VerifyBtn.BackColor = System.Drawing.Color.DarkBlue;
+            this.VerifyBtn.BackColor = System.Drawing.Color.Crimson;
             this.VerifyBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.VerifyBtn.FlatAppearance.BorderSize = 0;
             this.VerifyBtn.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,7 +95,7 @@
             this.CodeBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.CodeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CodeBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F);
-            this.CodeBox.Location = new System.Drawing.Point(133, 284);
+            this.CodeBox.Location = new System.Drawing.Point(143, 284);
             this.CodeBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.CodeBox.Name = "CodeBox";
             this.CodeBox.Size = new System.Drawing.Size(305, 27);
@@ -106,7 +106,7 @@
             this.EmailBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
             this.EmailBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.EmailBox.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailBox.Location = new System.Drawing.Point(133, 167);
+            this.EmailBox.Location = new System.Drawing.Point(143, 167);
             this.EmailBox.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.EmailBox.Name = "EmailBox";
             this.EmailBox.Size = new System.Drawing.Size(305, 27);
@@ -117,7 +117,7 @@
             this.errmsg2.AutoSize = true;
             this.errmsg2.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errmsg2.ForeColor = System.Drawing.Color.Red;
-            this.errmsg2.Location = new System.Drawing.Point(129, 244);
+            this.errmsg2.Location = new System.Drawing.Point(139, 244);
             this.errmsg2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.errmsg2.Name = "errmsg2";
             this.errmsg2.Size = new System.Drawing.Size(67, 23);
@@ -130,7 +130,7 @@
             this.errmsg1.AutoSize = true;
             this.errmsg1.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errmsg1.ForeColor = System.Drawing.Color.Red;
-            this.errmsg1.Location = new System.Drawing.Point(129, 127);
+            this.errmsg1.Location = new System.Drawing.Point(139, 128);
             this.errmsg1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.errmsg1.Name = "errmsg1";
             this.errmsg1.Size = new System.Drawing.Size(67, 23);
@@ -143,7 +143,7 @@
             this.notmsg.AutoSize = true;
             this.notmsg.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notmsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.notmsg.Location = new System.Drawing.Point(129, 206);
+            this.notmsg.Location = new System.Drawing.Point(139, 206);
             this.notmsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.notmsg.Name = "notmsg";
             this.notmsg.Size = new System.Drawing.Size(106, 23);
@@ -168,7 +168,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(92, 167);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 27);
+            this.pictureBox2.Size = new System.Drawing.Size(43, 36);
             this.pictureBox2.TabIndex = 55;
             this.pictureBox2.TabStop = false;
             // 
@@ -177,7 +177,7 @@
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(92, 284);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 27);
+            this.pictureBox3.Size = new System.Drawing.Size(43, 36);
             this.pictureBox3.TabIndex = 56;
             this.pictureBox3.TabStop = false;
             // 

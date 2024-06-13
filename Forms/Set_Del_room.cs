@@ -2,13 +2,7 @@
 using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Chat_video_app.Forms
@@ -44,22 +38,45 @@ namespace Chat_video_app.Forms
             {
                 string id = i.Text;
                 var db = FirestoreHelper.Database;
-                DocumentReference docRef = db.Collection("RoomData").Document(id);
-                await docRef.DeleteAsync();
+                
 
                 DocumentReference docRef2 = db.Collection("UserData").Document(username);
                 UserData data = docRef2.GetSnapshotAsync().Result.ConvertTo<UserData>();
                 List<string> host = new List<string>(data.Host);
-                List<string> mem=new List<string>(data.Mem);
                 host.Remove(id);
-                mem.Remove(id);
                 data.Host = host.ToArray();
-                data.Mem = mem.ToArray();
-                await docRef2.SetAsync(data);
-            }
-            MessageBox.Show("Deleted successfully!");
-        }
+                await docRef2.UpdateAsync(new Dictionary<string, object>
+                {
+                    { nameof(UserData.Host), data.Host },
+                });
 
+                var query = db.Collection("UserData").WhereArrayContains("Mem", id);
+                QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+
+                foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+                {
+                    if (documentSnapshot.Exists)
+                    {
+                        UserData otherUserData = documentSnapshot.ConvertTo<UserData>();
+                        List<string> memList = otherUserData.Mem.ToList();
+
+                        if (memList.Remove(id))
+                        {
+                            otherUserData.Mem = memList.ToArray();
+                            await documentSnapshot.Reference.UpdateAsync(new Dictionary<string, object>
+                            {
+                                { nameof(UserData.Mem), otherUserData.Mem }
+                            });
+                        }
+                    }
+                }
+
+                DocumentReference docRef = db.Collection("RoomData").Document(id);
+                await docRef.DeleteAsync();
+            }
+            listView1.Clear();
+            CheckRoom(username);
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             Hide();

@@ -2,15 +2,10 @@
 using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
 
 namespace Chat_video_app.Forms
 {
@@ -225,41 +220,54 @@ namespace Chat_video_app.Forms
             foreach (string i in listBox1.SelectedItems)
             {
                 data.Mem = data.Mem.Append(i).ToArray();
-                AddData(username, i);
-                DeleteInvite(username, i);
+                await AddData(username, i);
+                await DeleteInvite(username, i);
             }
             await docRef.UpdateAsync(new Dictionary<string, object>
-{
+            {
                 { nameof(UserData.Mem), data.Mem },
             });
             CheckInvite(username);
             CheckRoom(username);           
         }
-        private async void AddData(string username, string id)
+        private async Task AddData(string username, string roomId)
         {
             var db = FirestoreHelper.Database;
-            DocumentReference docRef = db.Collection("RoomData").Document(id);
-            RoomData data = docRef.GetSnapshotAsync().Result.ConvertTo<RoomData>();
-            List<string>mem= data.Mem.ToList();
+            DocumentReference roomDocRef = db.Collection("RoomData").Document(roomId);
+            DocumentSnapshot roomSnapshot = await roomDocRef.GetSnapshotAsync();
+            RoomData roomData = roomSnapshot.ConvertTo<RoomData>();
+
+            List<string> mem = roomData.Mem.ToList();
             mem.Add(username);
-            data.Mem=mem.ToArray();
-            await docRef.SetAsync(data);
+            roomData.Mem = mem.ToArray();
+
+            await roomDocRef.UpdateAsync(new Dictionary<string, object>
+    {
+        { nameof(RoomData.Mem), roomData.Mem }
+    });
         }
-        private async void DeleteInvite(string username, string roomid)
+
+        private async Task DeleteInvite(string username, string roomId)
         {
             var db = FirestoreHelper.Database;
-            DocumentReference docRef = db.Collection("UserData").Document(username);
-            UserData data = docRef.GetSnapshotAsync().Result.ConvertTo<UserData>();
-            List<string> i = new List<string>(data.Is_invited);
-            i.Remove(roomid);
-            data.Is_invited = i.ToArray();
-            await docRef.SetAsync(data);
+            DocumentReference userDocRef = db.Collection("UserData").Document(username);
+            DocumentSnapshot userSnapshot = await userDocRef.GetSnapshotAsync();
+            UserData userData = userSnapshot.ConvertTo<UserData>();
+
+            List<string> invites = userData.Is_invited.ToList();
+            invites.Remove(roomId);
+            userData.Is_invited = invites.ToArray();
+
+            await userDocRef.UpdateAsync(new Dictionary<string, object>
+    {
+        { nameof(UserData.Is_invited), userData.Is_invited }
+    });
         }
-        private void button6_Click(object sender, EventArgs e)
+        private async void button6_Click(object sender, EventArgs e)
         {
             foreach (string i in listBox1.SelectedItems)
             {
-                DeleteInvite(username,i);
+                await DeleteInvite(username,i);
             }
             CheckInvite(username);
         }
