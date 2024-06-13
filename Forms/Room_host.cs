@@ -92,6 +92,11 @@ namespace Chat_video_app.Forms
             {
                 DataGridViewRow selectedRow = clientsDataGridView.Rows[e.RowIndex];
                 string memberName = selectedRow.Cells["Name"].Value.ToString();
+                MyClient? clientToRemove = clients.Values.FirstOrDefault(c => c.username.ToString() == memberName);
+                if (clientToRemove != null)
+                {
+                    Disconnect(clientToRemove.Value.id);
+                }
                 clientsDataGridView.Rows.Remove(selectedRow);
                 var db = FirestoreHelper.Database;
                 DocumentReference docRef = db.Collection("RoomData").Document(id);

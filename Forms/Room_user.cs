@@ -450,7 +450,7 @@ namespace Chat_video_app.Forms
             ImageList emojiImageList = new ImageList();
             emojiImageList.ImageSize = new Size(20, 20);
 
-            string emojiDirectory = "E:\\Project\\Net-programming\\Chat_video_app\\Emoji";
+            string emojiDirectory = "Emoji";
             string[] emojiFiles = Directory.GetFiles(emojiDirectory);
 
             foreach (string emojiFile in emojiFiles)
